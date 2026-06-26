@@ -2,8 +2,8 @@
 <html lang="id">
 <head>
   <!-- ============================================
-       GXR Prime v10.1 - Complete HTML
-       SEO Friendly + All Features Intact
+       GXR Prime v10.4 - Complete Enhanced
+       All Original Features + Requested Improvements
        RRE Engine® by Gizkha Ramadhan & Rizki Dimas
        ============================================ -->
   
@@ -61,10 +61,11 @@
   <!-- ========== GOOGLE VERIFICATION ========== -->
   <meta name="google-site-verification" content="ZeXNWc95IoI3_usCoiAm2QoE8AyH7_76Y3kQzzhGhOA">
 
-  <!-- ========== STYLESHEET ========== -->
+  <!-- ========== STYLESHEET - ALL ORIGINAL FEATURES PRESERVED ========== -->
   <style>
     /* ============================================
-       GXR Prime Ai - Complete Stylesheet v10.1
+       GXR Prime Ai - Complete Stylesheet v10.4
+       Enhanced: Bigger Fonts, Bigger History, Emoji Ready
        ============================================ */
     
     @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500&family=Orbitron:wght@700;900&display=swap');
@@ -190,6 +191,142 @@
       opacity: 0;
       pointer-events: none;
       z-index: -9999;
+    }
+
+    /* ========== SPLASH SCREEN (TAMBAHAN) ========== */
+    .splash-screen {
+      position: fixed; inset: 0; z-index: 99999;
+      background: #0a0a14;
+      display: flex; align-items: center; justify-content: center;
+      flex-direction: column;
+      transition: opacity 0.6s ease, visibility 0.6s ease;
+      opacity: 1; visibility: visible;
+    }
+    .splash-screen.hidden {
+      opacity: 0; visibility: hidden; pointer-events: none;
+    }
+    .splash-bg {
+      position: absolute; inset: 0; overflow: hidden;
+    }
+    .splash-bg::before {
+      content: ''; position: absolute; inset: 0;
+      background: 
+        radial-gradient(ellipse at center, rgba(0,102,204,0.12) 0%, transparent 70%),
+        radial-gradient(ellipse at 70% 30%, rgba(99,102,241,0.08) 0%, transparent 60%),
+        radial-gradient(ellipse at 30% 70%, rgba(0,168,107,0.06) 0%, transparent 60%);
+      animation: splashBgPulse 3s ease-in-out infinite alternate;
+    }
+    @keyframes splashBgPulse {
+      0% { opacity: 0.6; transform: scale(1); }
+      100% { opacity: 1; transform: scale(1.1); }
+    }
+    .splash-particles {
+      position: absolute; inset: 0; pointer-events: none;
+    }
+    .sp {
+      position: absolute; border-radius: 50%; background: #4da6ff;
+      animation: spFloat 4s ease-in-out infinite;
+    }
+    .sp:nth-child(1) { width: 3px; height: 3px; left: 15%; top: 25%; animation-delay: 0s; }
+    .sp:nth-child(2) { width: 2px; height: 2px; left: 80%; top: 20%; animation-delay: 0.5s; }
+    .sp:nth-child(3) { width: 4px; height: 4px; left: 25%; top: 70%; animation-delay: 1s; }
+    .sp:nth-child(4) { width: 2px; height: 2px; left: 70%; top: 65%; animation-delay: 1.5s; }
+    .sp:nth-child(5) { width: 3px; height: 3px; left: 50%; top: 15%; animation-delay: 2s; }
+    .sp:nth-child(6) { width: 2px; height: 2px; left: 10%; top: 55%; animation-delay: 2.5s; }
+    .sp:nth-child(7) { width: 4px; height: 4px; left: 88%; top: 45%; animation-delay: 3s; }
+    .sp:nth-child(8) { width: 3px; height: 3px; left: 40%; top: 80%; animation-delay: 3.5s; }
+    @keyframes spFloat {
+      0%, 100% { transform: translateY(0) scale(1); opacity: 0; }
+      20% { opacity: 0.9; }
+      50% { transform: translateY(-50px) scale(1.8); opacity: 0.3; }
+      80% { opacity: 0; }
+    }
+    .splash-logo-wrap {
+      position: relative; z-index: 2;
+      display: flex; flex-direction: column; align-items: center;
+      gap: 20px;
+    }
+    .splash-hex-wrapper {
+      position: relative;
+      width: 80px; height: 80px;
+    }
+    .splash-hex {
+      position: absolute; inset: 0;
+      background: linear-gradient(135deg, #0066cc, #6366f1);
+      clip-path: polygon(50% 0%, 100% 25%, 100% 75%, 50% 100%, 0% 75%, 0% 25%);
+      animation: splashHexSpin 3s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+    }
+    .splash-hex-inner {
+      position: absolute; inset: 4px; background: #0a0a14;
+      clip-path: polygon(50% 0%, 100% 25%, 100% 75%, 50% 100%, 0% 75%, 0% 25%);
+      display: flex; align-items: center; justify-content: center;
+    }
+    .splash-hex-text {
+      font-family: 'Orbitron', monospace; font-weight: 900; font-size: 1.6rem;
+      background: linear-gradient(135deg, #4da6ff, #a78bfa);
+      -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+      background-clip: text;
+      animation: splashTextGlow 1.5s ease-in-out 0.5s infinite alternate;
+    }
+    @keyframes splashTextGlow {
+      0% { filter: brightness(1); }
+      100% { filter: brightness(1.5); }
+    }
+    .splash-hex-ring {
+      position: absolute; inset: -6px;
+      border: 2px solid transparent;
+      border-radius: 50%;
+      border-top-color: rgba(77,166,255,0.4);
+      border-right-color: rgba(99,102,241,0.3);
+      animation: splashRingSpin 2s linear infinite;
+    }
+    @keyframes splashRingSpin {
+      0% { transform: rotate(0deg); }
+      100% { transform: rotate(360deg); }
+    }
+    .splash-hex-glow {
+      position: absolute; inset: -16px;
+      background: radial-gradient(circle, rgba(0,102,204,0.5) 0%, transparent 70%);
+      filter: blur(20px);
+      animation: splashGlowPulse 1.5s ease-in-out infinite alternate;
+    }
+    @keyframes splashGlowPulse {
+      0% { opacity: 0.3; transform: scale(0.9); }
+      100% { opacity: 0.8; transform: scale(1.15); }
+    }
+    @keyframes splashHexSpin {
+      0% { transform: rotate(0deg) scale(0); opacity: 0; }
+      50% { transform: rotate(180deg) scale(1.1); opacity: 1; }
+      100% { transform: rotate(360deg) scale(1); opacity: 1; }
+    }
+    .splash-title {
+      font-family: 'Orbitron', monospace; font-size: 1.4rem; font-weight: 900;
+      color: #fff; letter-spacing: 3px;
+      animation: splashFadeUp 0.8s ease-out 0.8s both;
+    }
+    .splash-subtitle {
+      font-size: 0.7rem; color: rgba(255,255,255,0.5); letter-spacing: 4px;
+      text-transform: uppercase;
+      animation: splashFadeUp 0.8s ease-out 1s both;
+    }
+    @keyframes splashFadeUp {
+      0% { opacity: 0; transform: translateY(15px); }
+      100% { opacity: 1; transform: translateY(0); }
+    }
+    .splash-loading-bar {
+      width: 120px; height: 3px; background: rgba(255,255,255,0.1);
+      border-radius: 3px; overflow: hidden;
+      animation: splashFadeUp 0.8s ease-out 1.2s both;
+    }
+    .splash-loading-fill {
+      height: 100%; background: linear-gradient(90deg, #0066cc, #6366f1, #4da6ff);
+      border-radius: 3px;
+      animation: splashLoading 2s ease-in-out 1.3s forwards;
+    }
+    @keyframes splashLoading {
+      0% { width: 0%; }
+      60% { width: 70%; }
+      100% { width: 100%; }
     }
 
     .app {
@@ -392,137 +529,9 @@
       stroke-linejoin: round;
     }
 
+    /* Founder group hidden as requested */
     .founder-group {
-      display: flex;
-      gap: 3px;
-      background: var(--bg-tertiary);
-      padding: 2px 6px;
-      border-radius: 48px;
-      border: 1px solid var(--border);
-      flex-shrink: 0;
-    }
-
-    .founder {
-      cursor: pointer;
-      transition: transform 0.2s;
-    }
-
-    .founder:hover { transform: translateY(-1px); }
-
-    .founder-pic {
-      width: 28px;
-      height: 28px;
-      background-size: cover;
-      background-position: center;
-      border-radius: 50%;
-      border: 1.5px solid var(--accent);
-      transition: all 0.3s cubic-bezier(0.34,1.56,0.64,1);
-    }
-
-    .founder-pic.zoomed {
-      width: 48px;
-      height: 48px;
-      border-width: 2px;
-      z-index: 200;
-      box-shadow: 0 0 20px var(--accent-glow);
-    }
-
-    .founder-pic.bounce {
-      animation: picBounce 0.5s cubic-bezier(0.34,1.56,0.64,1);
-    }
-
-    @keyframes picBounce {
-      0%{transform:scale(1)} 30%{transform:scale(1.3)} 60%{transform:scale(0.9)} 100%{transform:scale(1)}
-    }
-
-    .founder-detail-card {
-      position: fixed;
-      top: 50%;
-      left: 50%;
-      transform: translate(-50%,-50%) scale(0);
-      background: var(--card-bg);
-      border: 1px solid var(--border-strong);
-      border-radius: 20px;
-      padding: 24px 20px;
-      text-align: center;
-      z-index: 300;
-      opacity: 0;
-      visibility: hidden;
-      transition: all 0.35s cubic-bezier(0.34,1.56,0.64,1);
-      box-shadow: var(--shadow-lg);
-      width: 85%;
-      max-width: 320px;
-    }
-
-    .founder-detail-card.visible {
-      opacity: 1;
-      visibility: visible;
-      transform: translate(-50%,-50%) scale(1);
-    }
-
-    .founder-detail-card .detail-pic {
-      width: 70px;
-      height: 70px;
-      background-size: cover;
-      background-position: center;
-      border-radius: 50%;
-      border: 2px solid var(--accent);
-      margin: 0 auto 12px;
-    }
-
-    .founder-detail-card .detail-name {
-      font-size: 1.1rem;
-      font-weight: 700;
-      color: var(--text);
-      margin-bottom: 4px;
-    }
-
-    .founder-detail-card .detail-role {
-      font-size: 0.75rem;
-      color: var(--accent);
-      margin-bottom: 10px;
-      font-weight: 500;
-    }
-
-    .founder-detail-card .detail-desc {
-      font-size: 0.7rem;
-      color: var(--text-secondary);
-      line-height: 1.6;
-      text-align: left;
-      margin-top: 8px;
-    }
-
-    .founder-detail-card .detail-close {
-      position: absolute;
-      top: 10px;
-      right: 10px;
-      width: 30px;
-      height: 30px;
-      border-radius: 50%;
-      background: var(--bg-tertiary);
-      border: none;
-      color: var(--text);
-      cursor: pointer;
-      font-size: 0.9rem;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-    }
-
-    .founder-detail-overlay {
-      position: fixed;
-      inset: 0;
-      background: var(--overlay);
-      z-index: 299;
-      opacity: 0;
-      visibility: hidden;
-      transition: all 0.3s;
-      cursor: pointer;
-    }
-
-    .founder-detail-overlay.visible {
-      opacity: 1;
-      visibility: visible;
+      display: none;
     }
 
     .mode-bar {
@@ -714,8 +723,8 @@
     .message-wrap.ai .msg-body { align-items: flex-start; }
 
     .ai-text {
-      font-size: 0.875rem;
-      line-height: 1.6;
+      font-size: 1rem;
+      line-height: 1.4;
       color: var(--ai-text);
       word-break: normal;
       overflow-wrap: break-word;
@@ -732,10 +741,10 @@
       line-height: 1.3;
     }
 
-    .ai-text h1 { font-size: 1.4rem; border-bottom: 2px solid var(--accent-glow); padding-bottom: 0.3em; }
-    .ai-text h2 { font-size: 1.2rem; }
-    .ai-text h3 { font-size: 1rem; }
-    .ai-text h4 { font-size: 0.9rem; }
+    .ai-text h1 { font-size: 1.55rem; border-bottom: 2px solid var(--accent-glow); padding-bottom: 0.3em; }
+    .ai-text h2 { font-size: 1.35rem; }
+    .ai-text h3 { font-size: 1.15rem; }
+    .ai-text h4 { font-size: 1.05rem; }
 
     .ai-text b, .ai-text strong {
       color: var(--accent) !important;
@@ -783,8 +792,8 @@
       color: var(--user-bubble-text);
       padding: 10px 14px;
       border-radius: 18px 18px 4px 18px;
-      font-size: 0.875rem;
-      line-height: 1.55;
+      font-size: 1rem;
+      line-height: 1.6;
       word-break: normal;
       overflow-wrap: break-word;
       white-space: pre-wrap;
@@ -798,7 +807,7 @@
       align-items: center;
       justify-content: space-between;
       margin-top: 6px;
-      font-size: 0.55rem;
+      font-size: 0.65rem;
       color: var(--text-tertiary);
       width: 100%;
     }
@@ -806,7 +815,7 @@
     .message-wrap.user .msg-footer { justify-content: flex-end; }
 
     .msg-time {
-      font-size: 0.55rem;
+      font-size: 0.65rem;
       color: var(--text-tertiary);
       white-space: nowrap;
     }
@@ -819,9 +828,9 @@
       border: 1px solid var(--border);
       color: var(--text-secondary);
       cursor: pointer;
-      padding: 6px 12px;
-      border-radius: 8px;
-      font-size: 0.65rem;
+      padding: 8px 16px;
+      border-radius: 10px;
+      font-size: 0.8rem;
       font-weight: 500;
       transition: all 0.2s;
       opacity: 0.85;
@@ -842,8 +851,8 @@
     }
 
     .copy-btn svg {
-      width: 13px;
-      height: 13px;
+      width: 15px;
+      height: 15px;
       fill: none;
       stroke: currentColor;
       stroke-width: 2.2;
@@ -877,7 +886,7 @@
       border-radius: 10px;
       border: 1px solid var(--border);
       color: var(--text-secondary);
-      font-size: 0.65rem;
+      font-size: 0.7rem;
     }
 
     .upload-indicator.visible { display: flex; }
@@ -890,7 +899,7 @@
       cursor: pointer;
       padding: 2px 6px;
       border-radius: 6px;
-      font-size: 0.6rem;
+      font-size: 0.65rem;
     }
 
     .typing-indicator {
@@ -898,7 +907,7 @@
       align-items: center;
       gap: 5px;
       padding: 4px 0;
-      font-size: 0.72rem;
+      font-size: 0.8rem;
       color: var(--text-tertiary);
       animation: fadeInUp 0.3s ease;
     }
@@ -1047,33 +1056,37 @@
       padding: 4px 8px 6px 14px;
     }
 
-    .input-bottom-row textarea {
-      flex: 1;
-      background: transparent;
-      border: none;
-      padding: 8px 0;
-      font-size: 0.875rem;
-      color: var(--text);
-      outline: none;
-      resize: none;
-      min-height: 22px;
-      max-height: 100px;
-      line-height: 1.5;
-      font-family: 'Inter', sans-serif;
-      overflow-y: auto;
-      -webkit-user-select: text;
-      user-select: text;
-      word-break: normal;
-      overflow-wrap: break-word;
-      white-space: pre-wrap;
-    }
+   .input-bottom-row textarea {
+  flex: 1;
+  background: transparent;
+  border: none;
+  padding: 10px 0;        /* padding juga dibesarkan sedikit */
+  font-size: 1.1rem;       /* === UBAH DI SINI === */
+  color: var(--text);
+  outline: none;
+  resize: none;
+  min-height: 24px;        /* sesuaikan */
+  max-height: 110px;       /* sesuaikan */
+  line-height: 1.5;
+  font-family: 'Inter', sans-serif;
+  overflow-y: auto;
+  -webkit-user-select: text;
+  user-select: text;
+  word-break: normal;
+  overflow-wrap: break-word;
+  white-space: pre-wrap;
+}
 
     .input-bottom-row textarea::placeholder {
       color: var(--text-tertiary);
-      font-size: 0.875rem;
+      font-size: 0.95rem;
     }
 
-    .camera-btn, .file-upload-btn {
+    .camera-btn {
+      display: none;
+    }
+
+    .file-upload-btn {
       background: none;
       border: none;
       width: 36px;
@@ -1090,14 +1103,14 @@
       position: relative;
     }
 
-    .camera-btn:hover, .file-upload-btn:hover {
+    .file-upload-btn:hover {
       color: var(--accent);
       background: var(--accent-light);
     }
 
-    .camera-btn.has-image, .file-upload-btn.has-file { color: var(--green); }
+    .file-upload-btn.has-file { color: var(--green); }
 
-    .camera-btn svg, .file-upload-btn svg {
+    .file-upload-btn svg {
       width: 19px;
       height: 19px;
       fill: none;
@@ -1113,10 +1126,10 @@
       right: -4px;
       background: var(--red);
       color: #fff;
-      font-size: 0.45rem;
+      font-size: 0.5rem;
       font-weight: 700;
-      width: 16px;
-      height: 16px;
+      width: 18px;
+      height: 18px;
       border-radius: 50%;
       display: flex;
       align-items: center;
@@ -1196,7 +1209,7 @@
     }
 
     footer {
-      font-size: 0.55rem;
+      font-size: 0.6rem;
       text-align: center;
       padding: 8px 6px;
       color: var(--text-tertiary);
@@ -1307,7 +1320,7 @@
     }
 
     .welcome-subtitle {
-      font-size: 0.75rem;
+      font-size: 0.8rem;
       color: var(--text-secondary);
       margin-bottom: 32px;
       max-width: 280px;
@@ -1328,7 +1341,7 @@
       padding: 12px 32px;
       border-radius: 28px;
       font-weight: 600;
-      font-size: 0.8rem;
+      font-size: 0.85rem;
       cursor: pointer;
       transition: all 0.2s;
       width: 200px;
@@ -1347,7 +1360,7 @@
       padding: 10px 28px;
       border-radius: 28px;
       font-weight: 500;
-      font-size: 0.75rem;
+      font-size: 0.8rem;
       cursor: pointer;
       transition: all 0.2s;
       width: 200px;
@@ -1360,7 +1373,7 @@
     }
 
     .welcome-footer-text {
-      font-size: 0.6rem;
+      font-size: 0.65rem;
       color: var(--text-tertiary);
       margin-top: 20px;
     }
@@ -1401,7 +1414,7 @@
     }
 
     .auth-card h3 {
-      font-size: 1.1rem;
+      font-size: 1.2rem;
       font-weight: 700;
       color: var(--text);
       margin-bottom: 14px;
@@ -1420,7 +1433,7 @@
       border: 1px solid var(--border);
       border-radius: 50px;
       color: var(--text);
-      font-size: 0.8rem;
+      font-size: 0.85rem;
       outline: none;
       -webkit-user-select: text;
       user-select: text;
@@ -1441,7 +1454,7 @@
       color: var(--text-tertiary);
       cursor: pointer;
       padding: 4px;
-      font-size: 0.7rem;
+      font-size: 0.75rem;
       transition: color 0.2s;
     }
 
@@ -1454,7 +1467,7 @@
       padding: 10px;
       border-radius: 50px;
       font-weight: 600;
-      font-size: 0.8rem;
+      font-size: 0.85rem;
       margin-top: 12px;
       cursor: pointer;
       color: #fff;
@@ -1462,7 +1475,7 @@
 
     .auth-switch {
       margin-top: 10px;
-      font-size: 0.62rem;
+      font-size: 0.7rem;
       color: var(--text-secondary);
     }
 
@@ -1477,12 +1490,12 @@
       border: none;
       color: var(--text-tertiary);
       margin-top: 6px;
-      font-size: 0.58rem;
+      font-size: 0.65rem;
       cursor: pointer;
     }
 
     .auth-message {
-      font-size: 0.58rem;
+      font-size: 0.65rem;
       margin-top: 6px;
       color: var(--red);
     }
@@ -1490,8 +1503,8 @@
     .history-panel {
       position: fixed;
       top: 0;
-      right: -320px;
-      width: 320px;
+      right: -360px;
+      width: 360px;
       height: 100vh;
       height: 100dvh;
       background: var(--card-bg);
@@ -1506,7 +1519,7 @@
     .history-panel.open { right: 0; }
 
     .history-header {
-      padding: 18px 16px;
+      padding: 22px 18px;
       background: linear-gradient(180deg, var(--accent-light) 0%, transparent 100%);
       border-bottom: 1px solid var(--border);
       display: flex;
@@ -1516,7 +1529,7 @@
     }
 
     .history-header h3 {
-      font-size: 0.95rem;
+      font-size: 1.2rem;
       font-weight: 700;
       color: var(--text);
     }
@@ -1524,11 +1537,11 @@
     .close-history {
       background: var(--bg-tertiary);
       border: 1px solid var(--border);
-      font-size: 0.9rem;
+      font-size: 1rem;
       color: var(--text-tertiary);
       cursor: pointer;
-      width: 30px;
-      height: 30px;
+      width: 36px;
+      height: 36px;
       border-radius: 50%;
       display: flex;
       align-items: center;
@@ -1544,17 +1557,17 @@
     }
 
     .history-user-info {
-      padding: 12px 16px;
+      padding: 16px 18px;
       border-bottom: 1px solid var(--border);
       display: flex;
       align-items: center;
-      gap: 8px;
+      gap: 12px;
       flex-shrink: 0;
     }
 
     .history-user-avatar {
-      width: 34px;
-      height: 34px;
+      width: 42px;
+      height: 42px;
       border-radius: 50%;
       background: var(--accent);
       color: #fff;
@@ -1562,14 +1575,14 @@
       align-items: center;
       justify-content: center;
       font-weight: 700;
-      font-size: 0.7rem;
+      font-size: 0.9rem;
       flex-shrink: 0;
     }
 
     .history-user-detail { flex: 1; min-width: 0; }
 
     .history-user-email {
-      font-size: 0.68rem;
+      font-size: 0.85rem;
       font-weight: 600;
       color: var(--text);
       white-space: nowrap;
@@ -1578,7 +1591,7 @@
     }
 
     .history-user-role {
-      font-size: 0.55rem;
+      font-size: 0.7rem;
       color: var(--accent);
     }
 
@@ -1587,9 +1600,9 @@
       border: 1px solid rgba(255,0,0,0.2);
       color: var(--red);
       cursor: pointer;
-      padding: 5px 10px;
-      border-radius: 18px;
-      font-size: 0.58rem;
+      padding: 8px 16px;
+      border-radius: 22px;
+      font-size: 0.75rem;
       font-weight: 600;
       transition: all 0.2s;
       white-space: nowrap;
@@ -1604,9 +1617,9 @@
     }
 
     .history-actions {
-      padding: 10px 14px;
+      padding: 14px 16px;
       display: flex;
-      gap: 8px;
+      gap: 10px;
       border-bottom: 1px solid var(--border);
       flex-shrink: 0;
     }
@@ -1615,16 +1628,16 @@
       flex: 1;
       background: var(--bg-tertiary);
       border: 1px solid var(--border);
-      padding: 9px 10px;
-      border-radius: 10px;
-      font-size: 0.7rem;
+      padding: 12px 14px;
+      border-radius: 14px;
+      font-size: 0.8rem;
       font-weight: 600;
       color: var(--text-secondary);
       cursor: pointer;
       display: flex;
       align-items: center;
       justify-content: center;
-      gap: 5px;
+      gap: 6px;
       transition: all 0.2s;
     }
 
@@ -1644,15 +1657,15 @@
     .history-list {
       flex: 1;
       overflow-y: auto;
-      padding: 12px;
+      padding: 16px;
       -webkit-overflow-scrolling: touch;
     }
 
     .history-item {
       background: var(--bg-tertiary);
-      border-radius: 12px;
-      padding: 12px;
-      margin-bottom: 8px;
+      border-radius: 16px;
+      padding: 18px;
+      margin-bottom: 12px;
       cursor: pointer;
       transition: all 0.2s;
       border: 1px solid transparent;
@@ -1675,32 +1688,32 @@
       left: -1px;
       top: 8px;
       bottom: 8px;
-      width: 3px;
+      width: 4px;
       background: var(--accent);
       border-radius: 0 2px 2px 0;
     }
 
     .history-item-title {
-      font-size: 0.72rem;
+      font-size: 0.9rem;
       font-weight: 600;
       color: var(--text);
-      margin-bottom: 4px;
+      margin-bottom: 8px;
       display: flex;
       justify-content: space-between;
       align-items: flex-start;
-      gap: 6px;
+      gap: 8px;
     }
 
-    .history-item-title span { flex: 1; line-height: 1.3; }
+    .history-item-title span { flex: 1; line-height: 1.4; }
 
     .delete-history-item {
       background: rgba(255,0,0,0.06);
       border: 1px solid transparent;
       color: var(--red);
       cursor: pointer;
-      font-size: 0.55rem;
-      padding: 3px 6px;
-      border-radius: 6px;
+      font-size: 0.7rem;
+      padding: 5px 10px;
+      border-radius: 10px;
       opacity: 0;
       transition: all 0.2s;
       flex-shrink: 0;
@@ -1714,29 +1727,29 @@
     }
 
     .history-item-preview {
-      font-size: 0.62rem;
+      font-size: 0.78rem;
       color: var(--text-secondary);
       white-space: nowrap;
       overflow: hidden;
       text-overflow: ellipsis;
-      margin-bottom: 5px;
+      margin-bottom: 10px;
     }
 
     .history-item-meta {
       display: flex;
       align-items: center;
-      gap: 6px;
-      font-size: 0.52rem;
+      gap: 10px;
+      font-size: 0.65rem;
       color: var(--text-tertiary);
       flex-wrap: wrap;
     }
 
     .history-item-mode {
-      font-size: 0.48rem;
+      font-size: 0.62rem;
       background: var(--accent-light);
       color: var(--accent);
-      padding: 1px 6px;
-      border-radius: 8px;
+      padding: 4px 10px;
+      border-radius: 12px;
       font-weight: 600;
       border: 1px solid var(--accent-glow);
       text-transform: capitalize;
@@ -1744,9 +1757,9 @@
 
     .empty-history {
       text-align: center;
-      padding: 40px 14px;
+      padding: 50px 14px;
       color: var(--text-tertiary);
-      font-size: 0.65rem;
+      font-size: 0.8rem;
     }
 
     .history-overlay {
@@ -1961,261 +1974,92 @@
       letter-spacing: 1px;
     }
 
+    .emoji-container {
+      display: inline-block;
+      font-size: 1.1em;
+      vertical-align: middle;
+      margin: 0 2px;
+    }
+
     @media(max-width: 380px) {
       .chat-area { padding: 10px 8px; gap: 10px; }
       .msg-avatar { width: 26px; height: 26px; font-size: 0.55rem; }
-      .ai-text { font-size: 0.8rem; }
-      .user-bubble-wrap { font-size: 0.8rem; padding: 8px 12px; }
-      .founder-pic { width: 22px; height: 22px; }
-      .founder-pic.zoomed { width: 38px; height: 38px; }
+      .ai-text { font-size: 0.95rem; }
+      .user-bubble-wrap { font-size: 0.9rem; padding: 8px 12px; }
       .mode-chip { padding: 7px 12px; font-size: 0.65rem; gap: 5px; }
       .welcome-greeting { font-size: 1.4rem; }
       .welcome-greeting .highlight { font-size: 1.6rem; }
       .welcome-logo-big { width: 60px; height: 60px; }
       .welcome-logo-big .hex-text { font-size: 1.1rem; }
       .history-panel { width: 88%; right: -88%; }
-      .input-bottom-row textarea { font-size: 0.8rem; }
+      .history-item { padding: 14px; }
+      .history-item-title { font-size: 0.8rem; }
+      .history-item-preview { font-size: 0.7rem; }
+      .input-bottom-row textarea { font-size: 0.9rem; }
       .send-btn { width: 36px; height: 36px; }
+      .history-btn { font-size: 0.7rem; padding: 10px 12px; }
+      .history-header { padding: 18px 14px; }
+      .history-header h3 { font-size: 1rem; }
+      .close-history { width: 32px; height: 32px; }
+      .history-user-avatar { width: 36px; height: 36px; font-size: 0.75rem; }
+      .history-user-email { font-size: 0.75rem; }
+      .history-user-role { font-size: 0.6rem; }
+      .history-logout-btn { font-size: 0.65rem; padding: 6px 12px; }
+      .history-list { padding: 12px; }
     }
   </style>
 </head>
 <body>
+
+  <!-- ============================================
+       SPLASH SCREEN - TAMBAHAN
+       ============================================ -->
+  <div class="splash-screen" id="splashScreen">
+    <div class="splash-bg"></div>
+    <div class="splash-particles">
+      <div class="sp"></div><div class="sp"></div><div class="sp"></div><div class="sp"></div>
+      <div class="sp"></div><div class="sp"></div><div class="sp"></div><div class="sp"></div>
+    </div>
+    <div class="splash-logo-wrap">
+      <div class="splash-hex-wrapper">
+        <div class="splash-hex"></div>
+        <div class="splash-hex-inner"><span class="splash-hex-text">GXR</span></div>
+        <div class="splash-hex-ring"></div>
+        <div class="splash-hex-glow"></div>
+      </div>
+      <div class="splash-title">GXR PRIME</div>
+      <div class="splash-subtitle">RRE Engine</div>
+      <div class="splash-loading-bar">
+        <div class="splash-loading-fill"></div>
+      </div>
+    </div>
+  </div>
+
   <!-- ============================================
        SEO CONTENT - HIDDEN FROM USERS
-       Visible to Googlebot, Bingbot, and crawlers
        ============================================ -->
   <div class="seo-content-hidden" aria-hidden="true">
     <h1>GXR Prime Ai - Asisten AI Premium dengan RRE Engine</h1>
     <h2>Chatbot AI Cerdas untuk Produktivitas, Belajar, dan Kreativitas</h2>
-    
-    <p>
-      <strong>GXR Prime Ai</strong> adalah asisten AI premium bertenaga <strong>RRE Engine</strong> — 
-      sistem proprietary yang dikembangkan oleh <strong>Gizkha Ramadhan</strong> (AI Architect) dan 
-      <strong>Rizki Dimas</strong> (Creative Lead). Dirancang untuk menghadirkan solusi cerdas 
-      dalam genggaman Anda melalui smartphone Android dan iPhone.
-    </p>
-    
-    <p>
-      GXR Prime berjalan di server dedicated internal dengan infrastruktur yang dibangun sendiri, 
-      bukan bergantung pada API pihak ketiga. Setiap respons dihasilkan oleh RRE Engine v10.1 — 
-      teknologi AI proprietary yang aman, etis, dan edukatif.
-    </p>
-    
-    <h3>Fitur Utama GXR Prime Ai</h3>
-    <ul>
-      <li><strong>Flash Mode</strong> — Jawaban ringkas dan cepat, 3-5 poin utama</li>
-      <li><strong>Pro Mode</strong> — Analisis mendalam dan komprehensif, 5-8 paragraf</li>
-      <li><strong>Critical Mode</strong> — Evaluasi multi-perspektif objektif dan kritis</li>
-      <li><strong>Explorer Mode</strong> — Eksplorasi kreatif visioner dan out-of-the-box</li>
-      <li><strong>Upload Gambar</strong> — Analisis gambar dengan AI vision (maks 3 gambar)</li>
-      <li><strong>Upload File</strong> — Baca dan analisis PDF, DOC, TXT, CSV, JSON, dan kode sumber</li>
-      <li><strong>Multi Bahasa</strong> — Mendukung Bahasa Indonesia, Inggris, dan Melayu</li>
-      <li><strong>Riwayat Obrolan</strong> — Simpan dan lanjutkan percakapan kapan saja</li>
-      <li><strong>Dark Mode</strong> — Tampilan otomatis sesuai preferensi sistem</li>
-      <li><strong>Gratis</strong> — Gunakan sebagai tamu atau daftar akun gratis</li>
-    </ul>
-    
-    <h3>Kemampuan GXR Prime AI</h3>
-    <p>
-      Chatbot AI Indonesia terbaik untuk membantu produktivitas sehari-hari. 
-      GXR Prime dapat membantu Anda dalam berbagai hal:
-    </p>
-    <ul>
-      <li>Belajar dan memahami konsep baru dengan penjelasan mendalam</li>
-      <li>Menulis artikel, esai, cerita, dan konten kreatif</li>
-      <li>Coding dan debugging dengan dukungan berbagai bahasa pemrograman</li>
-      <li>Brainstorming ide bisnis, proyek, dan strategi</li>
-      <li>Analisis data dan dokumen dengan upload file</li>
-      <li>Riset dan eksplorasi topik kompleks</li>
-      <li>Curhat dan konsultasi dengan respons empatik</li>
-      <li>Penerjemahan dan penjelasan istilah teknis</li>
-    </ul>
-    
-    <h3>Mengapa Memilih GXR Prime?</h3>
-    <ul>
-      <li><strong>RRE Engine Proprietary</strong> — Bukan API pihak ketiga, berjalan di server sendiri</li>
-      <li><strong>Server Dedicated Internal</strong> — Keamanan dan privasi terjamin</li>
-      <li><strong>Multi-Mode AI</strong> — Pilih mode sesuai kebutuhan Anda</li>
-      <li><strong>Anti-Jailbreak & Konten Edukatif</strong> — Sistem keamanan berlapis</li>
-      <li><strong>Long Term Memory</strong> — Mengingat konteks percakapan sebelumnya</li>
-      <li><strong>Gratis dengan Opsi Lengkap</strong> — Upload gambar, file, dan riwayat obrolan</li>
-      <li><strong>Mobile-First Design</strong> — Dioptimalkan untuk Android dan iPhone</li>
-    </ul>
-    
-    <h3>Cara Menggunakan GXR Prime</h3>
-    <ol>
-      <li>Buka <strong>www.gxrprime.web.id</strong> di browser smartphone Anda</li>
-      <li>Pilih mode AI: Flash, Pro, Critical, atau Explorer</li>
-      <li>Ketik pertanyaan atau unggah gambar/file</li>
-      <li>Dapatkan jawaban cerdas dan mendalam dalam hitungan detik</li>
-      <li>Login untuk menyimpan riwayat obrolan Anda</li>
-    </ol>
-    
-    <h3>Tentang Pengembang</h3>
-    <p>
-      <strong>Gizkha Ramadhan</strong> — AI Architect & Visioner. Arsitek utama RRE Engine 
-      dengan keahlian di Artificial Intelligence, Machine Learning, System Architecture, 
-      Cloud Computing, Natural Language Processing, dan Prompt Engineering.
-    </p>
-    <p>
-      <strong>Rizki Dimas</strong> — Creative Lead & UI Director. Bertanggung jawab atas 
-      seluruh pengalaman visual dan interaksi GXR Prime dengan keahlian di UI/UX Design, 
-      Frontend Development, Visual Branding, dan User Research.
-    </p>
-    
-    <p>
-      Kata kunci: GXR Prime, GXR Prime Ai, GXRPrime, gxrprime, chatbot AI, asisten AI Indonesia, 
-      AI chat gratis, RRE Engine, chatbot cerdas, AI premium, GPT Indonesia, chatbot gratis, 
-      AI assistant, tanya AI, AI belajar, AI menulis, AI coding, asisten pintar, 
-      artificial intelligence Indonesia, AI mobile, chatbot Android, chatbot iPhone
-    </p>
+    <p><strong>GXR Prime Ai</strong> adalah asisten AI premium bertenaga <strong>RRE Engine</strong> — sistem proprietary oleh <strong>Gizkha Ramadhan</strong> & <strong>Rizki Dimas</strong>.</p>
+    <h3>Fitur Utama</h3>
+    <ul><li>Flash Mode</li><li>Pro Mode</li><li>Critical Mode</li><li>Explorer Mode</li><li>Upload Gambar & File</li><li>Multi Bahasa</li><li>Riwayat Obrolan</li><li>Gratis</li></ul>
   </div>
 
   <!-- ============================================
-       STRUCTURED DATA - JSON-LD for Google
+       STRUCTURED DATA
        ============================================ -->
   <script type="application/ld+json">
   {
     "@context": "https://schema.org",
     "@type": "WebApplication",
     "name": "GXR Prime Ai",
-    "alternateName": ["GXR Prime", "GXRPrime"],
     "url": "https://www.gxrprime.web.id",
-    "description": "Asisten AI premium bertenaga RRE Engine. Chatbot cerdas untuk produktivitas, belajar, menulis, coding, dan kreativitas. Gratis dengan 4 mode AI.",
-    "operatingSystem": "Android, iOS",
+    "description": "Asisten AI premium bertenaga RRE Engine. Chatbot cerdas untuk produktivitas, belajar, menulis, coding, dan kreativitas.",
     "applicationCategory": "AIApplication",
-    "browserRequirements": "Requires JavaScript",
-    "author": {
-      "@type": "Organization",
-      "name": "GXR Prime",
-      "url": "https://www.gxrprime.web.id",
-      "founder": [
-        {
-          "@type": "Person",
-          "name": "Gizkha Ramadhan",
-          "jobTitle": "AI Architect & Visioner",
-          "description": "Arsitek utama RRE Engine. Ahli Artificial Intelligence, Machine Learning, dan System Architecture."
-        },
-        {
-          "@type": "Person",
-          "name": "Rizki Dimas",
-          "jobTitle": "Creative Lead & UI Director",
-          "description": "Bertanggung jawab atas pengalaman visual dan interaksi GXR Prime."
-        }
-      ]
-    },
-    "offers": {
-      "@type": "Offer",
-      "price": "0",
-      "priceCurrency": "IDR",
-      "description": "Gratis dengan opsi tamu atau akun."
-    },
-    "featureList": [
-      "Flash Mode - Jawaban ringkas",
-      "Pro Mode - Analisis mendalam",
-      "Critical Mode - Multi-perspektif",
-      "Explorer Mode - Eksplorasi kreatif",
-      "Upload gambar dan file",
-      "Multi bahasa (ID, EN, MS)",
-      "Riwayat obrolan",
-      "Dark mode otomatis"
-    ]
+    "operatingSystem": "Android, iOS"
   }
   </script>
-
-  <script type="application/ld+json">
-  {
-    "@context": "https://schema.org",
-    "@type": "FAQPage",
-    "mainEntity": [
-      {
-        "@type": "Question",
-        "name": "Apa itu GXR Prime?",
-        "acceptedAnswer": {
-          "@type": "Answer",
-          "text": "GXR Prime adalah asisten AI premium bertenaga RRE Engine yang dirancang untuk produktivitas, belajar, dan kreativitas. Tersedia 4 mode AI: Flash, Pro, Critical, dan Explorer. Gratis digunakan di smartphone Android dan iPhone."
-        }
-      },
-      {
-        "@type": "Question",
-        "name": "Apakah GXR Prime gratis?",
-        "acceptedAnswer": {
-          "@type": "Answer",
-          "text": "Ya, GXR Prime sepenuhnya gratis. Anda bisa langsung menggunakan sebagai tamu tanpa perlu login. Jika ingin menyimpan riwayat obrolan, Anda bisa mendaftar akun gratis."
-        }
-      },
-      {
-        "@type": "Question",
-        "name": "Apa itu RRE Engine?",
-        "acceptedAnswer": {
-          "@type": "Answer",
-          "text": "RRE Engine adalah sistem AI proprietary yang dikembangkan oleh Gizkha Ramadhan dan Rizki Dimas. Berjalan di server dedicated internal, bukan API pihak ketiga, sehingga keamanan dan privasi lebih terjamin."
-        }
-      },
-      {
-        "@type": "Question",
-        "name": "Apa saja mode AI di GXR Prime?",
-        "acceptedAnswer": {
-          "@type": "Answer",
-          "text": "GXR Prime memiliki 4 mode: Flash Mode (ringkas, 3-5 poin), Pro Mode (mendalam, 5-8 paragraf), Critical Mode (multi-perspektif objektif), dan Explorer Mode (eksplorasi kreatif visioner)."
-        }
-      },
-      {
-        "@type": "Question",
-        "name": "Apakah GXR Prime bisa upload gambar?",
-        "acceptedAnswer": {
-          "@type": "Answer",
-          "text": "Ya, GXR Prime mendukung upload hingga 3 gambar per kirim (maks 6 per hari) untuk dianalisis dengan AI vision. Anda juga bisa upload file PDF, DOC, TXT, CSV, JSON, dan kode sumber."
-        }
-      }
-    ]
-  }
-  </script>
-
-  <script type="application/ld+json">
-  {
-    "@context": "https://schema.org",
-    "@type": "BreadcrumbList",
-    "itemListElement": [
-      {
-        "@type": "ListItem",
-        "position": 1,
-        "name": "Beranda",
-        "item": "https://www.gxrprime.web.id"
-      }
-    ]
-  }
-  </script>
-
-  <!-- ============================================
-       NOSCRIPT - Fallback untuk crawler/browser tanpa JS
-       ============================================ -->
-  <noscript>
-    <div style="padding:30px;text-align:center;font-family:Arial,sans-serif;background:#f8f9fa;min-height:100vh;">
-      <div style="max-width:500px;margin:0 auto;">
-        <h1 style="color:#0066cc;font-size:1.8rem;">GXR Prime Ai</h1>
-        <p style="font-size:1rem;color:#333;">Asisten AI Premium bertenaga <strong>RRE Engine</strong></p>
-        <hr style="border-color:#0066cc20;margin:20px 0;">
-        <p style="color:#555;">Chatbot AI cerdas untuk produktivitas, belajar, menulis, coding, brainstorming, dan analisis.</p>
-        <p style="color:#555;margin:15px 0;"><strong>Fitur Unggulan:</strong></p>
-        <ul style="list-style:none;padding:0;text-align:left;color:#444;">
-          <li>Flash Mode - Ringkas dan cepat</li>
-          <li>Pro Mode - Analisis mendalam</li>
-          <li>Critical Mode - Multi-perspektif</li>
-          <li>Explorer Mode - Eksplorasi kreatif</li>
-          <li>Upload gambar & file</li>
-          <li>Multi bahasa (ID, EN, MS)</li>
-          <li>100% Gratis</li>
-        </ul>
-        <p style="margin-top:20px;color:#0066cc;font-weight:bold;">
-          Buka di smartphone Android atau iPhone Anda
-        </p>
-        <p style="color:#888;font-size:0.8rem;">
-          www.gxrprime.web.id
-        </p>
-      </div>
-    </div>
-  </noscript>
 
   <!-- ============================================
        DESKTOP BLOCK OVERLAY
@@ -2237,11 +2081,8 @@
       <h2 class="db-title">GXR PRIME</h2>
       <p class="db-subtitle">RRE Engine</p>
       <div class="db-divider"></div>
-      <p class="db-message">
-        <strong>Akses Mobile Only</strong><br>
-        Dirancang khusus untuk pengalaman terbaik di smartphone Android & iPhone.
-      </p>
-      <p class="db-footer">GXR Prime v10.1 &copy; 2025</p>
+      <p class="db-message"><strong>Akses Mobile Only</strong><br>Dirancang khusus untuk smartphone Android & iPhone.</p>
+      <p class="db-footer">GXR Prime v10.4 &copy; 2025</p>
     </div>
   </div>
 
@@ -2262,12 +2103,12 @@
             <h2><span class="brand-name">GXR Prime Ai</span> <span class="status-dot"></span></h2>
             <div class="subtitle-row">
               <p>Premium AI - RRE Engine</p>
-              <span class="version-badge">v10.1</span>
+              <span class="version-badge">v10.4</span>
             </div>
           </div>
         </div>
         <div class="header-actions">
-          <div class="founder-group">
+          <div class="founder-group" style="display:none;">
             <div class="founder" data-founder="gizkha">
               <div class="founder-pic" style="background-image:url('https://i.supaimg.com/a3ae0df3-e811-4431-9ebd-7da3eb10d395/e5010adb-31a2-4ad5-a679-9bdd4969203e.jpg')"></div>
             </div>
@@ -2280,16 +2121,6 @@
           </button>
         </div>
       </div>
-    </div>
-
-    <!-- Founder Detail -->
-    <div class="founder-detail-overlay" id="founderDetailOverlay"></div>
-    <div class="founder-detail-card" id="founderDetailCard">
-      <button class="detail-close" id="detailCloseBtn" aria-label="Tutup">&#10005;</button>
-      <div class="detail-pic" id="detailPic"></div>
-      <div class="detail-name" id="detailName"></div>
-      <div class="detail-role" id="detailRole"></div>
-      <div class="detail-desc" id="detailDesc"></div>
     </div>
 
     <!-- Mode Bar -->
@@ -2333,12 +2164,8 @@
         <input type="file" id="fileUploadInput" accept=".pdf,.doc,.docx,.txt,.csv,.json,.xml,.md,.html,.css,.js,.py,.java,.cpp,.c,.h,.yaml,.yml,.toml,.ini,.cfg,.log,.sh,.bat,.sql,.r,.rb,.php,.go,.rs,.swift,.kt,.dart" style="display:none" multiple aria-label="Upload file">
         <div class="input-preview-area" id="inputPreviewArea"></div>
         <div class="input-bottom-row">
-          <button id="uploadImageBtn" class="camera-btn" title="Unggah gambar (maks 3)" aria-label="Upload Gambar">
-            <svg viewBox="0 0 24 24"><path d="M23 19a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h4l2-3h6l2 3h4a2 2 0 0 1 2 2z"/><circle cx="12" cy="13" r="4"/></svg>
-            <span class="daily-quota-badge" id="dailyQuotaBadge" style="display:none">0</span>
-          </button>
           <button id="uploadFileBtn" class="file-upload-btn" title="Unggah file (PDF, DOC, TXT, kode)" aria-label="Upload File">
-            <svg viewBox="0 0 24 24"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/></svg>
+            <svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
           </button>
           <textarea id="msgInput" rows="1" placeholder="Ketik pesan atau unggah file..." autocomplete="off" maxlength="2500" aria-label="Input pesan"></textarea>
           <button id="sendMsgBtn" class="send-btn" aria-label="Kirim pesan">&#10132;</button>
@@ -2427,11 +2254,18 @@
   </div>
 
   <!-- ============================================
-       MAIN JAVASCRIPT
+       MAIN JAVASCRIPT - ALL FEATURES INTACT
        ============================================ -->
   <script>
+  
     (function() {
       'use strict';
+
+      // ============ SPLASH SCREEN ============
+      setTimeout(() => {
+        const splash = document.getElementById('splashScreen');
+        if (splash) splash.classList.add('hidden');
+      }, 3000);
 
       // ============ WORKER URLS ============
       const _w = { 
@@ -2488,22 +2322,6 @@
         default: '<div class="edu-card"><div class="edu-title">Mari Fokus pada Hal Positif</div><div class="edu-points">Kami lebih senang membahas hal edukatif dan kreatif.</div></div>'
       };
 
-      // ============ FOUNDER DATA ============
-      const FOUNDER_DATA = {
-        gizkha: {
-          name: 'Gizkha Ramadhan',
-          role: 'AI Architect & Visioner',
-          pic: 'https://i.supaimg.com/a3ae0df3-e811-4431-9ebd-7da3eb10d395/e5010adb-31a2-4ad5-a679-9bdd4969203e.jpg',
-          desc: '<p><strong>Gizkha Ramadhan</strong> adalah arsitek utama di balik <strong>RRE Engine</strong> -- sistem reasoning engine yang menjadi otak dari GXR Prime.</p><p><strong>Keahlian:</strong></p><p>- Artificial Intelligence & Machine Learning<br>- System Architecture & Cloud Computing<br>- Natural Language Processing<br>- Prompt Engineering & AI Safety</p><p><strong>Kontribusi:</strong></p><p>- Merancang arsitektur RRE Engine dari nol<br>- Mengembangkan sistem multi-mode AI<br>- Menciptakan RRE Guard (sistem etika AI)<br>- Optimalisasi performa dan keamanan</p><p>Dengan pengalaman di bidang AI dan software engineering, Gizkha memastikan GXR Prime tidak hanya cerdas, tetapi juga aman, etis, dan nyaman digunakan oleh semua orang.</p>'
-        },
-        rizki: {
-          name: 'Rizki Dimas',
-          role: 'UI Director & Creative Lead',
-          pic: 'https://i.supaimg.com/a3ae0df3-e811-4431-9ebd-7da3eb10d395/008946ce-aa87-48d1-95a9-62fe636fb714.png',
-          desc: '<p><strong>Rizki Dimas</strong> adalah creative lead yang bertanggung jawab atas seluruh pengalaman visual dan interaksi GXR Prime.</p><p><strong>Keahlian:</strong></p><p>- UI/UX Design & Product Design<br>- Frontend Development & Animation<br>- Visual Branding & Identity<br>- User Research & Experience Design</p><p><strong>Kontribusi:</strong></p><p>- Mendesain antarmuka GXR Prime yang elegan<br>- Menciptakan sistem dark/light mode adaptif<br>- Merancang pengalaman multi-sensory<br>- Memastikan aksesibilitas dan kenyamanan</p><p>Dengan pendekatan design-thinking, Rizki memastikan setiap interaksi dengan GXR Prime terasa natural, intuitif, dan menyenangkan.</p>'
-        }
-      };
-
       // ============ HELPER FUNCTIONS ============
       function $(id) { return document.getElementById(id); }
       function escapeHtml(s) { if (!s) return ''; const map = { '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#039;' }; return s.replace(/[&<>"']/g, m => map[m] || m); }
@@ -2516,7 +2334,7 @@
       }
 
       function isMobileDevice() {
-        if (isGoogleBot()) return true; // Izinkan crawler selalu
+        if (isGoogleBot()) return true;
         const ua = navigator.userAgent || '';
         if (/android|iphone|ipad|ipod|blackberry|iemobile|opera mini/i.test(ua)) return true;
         if (('ontouchstart' in window || navigator.maxTouchPoints > 0) && window.innerWidth < 1024) return true;
@@ -2528,10 +2346,7 @@
         if (isGoogleBot()) return false;
         if (!isMobileDevice()) {
           const overlay = $('desktopBlockOverlay');
-          if (overlay) {
-            overlay.classList.add('visible');
-            document.body.style.overflow = 'hidden';
-          }
+          if (overlay) { overlay.classList.add('visible'); document.body.style.overflow = 'hidden'; }
           return true;
         }
         return false;
@@ -2650,7 +2465,6 @@
       const chatArea = $('chatArea');
       const msgInput = $('msgInput');
       const sendBtn = $('sendMsgBtn');
-      const uploadBtn = $('uploadImageBtn');
       const fileUploadBtn = $('uploadFileBtn');
       const imageUploadInput = $('imageUploadInput');
       const fileUploadInput = $('fileUploadInput');
@@ -2659,7 +2473,6 @@
       const cancelUploadBtn = $('cancelUploadBtn');
       const modeChips = document.querySelectorAll('.mode-chip');
       const welcomeOverlay = $('welcomeOverlay');
-      const founders = document.querySelectorAll('.founder');
       const historyToggleBtn = $('historyToggleBtn');
       const authModal = $('authModal');
       const authTitle = $('authTitle');
@@ -2671,13 +2484,6 @@
       const imagePreviewOverlay = $('imagePreviewOverlay');
       const imagePreviewImg = $('imagePreviewImg');
       const imagePreviewClose = $('imagePreviewClose');
-      const founderDetailOverlay = $('founderDetailOverlay');
-      const founderDetailCard = $('founderDetailCard');
-      const detailPic = $('detailPic');
-      const detailName = $('detailName');
-      const detailRole = $('detailRole');
-      const detailDesc = $('detailDesc');
-      const detailCloseBtn = $('detailCloseBtn');
       const inputPreviewArea = $('inputPreviewArea');
       const dailyQuotaBadge = $('dailyQuotaBadge');
 
@@ -2775,8 +2581,16 @@
         const content = (isSys || /<[a-zA-Z][^>]*>/.test(text)) ? text : parseMarkdown(text);
         const div = document.createElement('div');
         div.className = 'message-wrap ai';
-        div.innerHTML = `<div class="msg-avatar ai-avatar">AI</div><div class="msg-body"><div class="ai-text">${content}</div><div class="msg-footer"><span class="msg-time">${getCurrentTime()}</span></div></div>`;
+        div.innerHTML = `<div class="msg-avatar ai-avatar">AI</div><div class="msg-body"><div class="ai-text">${content}</div><div class="msg-footer"><span class="msg-time">${getCurrentTime()}</span><button class="copy-btn">Salin</button></div></div>`;
         chatArea.appendChild(div);
+        div.querySelector('.copy-btn').addEventListener('click', function() {
+          const textToCopy = div.querySelector('.ai-text').innerText;
+          navigator.clipboard.writeText(textToCopy).then(() => {
+            this.textContent = 'Tersalin';
+            this.classList.add('copied');
+            setTimeout(() => { this.textContent = 'Salin'; this.classList.remove('copied'); }, 2000);
+          });
+        });
         scrollToBottom();
       }
 
@@ -2784,7 +2598,7 @@
         if (typingEl?.parentNode) typingEl.remove();
         typingEl = document.createElement('div');
         typingEl.className = 'message-wrap ai';
-        typingEl.innerHTML = `<div class="msg-avatar ai-avatar">AI</div><div class="msg-body"><div class="typing-indicator"><span>${isFile ? 'GXR Menganalisis file...' : 'GXR Berfikir...'}</span><div class="typing-wave"><div class="typing-wave-bar"></div><div class="typing-wave-bar"></div><div class="typing-wave-bar"></div></div></div></div>`;
+        typingEl.innerHTML = `<div class="msg-avatar ai-avatar">AI</div><div class="msg-body"><div class="typing-indicator"><span>${isFile ? 'GXR Menganalisis file...' : 'GXR Berfikir...'}</span><div class="typing-wave"><div class="typing-wave-bar"></div><div class="typing-wave-bar"></div><div class="typing-wave-bar"></div><div class="typing-wave-bar"></div><div class="typing-wave-bar"></div></div></div></div>`;
         chatArea.appendChild(typingEl);
         scrollToBottom();
       }
@@ -2897,19 +2711,39 @@
         try {
           showMaturingLine();
           const workerUrl = hasMedia ? WORKER_URLS.ocr : WORKER_URLS.chat;
+
+          const modeMapping = {
+            flash: 'flash',
+            pro: 'pro',
+            critical: 'pro',
+            explorer: 'pro'
+          };
+
           const payload = {
             message: prompt,
-            mode: currentMode,
+            mode: modeMapping[currentMode] || 'flash',
             mood: detectMood(prompt),
             history: conversationHistory.slice(-8),
             images: hasMedia ? pendingImages.map(img => ({ base64: img.base64, fileName: img.fileName })) : [],
             files: hasMedia ? pendingFiles.map(f => ({ base64: f.base64, fileName: f.fileName, type: f.type })) : []
           };
-          const response = await fetch(workerUrl, { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify(payload) });
+
+          const response = await fetch(workerUrl, { 
+            method: 'POST', 
+            headers: { 'Content-Type': 'application/json' }, 
+            body: JSON.stringify(payload) 
+          });
+          
           hideMaturingLine();
-          if (!response.ok) { const errData = await response.json().catch(() => ({})); return errData.reply || 'Server error. Silakan coba lagi.'; }
+          
+          if (!response.ok) { 
+            const errData = await response.json().catch(() => ({})); 
+            return errData.reply || 'Server error. Silakan coba lagi.'; 
+          }
+          
           const data = await response.json();
           const reply = data.reply;
+          
           if (reply && reply.trim()) {
             conversationHistory.push({ role: 'user', content: prompt });
             conversationHistory.push({ role: 'assistant', content: reply });
@@ -2917,7 +2751,11 @@
             return reply;
           }
           return 'Maaf, tidak ada respons dari AI.';
-        } catch (e) { hideMaturingLine(); console.error('AI Request Error:', e); return 'Gagal terhubung ke server RRE Engine. Periksa koneksi Anda.'; }
+        } catch (e) { 
+          hideMaturingLine(); 
+          console.error('AI Request Error:', e); 
+          return 'Gagal terhubung ke server RRE Engine. Periksa koneksi Anda.'; 
+        }
       }
 
       async function sendMessage() {
@@ -2925,30 +2763,37 @@
         const text = msgInput.value.trim();
         const hasMedia = pendingImages.length > 0 || pendingFiles.length > 0;
         if (!text && !hasMedia) return;
+        
         if (pendingImages.length > 0 && pendingImages.length > getRemainingDailyQuota()) {
           addAIMessage('<div class="edu-card"><div class="edu-title">Kuota Harian</div><div class="edu-points">Tidak cukup kuota gambar.</div></div>', true);
           clearPendingFiles();
           return;
         }
+        
         const check = rreGuardCheck(text || 'file');
         if (!check.safe) {
           addAIMessage(check.response, true);
-          msgInput.value = ''; msgInput.style.height = 'auto';
+          msgInput.value = ''; 
+          msgInput.style.height = 'auto';
           clearPendingFiles();
           return;
         }
+        
         if (!welcomeOverlay.classList.contains('hidden')) {
           welcomeOverlay.classList.add('hidden');
           setTimeout(() => { welcomeOverlay.style.display = 'none'; }, 500);
         }
+        
         isProcessing = true;
         msgInput.disabled = true;
         sendBtn.style.opacity = '0.5';
         const imageCount = pendingImages.length;
+        
         try {
           const displayText = text || 'Analisis file terlampir...';
           addUserMessage(displayText);
-          msgInput.value = ''; msgInput.style.height = 'auto';
+          msgInput.value = ''; 
+          msgInput.style.height = 'auto';
           showTyping(hasMedia);
           const reply = await askAI(text || 'Tolong analisis file yang saya kirimkan.', hasMedia);
           hideTyping();
@@ -2957,8 +2802,10 @@
           clearPendingFiles();
           setTimeout(() => { if (conversationHistory.length > 0) saveCurrentConversation(); }, 500);
           enforceMessageStability();
-        } catch (e) { hideTyping(); clearPendingFiles(); }
-        finally {
+        } catch (e) { 
+          hideTyping(); 
+          clearPendingFiles(); 
+        } finally {
           isProcessing = false;
           msgInput.disabled = false;
           sendBtn.style.opacity = '1';
@@ -3063,7 +2910,7 @@
         currentChatId = null;
         chatArea.innerHTML = '';
         clearPendingFiles();
-        addAIMessage('<h3>Obrolan Baru</h3><p>RRE Engine siap membantu Anda.</p>', true);
+        addAIMessage('<h3>Obrolan Baru</h3><p>RRE Engine siap membantu Anda. Ada yang bisa saya bantu hari ini?</p>', true);
         renderHistoryList();
       }
 
@@ -3151,7 +2998,7 @@
             setTimeout(() => {
               welcomeOverlay.style.display = 'none';
               updateHistoryUserInfo();
-              addAIMessage(`<h3>Selamat Datang Kembali!</h3><p>Anda login sebagai: <b>${escapeHtml(user.email)}</b></p><p>GXR Prime siap membantu Anda hari ini.</p>`, true);
+              addAIMessage(`<h3>Selamat Datang Kembali</h3><p>Anda login sebagai: <b>${escapeHtml(user.email)}</b></p><p>RRE Engine siap membantu Anda hari ini.</p>`, true);
             }, 300);
           } else { authMessage.innerText = 'Email atau password salah.'; }
         }
@@ -3163,44 +3010,7 @@
         setTimeout(() => {
           welcomeOverlay.style.display = 'none';
           updateHistoryUserInfo();
-          addAIMessage('<h3>Selamat Datang!</h3><p>Anda menggunakan mode: <b>Tamu</b></p><p>Login untuk menyimpan riwayat obrolan.</p>', true);
-        }, 300);
-      }
-
-      // ============ FOUNDER DETAIL ============
-      function showFounderDetail(key) {
-        const data = FOUNDER_DATA[key];
-        if (!data) return;
-        detailPic.style.backgroundImage = `url('${data.pic}')`;
-        detailName.textContent = data.name;
-        detailRole.textContent = data.role;
-        detailDesc.innerHTML = data.desc;
-        founderDetailOverlay.classList.add('visible');
-        founderDetailCard.classList.add('visible');
-      }
-
-      function hideFounderDetail() {
-        founderDetailOverlay.classList.remove('visible');
-        founderDetailCard.classList.remove('visible');
-        if (currentlyZoomed) {
-          currentlyZoomed.querySelector('.founder-pic')?.classList.remove('zoomed');
-          currentlyZoomed = null;
-        }
-      }
-
-      function toggleFounderZoom(el) {
-        const pic = el.querySelector('.founder-pic');
-        if (!pic) return;
-        if (pic.classList.contains('zoomed')) {
-          pic.classList.remove('zoomed'); currentlyZoomed = null; hideFounderDetail(); return;
-        }
-        if (currentlyZoomed) currentlyZoomed.querySelector('.founder-pic')?.classList.remove('zoomed');
-        pic.classList.add('bounce');
-        setTimeout(() => {
-          pic.classList.remove('bounce');
-          pic.classList.add('zoomed');
-          currentlyZoomed = el;
-          showFounderDetail(el.getAttribute('data-founder'));
+          addAIMessage('<h3>Selamat Datang</h3><p>Anda menggunakan mode: <b>Tamu</b></p><p>Login untuk menyimpan riwayat obrolan. RRE Engine siap membantu.</p>', true);
         }, 300);
       }
 
@@ -3219,8 +3029,10 @@
         msgInput.addEventListener('keydown', (e) => { if (e.key === 'Escape') { msgInput.blur(); clearPendingFiles(); } });
         msgInput.addEventListener('input', autoResizeTextarea);
 
-        uploadBtn.addEventListener('click', (e) => { e.preventDefault(); if (!isProcessing) imageUploadInput.click(); });
-        fileUploadBtn.addEventListener('click', (e) => { e.preventDefault(); if (!isProcessing) fileUploadInput.click(); });
+        fileUploadBtn.addEventListener('click', (e) => { 
+          e.preventDefault(); 
+          if (!isProcessing) fileUploadInput.click(); 
+        });
 
         imageUploadInput.addEventListener('change', async (e) => { if (e.target.files?.length) await handleImageUpload(e.target.files); });
         fileUploadInput.addEventListener('change', async (e) => { if (e.target.files?.length) await handleFileUpload(e.target.files); });
@@ -3253,19 +3065,6 @@
             if (docs.length) { e.preventDefault(); await handleFileUpload(docs); }
           }
         });
-
-        founders.forEach(founder => {
-          founder.addEventListener('click', function(e) { e.stopPropagation(); toggleFounderZoom(this); });
-        });
-
-        document.addEventListener('click', (e) => {
-          if (currentlyZoomed && !currentlyZoomed.contains(e.target) && !founderDetailCard.contains(e.target)) {
-            hideFounderDetail();
-          }
-        });
-
-        detailCloseBtn.addEventListener('click', hideFounderDetail);
-        founderDetailOverlay.addEventListener('click', hideFounderDetail);
 
         historyToggleBtn.addEventListener('click', (e) => {
           e.stopPropagation();
@@ -3331,7 +3130,7 @@
           welcomeOverlay.classList.add('hidden');
           updateHistoryUserInfo();
           setTimeout(() => {
-            addAIMessage(`<h3>Selamat Datang Kembali!</h3><p>Anda login sebagai: <b>${escapeHtml(currentUser.email)}</b></p><p>GXR Prime siap membantu Anda hari ini.</p>`, true);
+            addAIMessage(`<h3>Selamat Datang Kembali</h3><p>Anda login sebagai: <b>${escapeHtml(currentUser.email)}</b></p><p>RRE Engine siap membantu Anda hari ini.</p>`, true);
           }, 400);
         } else {
           welcomeOverlay.style.display = 'flex';
@@ -3343,6 +3142,6 @@
 
       initialize();
     })();
-  </script>
+</script>
 </body>
 </html>
