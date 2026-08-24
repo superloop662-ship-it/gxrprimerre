@@ -6,7 +6,7 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline' 'unsafe-eval'; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com; img-src 'self' data: blob: https://i.supaimg.com https:; connect-src 'self' https:; frame-src 'none'; object-src 'none';">
 
-  <title>GXR Prime Ai </title>
+  <title>GXR Prime Ai | GXR Prime P1.5 120B</title>
   <meta name="description" content="GXR Prime Ai adalah asisten AI premium bertenaga GXR Prime P1.5 120B. Chatbot cerdas, cepat, dan gratis dengan keamanan tingkat lanjut.">
   <meta name="keywords" content="GXR Prime, GXR Prime P1.5 120B, chatbot AI, asisten AI, AI Indonesia, AI canggih, AI gratis, AI terbaik, asisten virtual, kecerdasan buatan, AI chatbot, GXR, AI premium, teknologi AI, AI modern, AI cepat, AI aman, AI terpercaya, AI Indonesia terbaik, AI 2026, AI masa depan, asisten pintar, AI online, AI gratis terbaik, AI tanpa batas">
   <meta name="author" content="Gizkha Ramadhan & Rizki Dimas">
@@ -262,7 +262,7 @@
     .scroll-down-btn:active { transform: translateY(0) scale(0.92); }
     .scroll-down-btn svg { width: 24px; height: 24px; fill: none; stroke: currentColor; stroke-width: 2.5; stroke-linecap: round; stroke-linejoin: round; }
     @media (max-width: 768px) {
-      .scroll-down-btn { right: 16px; bottom: calc(80px + var(--safe-bottom)); width: 48px; height: 48px; }
+      .scroll-down-btn { right: 16px; bottom: calc(90px + var(--safe-bottom)); width: 48px; height: 48px; }
       .scroll-down-btn svg { width: 20px; height: 20px; }
     }
 
@@ -337,24 +337,36 @@
 
     /* ============ MOBILE SPECIFIC STYLES ============ */
     @media (max-width: 768px) {
-      /* Header mobile */
-      .chat-header { padding: 8px 12px; }
-      .logo-icon-wrapper { width: 36px; height: 36px; }
-      .brand-name { font-size: 0.85rem; }
-      .title p { font-size: 0.55rem; }
-      .version-badge { font-size: 0.45rem; padding: 1px 4px; }
-      .icon-btn { width: 36px; height: 36px; border-radius: 8px; }
-      .icon-btn svg { width: 16px; height: 16px; }
+      /* Header mobile - DIPERBESAR */
+      .chat-header { padding: 12px 14px; }
+      .logo-icon-wrapper { width: 44px; height: 44px; }
+      .brand-name { font-size: 1rem; }
+      .title h2 { font-size: 1.1rem; }
+      .title p { font-size: 0.65rem; }
+      .version-badge { font-size: 0.55rem; padding: 2px 6px; }
+      .icon-btn { width: 44px; height: 44px; border-radius: 12px; }
+      .icon-btn svg { width: 20px; height: 20px; }
 
       /* Mode bar mobile */
-      .mode-bar { padding: 4px 8px; gap: 4px; }
-      .mode-chip { padding: 6px 10px; font-size: 0.65rem; gap: 4px; }
-      .mode-chip svg.mode-icon { width: 14px; height: 14px; }
+      .mode-bar { padding: 6px 10px; gap: 6px; }
+      .mode-chip { padding: 8px 14px; font-size: 0.75rem; gap: 6px; }
+      .mode-chip svg.mode-icon { width: 16px; height: 16px; }
 
       /* Chat area mobile */
-      .chat-area { padding: 12px 10px; gap: 12px; }
+      .chat-area { padding: 14px 12px; gap: 14px; }
 
-      /* Input area mobile - 1 baris dan tombol besar */
+      /* Teks AI mobile - DIPERKECIL */
+      .ai-text { font-size: 0.85rem; line-height: 1.55; }
+      .ai-text h1 { font-size: 1.2rem; }
+      .ai-text h2 { font-size: 1.1rem; }
+      .ai-text h3 { font-size: 1rem; }
+      .ai-text h4 { font-size: 0.9rem; }
+      .user-bubble-wrap { font-size: 0.85rem; padding: 10px 14px; line-height: 1.55; }
+      .msg-avatar { width: 30px; height: 30px; font-size: 0.65rem; }
+      .msg-footer { font-size: 0.65rem; }
+      .copy-btn { padding: 6px 10px; font-size: 0.7rem; }
+
+      /* Input area mobile - tetap 1 baris dan tidak terdorong */
       .input-area { 
         padding: 8px 10px calc(8px + var(--safe-bottom)); 
         position: relative;
@@ -367,42 +379,42 @@
       }
       .input-bottom-row { 
         gap: 4px; 
-        padding: 2px 4px 4px 8px; 
+        padding: 4px 6px 6px 10px; 
         align-items: center;
-        min-height: 48px;
+        min-height: 52px;
         display: flex;
         flex-wrap: nowrap;
       }
       .input-bottom-row textarea { 
-        font-size: 0.95rem; 
+        font-size: 0.9rem; 
         padding: 6px 0; 
         min-height: 24px; 
         max-height: 24px; 
-        line-height: 1.4;
+        line-height: 1.3;
         flex: 1;
         white-space: nowrap;
         overflow-x: hidden;
         overflow-y: hidden;
       }
       .file-upload-btn { 
-        width: 40px; 
-        height: 40px; 
-        padding: 4px; 
-        border-radius: 10px; 
-        flex-shrink: 0;
-      }
-      .file-upload-btn svg { width: 18px; height: 18px; }
-      .send-btn { 
         width: 44px; 
         height: 44px; 
-        font-size: 1.1rem; 
+        padding: 5px; 
         border-radius: 12px; 
-        padding: 8px 12px; 
+        flex-shrink: 0;
+      }
+      .file-upload-btn svg { width: 20px; height: 20px; }
+      .send-btn { 
+        width: 48px; 
+        height: 48px; 
+        font-size: 1.2rem; 
+        border-radius: 14px; 
+        padding: 10px 14px; 
         flex-shrink: 0;
       }
 
       /* Footer mobile */
-      footer { font-size: 0.55rem; padding: 4px; }
+      footer { font-size: 0.6rem; padding: 5px; }
     }
 
     /* MODAL AUTH */
