@@ -2,7 +2,7 @@
 <html lang="id">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, viewport-fit=cover">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, viewport-fit=cover, interactive-widget=resizes-content">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline' 'unsafe-eval'; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com; img-src 'self' data: blob: https://i.supaimg.com https:; connect-src 'self' https:; frame-src 'none'; object-src 'none';">
 
@@ -12,6 +12,9 @@
   <meta name="author" content="Gizkha Ramadhan & Rizki Dimas">
   <meta name="robots" content="index, follow">
   <meta name="theme-color" content="#0a0a0f">
+  <meta name="mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
 
   <meta property="og:type" content="website">
   <meta property="og:title" content="GXR Prime Ai | GXR Prime P1.5 120B">
@@ -67,6 +70,7 @@
       --radius-xl: 20px;
       --radius-2xl: 24px;
       --scrollbar-thumb: #3a3a4a;
+      --keyboard-height: 0px;
     }
 
     @media (prefers-color-scheme: light) {
@@ -116,7 +120,9 @@
       align-items: stretch;
       justify-content: stretch;
       height: 100dvh;
+      height: 100vh;
       overflow: hidden;
+      touch-action: manipulation;
     }
 
     .app {
@@ -129,6 +135,7 @@
       position: relative;
       transition: background var(--mode-transition);
       flex: 1;
+      min-height: 0;
     }
 
     /* Custom Scrollbar */
@@ -176,11 +183,20 @@
     @keyframes ringSpin { 0% { transform: rotate(0deg); } 100% { transform: rotate(360deg); } }
 
     /* CHAT HEADER */
-    .chat-header { padding: 12px 16px; background: var(--header-bg); backdrop-filter: blur(18px) saturate(160%); -webkit-backdrop-filter: blur(18px) saturate(160%); border-bottom: 1px solid var(--border); flex-shrink: 0; z-index: 40; }
+    .chat-header { padding: 10px 16px; background: var(--header-bg); backdrop-filter: blur(18px) saturate(160%); -webkit-backdrop-filter: blur(18px) saturate(160%); border-bottom: 1px solid var(--border); flex-shrink: 0; z-index: 40; }
+    @media (max-width: 768px) {
+      .chat-header { padding: 8px 12px; }
+    }
     .header-row { display: flex; justify-content: space-between; align-items: center; gap: 12px; max-width: 1400px; margin: 0 auto; width: 100%; }
     .logo-area { display: flex; align-items: center; gap: 12px; flex-shrink: 0; }
     .logo-icon-wrapper { position: relative; width: 40px; height: 40px; flex-shrink: 0; }
     @media (min-width: 768px) { .logo-icon-wrapper { width: 46px; height: 46px; } .logo-text { font-size: 0.75rem; } .brand-name { font-size: 1.05rem; } .title p { font-size: 0.65rem; } }
+    @media (max-width: 768px) {
+      .logo-icon-wrapper { width: 36px; height: 36px; }
+      .brand-name { font-size: 0.85rem; }
+      .title p { font-size: 0.55rem; }
+      .version-badge { font-size: 0.45rem; padding: 1px 4px; }
+    }
     .logo-hexagon {
       position: absolute; inset: 0; background: linear-gradient(135deg, var(--accent), var(--accent2));
       clip-path: polygon(50% 0%, 100% 25%, 100% 75%, 50% 100%, 0% 75%, 0% 25%);
@@ -202,14 +218,25 @@
     .header-actions { display: flex; align-items: center; gap: 6px; flex-shrink: 0; }
     .icon-btn { background: var(--bg-tertiary); border: 1px solid var(--border); width: 36px; height: 36px; border-radius: 10px; display: flex; align-items: center; justify-content: center; cursor: pointer; transition: all 0.3s ease; color: var(--text-secondary); position: relative; }
     @media (min-width: 768px) { .icon-btn { width: 42px; height: 42px; border-radius: 12px; } .icon-btn svg { width: 18px; height: 18px; } }
+    @media (max-width: 768px) {
+      .icon-btn { width: 32px; height: 32px; border-radius: 8px; }
+      .icon-btn svg { width: 14px; height: 14px; }
+    }
     .icon-btn:hover { background: var(--accent-light); color: var(--accent); border-color: var(--accent-glow); transform: scale(1.04); }
     .icon-btn:active { transform: scale(0.95); }
     .icon-btn svg { width: 16px; height: 16px; fill: none; stroke: currentColor; stroke-width: 2; stroke-linecap: round; stroke-linejoin: round; }
 
     /* MODE BAR */
-    .mode-bar { display: flex; gap: 6px; padding: 8px 14px; background: var(--header-bg); backdrop-filter: blur(18px); -webkit-backdrop-filter: blur(18px); border-bottom: 1px solid var(--border); flex-shrink: 0; overflow-x: auto; white-space: nowrap; scrollbar-width: none; z-index: 35; justify-content: center; }
+    .mode-bar { display: flex; gap: 6px; padding: 6px 12px; background: var(--header-bg); backdrop-filter: blur(18px); -webkit-backdrop-filter: blur(18px); border-bottom: 1px solid var(--border); flex-shrink: 0; overflow-x: auto; white-space: nowrap; scrollbar-width: none; z-index: 35; justify-content: center; }
+    @media (max-width: 768px) {
+      .mode-bar { padding: 4px 8px; gap: 4px; }
+    }
     .mode-bar::-webkit-scrollbar { display: none; }
-    .mode-chip { padding: 8px 14px; border-radius: 10px; font-size: 0.7rem; font-weight: 600; background: var(--bg-tertiary); color: var(--text-secondary); cursor: pointer; transition: all 0.3s ease; border: 1.5px solid transparent; display: inline-flex; align-items: center; gap: 6px; flex-shrink: 0; letter-spacing: 0.01em; }
+    .mode-chip { padding: 7px 12px; border-radius: 10px; font-size: 0.7rem; font-weight: 600; background: var(--bg-tertiary); color: var(--text-secondary); cursor: pointer; transition: all 0.3s ease; border: 1.5px solid transparent; display: inline-flex; align-items: center; gap: 6px; flex-shrink: 0; letter-spacing: 0.01em; }
+    @media (max-width: 768px) {
+      .mode-chip { padding: 6px 10px; font-size: 0.65rem; gap: 4px; }
+      .mode-chip svg.mode-icon { width: 14px; height: 14px; }
+    }
     .mode-chip:hover { background: var(--accent-soft); color: var(--text); }
     .mode-chip svg.mode-icon { width: 16px; height: 16px; fill: none; stroke: currentColor; stroke-width: 2; stroke-linecap: round; stroke-linejoin: round; transition: transform 0.3s ease; }
     .mode-chip.active { background: var(--accent-light); color: var(--accent); border-color: var(--accent); box-shadow: var(--shadow-glow); }
@@ -261,7 +288,10 @@
     }
 
     /* CHAT AREA */
-    .chat-area { flex: 1; overflow-y: auto; overflow-x: hidden; padding: 16px; display: flex; flex-direction: column; gap: 16px; scroll-behavior: smooth; -webkit-overflow-scrolling: touch; overscroll-behavior: contain; z-index: 10; max-width: 1200px; width: 100%; margin: 0 auto; }
+    .chat-area { flex: 1; overflow-y: auto; overflow-x: hidden; padding: 16px; display: flex; flex-direction: column; gap: 16px; scroll-behavior: smooth; -webkit-overflow-scrolling: touch; overscroll-behavior: contain; z-index: 10; max-width: 1200px; width: 100%; margin: 0 auto; min-height: 0; }
+    @media (max-width: 768px) {
+      .chat-area { padding: 12px 10px; gap: 12px; }
+    }
     .message-wrap { display: flex; gap: 10px; animation: messageSlideIn 0.35s ease; width: 100%; max-width: 100%; }
     .message-wrap.user { flex-direction: row-reverse; }
     .message-wrap.ai { flex-direction: row; }
@@ -308,8 +338,11 @@
     @keyframes thinkingPulse { 0%, 100% { opacity: 0.6; } 50% { opacity: 1; } }
     @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
 
-    /* INPUT AREA */
-    .input-area { padding: 10px 14px calc(10px + env(safe-area-inset-bottom, 0px)); background: var(--header-bg); backdrop-filter: blur(20px); -webkit-backdrop-filter: blur(20px); border-top: 1px solid var(--border); flex-shrink: 0; z-index: 40; }
+    /* INPUT AREA - MOBILE OPTIMIZED */
+    .input-area { padding: 10px 14px calc(10px + env(safe-area-inset-bottom, 0px)); background: var(--header-bg); backdrop-filter: blur(20px); -webkit-backdrop-filter: blur(20px); border-top: 1px solid var(--border); flex-shrink: 0; z-index: 40; transition: padding-bottom 0.3s ease; }
+    @media (max-width: 768px) {
+      .input-area { padding: 8px 8px calc(8px + env(safe-area-inset-bottom, 0px)); }
+    }
     .input-row { background: var(--input-bg); border-radius: 16px; border: 1px solid var(--input-border); transition: all 0.3s ease; overflow: hidden; max-width: 1200px; margin: 0 auto; }
     .input-row:focus-within { border-color: var(--accent); box-shadow: 0 0 0 3px var(--accent-soft); }
     .input-preview-area { display: flex; gap: 8px; padding: 10px 14px 4px; overflow-x: auto; scrollbar-width: none; flex-wrap: nowrap; align-items: center; }
@@ -318,16 +351,32 @@
     .input-preview-item { position: relative; width: 54px; height: 54px; border-radius: 10px; overflow: hidden; border: 1px solid var(--border-strong); flex-shrink: 0; background: var(--bg-secondary); }
     .input-preview-item img { width: 100%; height: 100%; object-fit: cover; display: block; }
     .input-preview-remove { position: absolute; top: 3px; right: 3px; width: 20px; height: 20px; border-radius: 50%; background: rgba(0,0,0,0.6); color: #fff; border: none; font-size: 0.55rem; display: flex; align-items: center; justify-content: center; cursor: pointer; }
-    .input-bottom-row { display: flex; align-items: flex-end; gap: 6px; padding: 4px 6px 6px 14px; }
-    .input-bottom-row textarea { flex: 1; background: transparent; border: none; padding: 6px 0; font-size: 1rem; color: var(--text); outline: none; resize: none; min-height: 22px; max-height: 110px; line-height: 1.5; font-family: 'Plus Jakarta Sans', sans-serif; overflow-y: auto; }
+    .input-bottom-row { display: flex; align-items: center; gap: 4px; padding: 2px 4px 4px 8px; }
+    @media (max-width: 768px) {
+      .input-bottom-row { gap: 2px; padding: 0px 2px 2px 4px; }
+    }
+    .input-bottom-row textarea { flex: 1; background: transparent; border: none; padding: 8px 0; font-size: 1rem; color: var(--text); outline: none; resize: none; min-height: 24px; max-height: 80px; line-height: 1.4; font-family: 'Plus Jakarta Sans', sans-serif; overflow-y: auto; }
+    @media (max-width: 768px) {
+      .input-bottom-row textarea { font-size: 0.9rem; padding: 6px 0; min-height: 20px; max-height: 60px; }
+    }
     .input-bottom-row textarea::placeholder { color: var(--text-tertiary); }
     .file-upload-btn { background: none; border: none; width: 40px; height: 40px; padding: 5px; border-radius: 10px; color: var(--text-tertiary); cursor: pointer; transition: all 0.3s; flex-shrink: 0; display: flex; align-items: center; justify-content: center; }
+    @media (max-width: 768px) {
+      .file-upload-btn { width: 32px; height: 32px; padding: 3px; border-radius: 8px; }
+      .file-upload-btn svg { width: 16px; height: 16px; }
+    }
     .file-upload-btn:hover { color: var(--accent); background: var(--accent-light); }
     .file-upload-btn svg { width: 20px; height: 20px; }
     .send-btn { background: linear-gradient(135deg, var(--accent), var(--accent2)); color: #fff; font-weight: 600; border-radius: 12px; padding: 8px 14px; font-size: 1.2rem; border: none; cursor: pointer; transition: all 0.3s; flex-shrink: 0; width: 44px; height: 44px; display: flex; align-items: center; justify-content: center; box-shadow: var(--shadow-sm); }
+    @media (max-width: 768px) {
+      .send-btn { width: 36px; height: 36px; font-size: 1rem; border-radius: 10px; padding: 6px 10px; }
+    }
     .send-btn:hover { transform: scale(1.04); box-shadow: var(--shadow-md); }
     .send-btn:active { transform: scale(0.92); }
     footer { font-size: 0.65rem; text-align: center; padding: 6px; color: var(--text-tertiary); background: var(--header-bg); border-top: 1px solid var(--border); flex-shrink: 0; letter-spacing: 0.4px; }
+    @media (max-width: 768px) {
+      footer { font-size: 0.55rem; padding: 4px; }
+    }
 
     /* MODAL AUTH */
     .auth-modal { position: fixed; inset: 0; background: var(--overlay); backdrop-filter: blur(10px); display: flex; align-items: center; justify-content: center; z-index: 2100; opacity: 0; visibility: hidden; transition: all 0.3s; padding: 20px; }
@@ -698,36 +747,22 @@
         setupAntiDebugger() {
           let devtoolsOpen = false;
           const threshold = 160;
-          
           setInterval(() => {
-            if (window.outerWidth - window.innerWidth > threshold || 
-                window.outerHeight - window.innerHeight > threshold) {
-              if (!devtoolsOpen) {
-                devtoolsOpen = true;
-                this.logSecurityEvent('devtools_detected', 'DevTools opened');
-              }
-            } else {
-              devtoolsOpen = false;
-            }
+            if (window.outerWidth - window.innerWidth > threshold || window.outerHeight - window.innerHeight > threshold) {
+              if (!devtoolsOpen) { devtoolsOpen = true; this.logSecurityEvent('devtools_detected', 'DevTools opened'); }
+            } else { devtoolsOpen = false; }
           }, 1000);
         },
         
         setupConsoleProtection() {
           const originalConsole = console.log;
-          console.log = function(...args) {
-            if (args.some(arg => typeof arg === 'string' && arg.includes('GXR'))) {
-              // Allow internal logs
-            }
-            originalConsole.apply(console, args);
-          };
+          console.log = function(...args) { originalConsole.apply(console, args); };
         },
         
         setupClipboardProtection() {
           document.addEventListener('copy', (e) => {
             const selection = window.getSelection()?.toString();
-            if (selection && selection.length > 500) {
-              this.logSecurityEvent('large_copy', 'Large text copy detected');
-            }
+            if (selection && selection.length > 500) { this.logSecurityEvent('large_copy', 'Large text copy detected'); }
           });
         },
         
@@ -735,9 +770,7 @@
           let lastTouchTime = 0;
           document.addEventListener('touchstart', () => {
             const now = Date.now();
-            if (now - lastTouchTime < 50) {
-              this.logSecurityEvent('rapid_touch', 'Rapid touch detected');
-            }
+            if (now - lastTouchTime < 50) { this.logSecurityEvent('rapid_touch', 'Rapid touch detected'); }
             lastTouchTime = now;
           });
         },
@@ -756,15 +789,8 @@
         checkSession() {
           const sessionStart = localStorage.getItem('gxr_session_start');
           const now = Date.now();
-          if (!sessionStart) {
-            localStorage.setItem('gxr_session_start', now);
-          } else {
-            const elapsed = now - parseInt(sessionStart);
-            if (elapsed > 3600000) {
-              localStorage.setItem('gxr_session_start', now);
-              this.rotateSessionId();
-            }
-          }
+          if (!sessionStart) { localStorage.setItem('gxr_session_start', now); } 
+          else { const elapsed = now - parseInt(sessionStart); if (elapsed > 3600000) { localStorage.setItem('gxr_session_start', now); this.rotateSessionId(); } }
         },
         
         rotateSessionId() {
@@ -774,111 +800,53 @@
         },
         
         generateSessionId() {
-          const id = 'sess_' + Date.now().toString(36) + '_' + 
-                     Math.random().toString(36).substr(2, 9) + '_' + 
-                     Math.random().toString(36).substr(2, 5);
-          this.sessionId = id;
-          return id;
+          const id = 'sess_' + Date.now().toString(36) + '_' + Math.random().toString(36).substr(2, 9) + '_' + Math.random().toString(36).substr(2, 5);
+          this.sessionId = id; return id;
         },
         
         setupSecurityLog() {
-          try {
-            const savedLog = sessionStorage.getItem('gxr_security_log');
-            this.securityLog = savedLog ? JSON.parse(savedLog) : [];
-          } catch(e) {
-            this.securityLog = [];
-          }
+          try { this.securityLog = JSON.parse(sessionStorage.getItem('gxr_security_log') || '[]'); } catch(e) { this.securityLog = []; }
         },
         
         logSecurityEvent(eventType, details) {
-          const event = {
-            timestamp: new Date().toISOString(),
-            type: eventType,
-            details: details,
-            sessionId: this.sessionId
-          };
+          const event = { timestamp: new Date().toISOString(), type: eventType, details: details, sessionId: this.sessionId };
           this.securityLog.push(event);
-          if (this.securityLog.length > 100) {
-            this.securityLog = this.securityLog.slice(-100);
-          }
-          try {
-            sessionStorage.setItem('gxr_security_log', JSON.stringify(this.securityLog));
-          } catch(e) {}
+          if (this.securityLog.length > 100) this.securityLog = this.securityLog.slice(-100);
+          try { sessionStorage.setItem('gxr_security_log', JSON.stringify(this.securityLog)); } catch(e) {}
         },
         
         getClientFingerprint() {
-          const components = [
-            navigator.userAgent || 'unknown',
-            navigator.language || 'unknown',
-            window.screen.width + 'x' + window.screen.height,
-            navigator.platform || 'unknown',
-            navigator.hardwareConcurrency || 'unknown',
-            navigator.deviceMemory || 'unknown',
-            new Date().getTimezoneOffset()
-          ];
-          return components.join('|');
+          return [navigator.userAgent, navigator.language, screen.width+'x'+screen.height, navigator.platform, navigator.hardwareConcurrency, navigator.deviceMemory, new Date().getTimezoneOffset()].join('|');
         },
         
         isRateLimited() {
-          const now = Date.now();
-          const fp = this.getClientFingerprint();
-          
-          if (this.blockedIPs.has(fp)) {
-            this.logSecurityEvent('blocked_request', 'Request from blocked fingerprint');
-            return true;
-          }
-          
-          if (now - this.lastRequestTime < this.cooldownMs) {
-            this.logSecurityEvent('cooldown_active', 'Request within cooldown period');
-            return true;
-          }
-          
+          const now = Date.now(); const fp = this.getClientFingerprint();
+          if (this.blockedIPs.has(fp)) return true;
+          if (now - this.lastRequestTime < this.cooldownMs) return true;
           if (this.requestCount[fp]) {
             const recent = this.requestCount[fp].filter(t => now - t < 60000);
             this.requestCount[fp] = recent;
-            
-            if (recent.length >= this.maxRequestsPerMinute) {
-              this.blockedIPs.add(fp);
-              this.logSecurityEvent('ip_blocked', 'Rate limit exceeded');
-              setTimeout(() => {
-                this.blockedIPs.delete(fp);
-              }, this.blockDurationMs);
-              return true;
-            }
-            
-            const hourRequests = this.requestCount[fp].filter(t => now - t < 3600000);
-            if (hourRequests.length >= this.maxRequestsPerHour) {
-              this.blockedIPs.add(fp);
-              this.logSecurityEvent('ip_blocked_hourly', 'Hourly rate limit exceeded');
-              setTimeout(() => this.blockedIPs.delete(fp), this.blockDurationMs * 2);
-              return true;
-            }
+            if (recent.length >= this.maxRequestsPerMinute) { this.blockedIPs.add(fp); setTimeout(() => this.blockedIPs.delete(fp), this.blockDurationMs); return true; }
+            if (this.requestCount[fp].filter(t => now - t < 3600000).length >= this.maxRequestsPerHour) { this.blockedIPs.add(fp); setTimeout(() => this.blockedIPs.delete(fp), this.blockDurationMs*2); return true; }
           }
-          
           return false;
         },
         
         recordRequest() {
-          const now = Date.now();
-          const fp = this.getClientFingerprint();
+          const now = Date.now(); const fp = this.getClientFingerprint();
           if (!this.requestCount[fp]) this.requestCount[fp] = [];
           this.requestCount[fp].push(now);
           this.lastRequestTime = now;
-          this.logSecurityEvent('request_recorded', 'Request logged successfully');
         },
         
         cleanupOldEntries() {
           const now = Date.now();
-          Object.keys(this.requestCount).forEach(key => {
-            this.requestCount[key] = this.requestCount[key].filter(t => now - t < 3600000);
-            if (this.requestCount[key].length === 0) delete this.requestCount[key];
-          });
+          Object.keys(this.requestCount).forEach(key => { this.requestCount[key] = this.requestCount[key].filter(t => now - t < 3600000); if (this.requestCount[key].length === 0) delete this.requestCount[key]; });
         },
         
         validateInput(text) {
           if (!text) return '';
           let clean = text;
-          
           clean = clean.replace(/<script\b[^<]*(?:(?!<\/script>)<[^<]*)*<\/script>/gi, '');
           clean = clean.replace(/javascript:/gi, '');
           clean = clean.replace(/on\w+="[^"]*"/gi, '');
@@ -888,239 +856,86 @@
           clean = clean.replace(/<embed\b[^<]*(?:(?!<\/embed>)<[^<]*)*<\/embed>/gi, '');
           clean = clean.replace(/<link\b[^<]*>/gi, '');
           clean = clean.replace(/<meta\b[^<]*>/gi, '');
-          
           clean = clean.replace(/('|")\s*(OR|AND)\s*('|")/gi, '');
           clean = clean.replace(/UNION\s+SELECT/gi, '');
           clean = clean.replace(/DROP\s+TABLE/gi, '');
           clean = clean.replace(/INSERT\s+INTO/gi, '');
           clean = clean.replace(/DELETE\s+FROM/gi, '');
-          
           clean = clean.replace(/;\s*(rm|del|format|shutdown|reboot)/gi, '');
           clean = clean.replace(/&&\s*(rm|del|format)/gi, '');
           clean = clean.replace(/\|\|\s*(rm|del|format)/gi, '');
-          
           clean = clean.replace(/\.\.\/\.\.\//gi, '');
           clean = clean.replace(/\.\.\\\.\.\\/gi, '');
-          
           clean = clean.replace(/\0/g, '');
           clean = clean.substring(0, 2500);
-          
           return clean;
         },
         
-        validateFileSize(file, maxSizeMB) {
-          return file.size <= maxSizeMB * 1024 * 1024;
-        },
-        
-        validateFileType(file) {
-          const ext = file.name.split('.').pop()?.toLowerCase();
-          return this.allowedImageTypes.includes(file.type) || 
-                 (ext && this.allowedFileExtensions.includes(ext));
-        },
-        
-        validateImageFile(file) {
-          return file.type.startsWith('image/') && 
-                 this.allowedImageTypes.includes(file.type) &&
-                 this.validateFileSize(file, 8);
-        },
-        
-        validateDocumentFile(file) {
-          const ext = file.name.split('.').pop()?.toLowerCase();
-          return ext && this.allowedFileExtensions.includes(ext) && 
-                 this.validateFileSize(file, 10);
-        },
-        
-        checkHoneypot() {
-          return this.honeypotField && this.honeypotField.value.length > 0;
-        },
-        
-        getSecurityReport() {
-          return {
-            totalEvents: this.securityLog.length,
-            blockedIPs: this.blockedIPs.size,
-            sessionId: this.sessionId,
-            lastEvents: this.securityLog.slice(-5)
-          };
-        }
+        validateFileSize(file, maxSizeMB) { return file.size <= maxSizeMB * 1024 * 1024; },
+        validateFileType(file) { const ext = file.name.split('.').pop()?.toLowerCase(); return this.allowedImageTypes.includes(file.type) || (ext && this.allowedFileExtensions.includes(ext)); },
+        validateImageFile(file) { return file.type.startsWith('image/') && this.allowedImageTypes.includes(file.type) && this.validateFileSize(file, 8); },
+        validateDocumentFile(file) { const ext = file.name.split('.').pop()?.toLowerCase(); return ext && this.allowedFileExtensions.includes(ext) && this.validateFileSize(file, 10); },
+        checkHoneypot() { return this.honeypotField && this.honeypotField.value.length > 0; },
+        getSecurityReport() { return { totalEvents: this.securityLog.length, blockedIPs: this.blockedIPs.size, sessionId: this.sessionId }; }
       };
 
       SecuritySystem.init();
-
-      setTimeout(() => {
-        const splash = document.getElementById('splashScreen');
-        if (splash) splash.classList.add('hidden');
-      }, 1800);
+      setTimeout(() => { document.getElementById('splashScreen')?.classList.add('hidden'); }, 1800);
 
       // ============ CONFIGURATION ============
-      const _apiConfig = {
-        _endpoint: 'aHR0cHM6Ly9teS1maXJzdC13b3JrZXIuZ3l6eGNhcmFtLndvcmtlcnMuZGV2Lw==',
-        _key: 'Z3hyX3ByaW1lXzIwMjZfc2VjdXJl'
-      };
-      
-      function _decodeBase64(str) {
-        try {
-          return decodeURIComponent(escape(atob(str)));
-        } catch(e) {
-          return '';
-        }
-      }
-      
-      function _getWorkerUrl() {
-        const decoded = _decodeBase64(_apiConfig._endpoint);
-        if (!decoded) return 'https://my-first-worker.gyzxcaram.workers.dev/';
-        return decoded;
-      }
-      
+      const _apiConfig = { _endpoint: 'aHR0cHM6Ly9teS1maXJzdC13b3JrZXIuZ3l6eGNhcmFtLndvcmtlcnMuZGV2Lw==', _key: 'Z3hyX3ByaW1lXzIwMjZfc2VjdXJl' };
+      function _decodeBase64(str) { try { return decodeURIComponent(escape(atob(str))); } catch(e) { return ''; } }
+      function _getWorkerUrl() { const d = _decodeBase64(_apiConfig._endpoint); return d || 'https://my-first-worker.gyzxcaram.workers.dev/'; }
       const WORKER_URL = _getWorkerUrl();
 
-      // ============ STATE MANAGEMENT ============
-      let currentUser = null;
-      let conversationHistory = [];
-      let currentMode = 'flash';
-      let currentChatId = null;
-      let chatSessions = [];
-      let pendingImages = [];
-      let pendingFiles = [];
-      let isProcessing = false;
-      let authMode = 'login';
-      let isNearBottom = true;
-      let scrollTimeout = null;
+      // ============ STATE ============
+      let currentUser = null, conversationHistory = [], currentMode = 'flash', currentChatId = null, chatSessions = [];
+      let pendingImages = [], pendingFiles = [], isProcessing = false, authMode = 'login', isNearBottom = true, scrollTimeout = null;
+      const MAX_HISTORY = 24, MAX_IMAGES_PER_DAY = 6, MAX_IMAGES_PER_SEND = 3, MAX_FILES_PER_SEND = 2, MAX_FILE_SIZE_MB = 10;
+      let imagesUsedToday = 0, lastImageDate = '';
 
-      const MAX_HISTORY = 24;
-      const MAX_IMAGES_PER_DAY = 6;
-      const MAX_IMAGES_PER_SEND = 3;
-      const MAX_FILES_PER_SEND = 2;
-      const MAX_FILE_SIZE_MB = 10;
-      let imagesUsedToday = 0;
-      let lastImageDate = '';
-
-      // ============ UTILITY FUNCTIONS ============
+      // ============ UTILITY ============
       function $(id) { return document.getElementById(id); }
       function escapeHtml(s) { if (!s) return ''; const map = {'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#039;'}; return s.replace(/[&<>"']/g, m => map[m] || m); }
       function sanitizeInput(text) { return SecuritySystem.validateInput(text || ''); }
-      function getUserInitial(email) { if (!email) return '?'; return email.substring(0,2).toUpperCase(); }
+      function getUserInitial(email) { return email ? email.substring(0,2).toUpperCase() : '?'; }
       function getCurrentTime() { const d = new Date(); return d.getHours().toString().padStart(2,'0') + ':' + d.getMinutes().toString().padStart(2,'0'); }
       function generateUUID() { return Date.now().toString(36) + Math.random().toString(36).substr(2,5); }
       function getToday() { return new Date().toDateString(); }
-      function isMobileDevice() { return window.innerWidth <= 768; }
 
-      // ============ STORAGE MANAGEMENT ============
-      function loadUser() { 
-        try { 
-          const saved = localStorage.getItem('gxr_current_user'); 
-          if (saved) { currentUser = JSON.parse(saved); return true; } 
-        } catch(e) {} 
-        return false; 
-      }
-      function saveUser(user) { 
-        try { currentUser = user; localStorage.setItem('gxr_current_user', JSON.stringify(user)); } catch(e) {} 
-      }
-      function logoutUser() { 
-        currentUser = null; 
-        localStorage.removeItem('gxr_current_user'); 
-      }
-      function loadChatSessions() { 
-        try { 
-          const saved = localStorage.getItem('gxr_chat_sessions_v17'); 
-          if(saved) chatSessions = JSON.parse(saved); 
-        } catch(e) { chatSessions = []; } 
-      }
-      function saveChatSessions() { 
-        try { localStorage.setItem('gxr_chat_sessions_v17', JSON.stringify(chatSessions.slice(0,40))); } catch(e) {} 
-      }
-      function loadImageUsage() {
-        try {
-          const saved = localStorage.getItem('gxr_image_usage');
-          if (saved) {
-            const data = JSON.parse(saved);
-            if (data.date === getToday()) {
-              imagesUsedToday = data.count || 0;
-            } else {
-              imagesUsedToday = 0;
-            }
-          }
-        } catch(e) { imagesUsedToday = 0; }
-        lastImageDate = getToday();
-      }
-      function saveImageUsage() {
-        try {
-          localStorage.setItem('gxr_image_usage', JSON.stringify({ date: getToday(), count: imagesUsedToday }));
-        } catch(e) {}
-      }
+      // ============ STORAGE ============
+      function loadUser() { try { const saved = localStorage.getItem('gxr_current_user'); if (saved) { currentUser = JSON.parse(saved); return true; } } catch(e) {} return false; }
+      function saveUser(user) { try { currentUser = user; localStorage.setItem('gxr_current_user', JSON.stringify(user)); } catch(e) {} }
+      function logoutUser() { currentUser = null; localStorage.removeItem('gxr_current_user'); }
+      function loadChatSessions() { try { const saved = localStorage.getItem('gxr_chat_sessions_v17'); if(saved) chatSessions = JSON.parse(saved); } catch(e) { chatSessions = []; } }
+      function saveChatSessions() { try { localStorage.setItem('gxr_chat_sessions_v17', JSON.stringify(chatSessions.slice(0,40))); } catch(e) {} }
+      function loadImageUsage() { try { const saved = localStorage.getItem('gxr_image_usage'); if (saved) { const data = JSON.parse(saved); if (data.date === getToday()) imagesUsedToday = data.count || 0; else imagesUsedToday = 0; } } catch(e) { imagesUsedToday = 0; } lastImageDate = getToday(); }
+      function saveImageUsage() { try { localStorage.setItem('gxr_image_usage', JSON.stringify({ date: getToday(), count: imagesUsedToday })); } catch(e) {} }
 
-      // ============ DOM REFERENCES ============
-      const chatArea = $('chatArea');
-      const msgInput = $('msgInput');
-      const sendBtn = $('sendMsgBtn');
-      const fileUploadBtn = $('uploadFileBtn');
-      const imageUploadInput = $('imageUploadInput');
-      const fileUploadInput = $('fileUploadInput');
-      const inputPreviewArea = $('inputPreviewArea');
-      const modeChips = document.querySelectorAll('.mode-chip');
-      const welcomeOverlay = $('welcomeOverlay');
-      const historyToggleBtn = $('historyToggleBtn');
-      const authModal = $('authModal');
-      const authTitle = $('authTitle');
-      const authSubtitle = $('authSubtitle');
-      const authEmail = $('authEmail');
-      const authPassword = $('authPassword');
-      const authConfirmPassword = $('authConfirmPassword');
-      const authSubmitBtn = $('authSubmitBtn');
-      const authMessage = $('authMessage');
-      const tabLogin = $('tabLogin');
-      const tabRegister = $('tabRegister');
-      const aboutBtn = $('aboutBtn');
-      const aboutOverlay = $('aboutOverlay');
-      const closeAboutBtn = $('closeAboutBtn');
-      const historyLoginSection = $('historyLoginSection');
-      const forgotPasswordBtn = $('forgotPasswordBtn');
-      const resetPasswordSection = $('resetPasswordSection');
-      const resetEmail = $('resetEmail');
-      const resetPasswordBtn = $('resetPasswordBtn');
-      const authCloseBtn = $('authCloseBtn');
-      const historyOverlay = $('historyOverlay');
-      const historyPanel = $('historyPanel');
-      const closeHistoryBtn = $('closeHistoryBtn');
-      const clearAllHistoryBtn = $('clearAllHistoryBtn');
+      // ============ DOM ============
+      const chatArea = $('chatArea'), msgInput = $('msgInput'), sendBtn = $('sendMsgBtn'), fileUploadBtn = $('uploadFileBtn');
+      const imageUploadInput = $('imageUploadInput'), fileUploadInput = $('fileUploadInput'), inputPreviewArea = $('inputPreviewArea');
+      const modeChips = document.querySelectorAll('.mode-chip'), welcomeOverlay = $('welcomeOverlay'), historyToggleBtn = $('historyToggleBtn');
+      const authModal = $('authModal'), authTitle = $('authTitle'), authSubtitle = $('authSubtitle'), authEmail = $('authEmail'), authPassword = $('authPassword'), authConfirmPassword = $('authConfirmPassword'), authSubmitBtn = $('authSubmitBtn'), authMessage = $('authMessage');
+      const tabLogin = $('tabLogin'), tabRegister = $('tabRegister'), aboutBtn = $('aboutBtn'), aboutOverlay = $('aboutOverlay'), closeAboutBtn = $('closeAboutBtn');
+      const historyLoginSection = $('historyLoginSection'), forgotPasswordBtn = $('forgotPasswordBtn'), resetPasswordSection = $('resetPasswordSection'), resetEmail = $('resetEmail'), resetPasswordBtn = $('resetPasswordBtn');
+      const authCloseBtn = $('authCloseBtn'), historyOverlay = $('historyOverlay'), historyPanel = $('historyPanel'), closeHistoryBtn = $('closeHistoryBtn'), clearAllHistoryBtn = $('clearAllHistoryBtn');
       const scrollDownBtn = $('scrollDownBtn');
 
-      // ============ SCROLL DOWN BUTTON LOGIC ============
+      // ============ SCROLL DOWN ============
       function checkScrollPosition() {
         if (!chatArea || !scrollDownBtn) return;
         const threshold = 120;
         const distanceFromBottom = chatArea.scrollHeight - chatArea.scrollTop - chatArea.clientHeight;
         isNearBottom = distanceFromBottom < threshold;
-        
-        if (distanceFromBottom > threshold && chatArea.scrollHeight > chatArea.clientHeight) {
-          scrollDownBtn.classList.add('visible');
-        } else {
-          scrollDownBtn.classList.remove('visible');
-        }
+        if (distanceFromBottom > threshold && chatArea.scrollHeight > chatArea.clientHeight) scrollDownBtn.classList.add('visible');
+        else scrollDownBtn.classList.remove('visible');
       }
+      function scrollToBottom() { requestAnimationFrame(() => { if(chatArea) chatArea.scrollTo({ top: chatArea.scrollHeight, behavior: 'smooth' }); }); }
+      function scrollToBottomInstant() { if(chatArea) chatArea.scrollTop = chatArea.scrollHeight; }
 
-      function scrollToBottom() {
-        requestAnimationFrame(() => {
-          if(chatArea) {
-            chatArea.scrollTo({ top: chatArea.scrollHeight, behavior: 'smooth' });
-          }
-        });
-      }
-
-      function scrollToBottomInstant() {
-        if(chatArea) {
-          chatArea.scrollTop = chatArea.scrollHeight;
-        }
-      }
-
-      // ============ MESSAGE FUNCTIONS ============
-      function addMessageLine() { 
-        try { 
-          const line = document.createElement('div'); 
-          line.style.cssText = 'width:100%;height:1px;background:var(--line-color);margin:3px 0;flex-shrink:0;'; 
-          chatArea.appendChild(line); 
-        } catch(e) {} 
-      }
-
+      // ============ MESSAGE ============
+      function addMessageLine() { try { const line = document.createElement('div'); line.style.cssText = 'width:100%;height:1px;background:var(--line-color);margin:3px 0;flex-shrink:0;'; chatArea.appendChild(line); } catch(e) {} }
       function addUserMessage(text) {
         if (!text?.trim()) return;
         const cleanText = sanitizeInput(text);
@@ -1131,19 +946,16 @@
           div.className = 'message-wrap user';
           div.innerHTML = `<div class="msg-avatar user-avatar">${initial}</div><div class="msg-body"><div class="user-bubble-wrap">${escapeHtml(cleanText)}</div><div class="msg-footer"><span style="font-size:0.7rem;color:var(--text-tertiary);">${getCurrentTime()}</span></div></div>`;
           chatArea.appendChild(div);
-          scrollToBottom();
-          checkScrollPosition();
+          scrollToBottom(); checkScrollPosition();
         } catch(e) {}
       }
-
       function addAIMessage(text, isSys = false) {
         if (!text) return;
         try {
           if (!isSys) addMessageLine();
           let content = text;
           if (!isSys && !/<[a-zA-Z][^>]*>/.test(text)) {
-            content = text
-              .replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;')
+            content = text.replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;')
               .replace(/```(\w*)\n?([\s\S]*?)```/g, '<pre><code>$2</code></pre>')
               .replace(/`([^`]+)`/g, '<code>$1</code>')
               .replace(/\*\*(.+?)\*\*/g, '<strong>$1</strong>')
@@ -1158,109 +970,44 @@
           div.innerHTML = `<div class="msg-avatar ai-avatar">AI</div><div class="msg-body"><div class="ai-text" data-user-content="true">${content}</div><div class="msg-footer"><span style="font-size:0.7rem;color:var(--text-tertiary);">${getCurrentTime()}</span><button class="copy-btn">Salin</button></div></div>`;
           chatArea.appendChild(div);
           div.querySelector('.copy-btn').addEventListener('click', function() {
-            const textToCopy = div.querySelector('.ai-text').innerText;
-            navigator.clipboard.writeText(textToCopy).then(() => {
-              this.textContent = ' Tersalin';
-              this.classList.add('copied');
+            navigator.clipboard.writeText(div.querySelector('.ai-text').innerText).then(() => {
+              this.textContent = ' Tersalin'; this.classList.add('copied');
               setTimeout(() => { this.textContent = ' Salin'; this.classList.remove('copied'); }, 2000);
             });
           });
-          scrollToBottom();
-          checkScrollPosition();
+          scrollToBottom(); checkScrollPosition();
         } catch(e) {}
       }
-
       function addThinkingIndicator() {
         const div = document.createElement('div');
         div.className = 'message-wrap ai';
         div.innerHTML = `<div class="msg-avatar ai-avatar">AI</div><div class="msg-body"><div class="thinking-indicator"><div class="thinking-dots"><span class="thinking-dot"></span><span class="thinking-dot"></span><span class="thinking-dot"></span></div><span class="thinking-text">AI sedang berfikir...</span></div></div>`;
         chatArea.appendChild(div);
-        scrollToBottom();
-        checkScrollPosition();
+        scrollToBottom(); checkScrollPosition();
         return div;
       }
 
       // ============ FILE HANDLING ============
-      async function convertImageToBase64(file) {
-        return new Promise((resolve, reject) => {
-          const reader = new FileReader();
-          reader.onload = () => resolve(reader.result);
-          reader.onerror = reject;
-          reader.readAsDataURL(file);
-        });
-      }
-
-      async function compressImage(base64) {
-        return new Promise((resolve) => {
-          const img = new Image();
-          img.onload = () => {
-            const canvas = document.createElement('canvas');
-            let w = img.width, h = img.height;
-            if (w > 500) { h = (500/w)*h; w = 500; }
-            canvas.width = w; canvas.height = h;
-            const ctx = canvas.getContext('2d');
-            ctx.drawImage(img, 0, 0, w, h);
-            resolve(canvas.toDataURL('image/jpeg', 0.6));
-          };
-          img.src = base64;
-        });
-      }
+      async function convertImageToBase64(file) { return new Promise((resolve, reject) => { const reader = new FileReader(); reader.onload = () => resolve(reader.result); reader.onerror = reject; reader.readAsDataURL(file); }); }
+      async function compressImage(base64) { return new Promise((resolve) => { const img = new Image(); img.onload = () => { const canvas = document.createElement('canvas'); let w = img.width, h = img.height; if (w > 500) { h = (500/w)*h; w = 500; } canvas.width = w; canvas.height = h; const ctx = canvas.getContext('2d'); ctx.drawImage(img, 0, 0, w, h); resolve(canvas.toDataURL('image/jpeg', 0.6)); }; img.src = base64; }); }
 
       async function handleImageUpload(files) {
         if (!files?.length || isProcessing) return;
-        
-        if (lastImageDate !== getToday()) {
-          imagesUsedToday = 0;
-          lastImageDate = getToday();
-        }
-        
+        if (lastImageDate !== getToday()) { imagesUsedToday = 0; lastImageDate = getToday(); }
         const remainingDaily = MAX_IMAGES_PER_DAY - imagesUsedToday;
         const allowedTotal = Math.min(MAX_IMAGES_PER_SEND - pendingImages.length, files.length, remainingDaily);
-        
-        if (remainingDaily <= 0) {
-          alert('Batas unggah gambar harian tercapai. Coba lagi besok.');
-          return;
-        }
-        
-        const validFiles = Array.from(files)
-          .filter(f => SecuritySystem.validateImageFile(f))
-          .slice(0, allowedTotal);
-        
-        for (const file of validFiles) {
-          try {
-            const base64 = await convertImageToBase64(file);
-            const compressed = await compressImage(base64);
-            pendingImages.push({ base64: compressed, fileName: file.name });
-            imagesUsedToday++;
-            saveImageUsage();
-          } catch(e) {
-            console.error('Error processing image:', e);
-          }
-        }
+        if (remainingDaily <= 0) { alert('Batas unggah gambar harian tercapai.'); return; }
+        const validFiles = Array.from(files).filter(f => SecuritySystem.validateImageFile(f)).slice(0, allowedTotal);
+        for (const file of validFiles) { try { const base64 = await convertImageToBase64(file); const compressed = await compressImage(base64); pendingImages.push({ base64: compressed, fileName: file.name }); imagesUsedToday++; saveImageUsage(); } catch(e) {} }
         renderInputPreviews();
       }
 
       async function handleFileUpload(files) {
         if (!files?.length || isProcessing) return;
-        
         const allowed = MAX_FILES_PER_SEND - pendingFiles.length;
-        if (allowed <= 0) {
-          alert('Maksimal 2 file per pengiriman.');
-          return;
-        }
-        
-        const validFiles = Array.from(files)
-          .filter(f => SecuritySystem.validateDocumentFile(f))
-          .slice(0, allowed);
-        
-        for (const file of validFiles) {
-          try {
-            const base64 = await convertImageToBase64(file);
-            pendingFiles.push({ base64, fileName: file.name, type: file.type });
-          } catch(e) {
-            console.error('Error processing file:', e);
-          }
-        }
+        if (allowed <= 0) { alert('Maksimal 2 file.'); return; }
+        const validFiles = Array.from(files).filter(f => SecuritySystem.validateDocumentFile(f)).slice(0, allowed);
+        for (const file of validFiles) { try { const base64 = await convertImageToBase64(file); pendingFiles.push({ base64, fileName: file.name, type: file.type }); } catch(e) {} }
         renderInputPreviews();
       }
 
@@ -1271,494 +1018,184 @@
         pendingImages.forEach((img, idx) => allItems.push({ type: 'image', data: img, index: idx }));
         pendingFiles.forEach((f, idx) => allItems.push({ type: 'file', data: f, index: idx }));
         allItems.forEach(item => {
-          const container = document.createElement('div');
-          container.className = 'input-preview-item';
-          if (item.type === 'image') {
-            const pic = document.createElement('img');
-            pic.src = item.data.base64;
-            container.appendChild(pic);
-          } else {
-            const icon = document.createElement('div');
-            icon.style.cssText = 'width:100%;height:100%;display:flex;align-items:center;justify-content:center;font-size:0.6rem;color:var(--text-secondary);';
-            icon.textContent = 'FILE';
-            container.appendChild(icon);
-          }
-          const rm = document.createElement('button');
-          rm.className = 'input-preview-remove';
-          rm.innerHTML = '✕';
-          rm.addEventListener('click', (e) => {
-            e.stopPropagation();
-            if(item.type === 'image') pendingImages.splice(item.index, 1);
-            else pendingFiles.splice(item.index, 1);
-            renderInputPreviews();
-          });
-          container.appendChild(rm);
-          inputPreviewArea.appendChild(container);
+          const container = document.createElement('div'); container.className = 'input-preview-item';
+          if (item.type === 'image') { const pic = document.createElement('img'); pic.src = item.data.base64; container.appendChild(pic); }
+          else { const icon = document.createElement('div'); icon.style.cssText = 'width:100%;height:100%;display:flex;align-items:center;justify-content:center;font-size:0.6rem;color:var(--text-secondary);'; icon.textContent = 'FILE'; container.appendChild(icon); }
+          const rm = document.createElement('button'); rm.className = 'input-preview-remove'; rm.innerHTML = '✕';
+          rm.addEventListener('click', (e) => { e.stopPropagation(); if(item.type === 'image') pendingImages.splice(item.index,1); else pendingFiles.splice(item.index,1); renderInputPreviews(); });
+          container.appendChild(rm); inputPreviewArea.appendChild(container);
         });
       }
 
-      function clearPendingFiles() {
-        pendingImages = [];
-        pendingFiles = [];
-        imageUploadInput.value = '';
-        fileUploadInput.value = '';
-        if(inputPreviewArea) inputPreviewArea.innerHTML = '';
-      }
+      function clearPendingFiles() { pendingImages = []; pendingFiles = []; imageUploadInput.value = ''; fileUploadInput.value = ''; if(inputPreviewArea) inputPreviewArea.innerHTML = ''; }
 
       // ============ AI COMMUNICATION ============
       async function askAI(prompt, hasMedia) {
         try {
-          const payload = {
-            message: prompt,
-            mode: currentMode,
-            history: conversationHistory.slice(-8).map(msg => ({
-              role: msg.role,
-              content: msg.content
-            })),
-            images: hasMedia ? pendingImages.map(i => ({ 
-              base64: i.base64, 
-              fileName: i.fileName 
-            })) : [],
-            files: hasMedia ? pendingFiles.map(f => ({ 
-              base64: f.base64, 
-              fileName: f.fileName, 
-              type: f.type 
-            })) : [],
-            timestamp: Date.now(),
-            fingerprint: SecuritySystem.getClientFingerprint()
-          };
-          
-          console.log('Sending request to AI...');
-          
+          const payload = { message: prompt, mode: currentMode, history: conversationHistory.slice(-8).map(msg => ({ role: msg.role, content: msg.content })), images: hasMedia ? pendingImages.map(i => ({ base64: i.base64, fileName: i.fileName })) : [], files: hasMedia ? pendingFiles.map(f => ({ base64: f.base64, fileName: f.fileName, type: f.type })) : [], timestamp: Date.now(), fingerprint: SecuritySystem.getClientFingerprint() };
           const controller = new AbortController();
           const timeoutId = setTimeout(() => controller.abort(), 30000);
-          
-          const response = await fetch(WORKER_URL, { 
-            method: 'POST', 
-            headers: { 
-              'Content-Type': 'application/json',
-              'Accept': 'application/json'
-            }, 
-            body: JSON.stringify(payload),
-            signal: controller.signal
-          });
-          
+          const response = await fetch(WORKER_URL, { method: 'POST', headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' }, body: JSON.stringify(payload), signal: controller.signal });
           clearTimeout(timeoutId);
-          
-          if (!response.ok) {
-            const errorText = await response.text();
-            console.error('Server error:', response.status);
-            
-            try {
-              const errorData = JSON.parse(errorText);
-              return errorData.reply || `Server error (${response.status}). Silakan coba lagi.`;
-            } catch(e) {
-              return `Server error (${response.status}). Silakan coba lagi.`;
-            }
-          }
-          
+          if (!response.ok) { const errorText = await response.text(); try { const errorData = JSON.parse(errorText); return errorData.reply || `Server error (${response.status})`; } catch(e) { return `Server error (${response.status})`; } }
           const data = await response.json();
-          
-          if (!data.success) {
-            return data.reply || 'Maaf, terjadi kesalahan saat memproses permintaan.';
-          }
-          
-          const reply = data.reply?.trim() || 'Maaf, tidak ada respons dari AI.';
-          
-          conversationHistory.push({ role: 'user', content: prompt });
-          conversationHistory.push({ role: 'assistant', content: reply });
+          if (!data.success) return data.reply || 'Maaf, terjadi kesalahan.';
+          const reply = data.reply?.trim() || 'Maaf, tidak ada respons.';
+          conversationHistory.push({ role: 'user', content: prompt }); conversationHistory.push({ role: 'assistant', content: reply });
           while(conversationHistory.length > MAX_HISTORY) conversationHistory.shift();
-          
           return reply;
-        } catch(e) {
-          console.error('Connection error:', e);
-          if (e.name === 'AbortError') {
-            return 'Waktu permintaan habis. Silakan coba lagi.';
-          }
-          return 'Gagal terhubung ke server. Periksa koneksi Anda dan coba lagi.';
-        }
+        } catch(e) { if (e.name === 'AbortError') return 'Waktu permintaan habis.'; return 'Gagal terhubung ke server.'; }
       }
 
       // ============ SEND MESSAGE ============
       async function sendMessage() {
         if (isProcessing) return;
-        
-        if (SecuritySystem.checkHoneypot()) {
-          SecuritySystem.logSecurityEvent('honeypot_triggered', 'Honeypot field filled');
-          return;
-        }
-        
-        if (SecuritySystem.isRateLimited()) {
-          addAIMessage('⚠️ Terlalu banyak permintaan. Silakan tunggu beberapa saat.', true);
-          return;
-        }
-        
-        const rawText = msgInput.value.trim();
-        const text = sanitizeInput(rawText);
-        msgInput.value = '';
-        msgInput.style.height = 'auto';
+        if (SecuritySystem.checkHoneypot()) return;
+        if (SecuritySystem.isRateLimited()) { addAIMessage('⚠️ Terlalu banyak permintaan.', true); return; }
+        const rawText = msgInput.value.trim(); const text = sanitizeInput(rawText);
+        msgInput.value = ''; msgInput.style.height = 'auto';
         const hasMedia = pendingImages.length > 0 || pendingFiles.length > 0;
         if (!text && !hasMedia) return;
-        
         SecuritySystem.recordRequest();
-        
-        if (!welcomeOverlay.classList.contains('hidden')) {
-          welcomeOverlay.classList.add('hidden');
-          setTimeout(() => { welcomeOverlay.style.display = 'none'; }, 400);
-        }
-        
-        isProcessing = true;
-        msgInput.disabled = true;
-        sendBtn.style.opacity = '0.6';
-        sendBtn.style.pointerEvents = 'none';
-        
+        if (!welcomeOverlay.classList.contains('hidden')) { welcomeOverlay.classList.add('hidden'); setTimeout(() => welcomeOverlay.style.display = 'none', 400); }
+        isProcessing = true; msgInput.disabled = true; sendBtn.style.opacity = '0.6'; sendBtn.style.pointerEvents = 'none';
         try {
           addUserMessage(text || 'Analisis file terlampir...');
           const thinkingDiv = addThinkingIndicator();
           const reply = await askAI(text || 'Tolong analisis file yang saya kirimkan.', hasMedia);
-          if (thinkingDiv && thinkingDiv.parentNode) thinkingDiv.remove();
-          addAIMessage(reply);
-          clearPendingFiles();
+          if (thinkingDiv?.parentNode) thinkingDiv.remove();
+          addAIMessage(reply); clearPendingFiles();
           setTimeout(() => { if(conversationHistory.length > 0) saveCurrentConversation(); }, 400);
-        } catch(e) {
-          console.error('Send error:', e);
-          const thinkingDiv = document.querySelector('.thinking-indicator');
-          if (thinkingDiv && thinkingDiv.parentNode) thinkingDiv.parentNode.remove();
-          addAIMessage('Maaf, terjadi kesalahan. Silakan coba lagi.', true);
-          clearPendingFiles();
-        } finally {
-          isProcessing = false;
-          msgInput.disabled = false;
-          sendBtn.style.opacity = '1';
-          sendBtn.style.pointerEvents = 'auto';
-          msgInput.focus();
-        }
+        } catch(e) { const thinkingDiv = document.querySelector('.thinking-indicator'); if (thinkingDiv?.parentNode) thinkingDiv.parentNode.remove(); addAIMessage('Maaf, terjadi kesalahan.', true); clearPendingFiles(); }
+        finally { isProcessing = false; msgInput.disabled = false; sendBtn.style.opacity = '1'; sendBtn.style.pointerEvents = 'auto'; msgInput.focus(); }
       }
 
-      // ============ MODE MANAGEMENT ============
-      function setMode(mode) {
-        if (currentMode === mode) return;
-        currentMode = mode;
-        modeChips.forEach(chip => {
-          chip.classList.toggle('active', chip.getAttribute('data-mode') === mode);
-        });
-      }
+      // ============ MODE ============
+      function setMode(mode) { if (currentMode === mode) return; currentMode = mode; modeChips.forEach(chip => chip.classList.toggle('active', chip.getAttribute('data-mode') === mode)); }
 
-      // ============ CONVERSATION MANAGEMENT ============
+      // ============ CONVERSATION ============
       function saveCurrentConversation() {
         if (conversationHistory.length === 0) return;
         const title = (conversationHistory.find(m => m.role === 'user')?.content || 'Obrolan').substring(0, 40);
-        const session = {
-          id: currentChatId || generateUUID(),
-          title,
-          mode: currentMode,
-          preview: (conversationHistory[conversationHistory.length-1]?.content || '').substring(0, 80),
-          date: new Date().toISOString(),
-          messages: JSON.parse(JSON.stringify(conversationHistory.slice(-20))),
-          messageCount: conversationHistory.length,
-          userEmail: currentUser ? currentUser.email : 'guest'
-        };
+        const session = { id: currentChatId || generateUUID(), title, mode: currentMode, preview: (conversationHistory[conversationHistory.length-1]?.content || '').substring(0, 80), date: new Date().toISOString(), messages: JSON.parse(JSON.stringify(conversationHistory.slice(-20))), messageCount: conversationHistory.length, userEmail: currentUser?.email || 'guest' };
         const idx = chatSessions.findIndex(s => s.id === session.id);
-        if (idx !== -1) chatSessions[idx] = session;
-        else chatSessions.unshift(session);
-        currentChatId = session.id;
-        saveChatSessions();
-        renderHistoryList();
+        if (idx !== -1) chatSessions[idx] = session; else chatSessions.unshift(session);
+        currentChatId = session.id; saveChatSessions(); renderHistoryList();
       }
-
       function loadChatSession(id) {
-        const session = chatSessions.find(s => s.id === id);
-        if (!session) return;
-        conversationHistory = JSON.parse(JSON.stringify(session.messages));
-        currentChatId = session.id;
-        if (session.mode) setMode(session.mode);
-        chatArea.innerHTML = '';
-        conversationHistory.forEach(msg => {
-          if (msg.role === 'user') addUserMessage(msg.content);
-          else addAIMessage(msg.content);
-        });
-        scrollToBottomInstant();
-        checkScrollPosition();
-        renderHistoryList();
-        closeHistoryPanel();
+        const session = chatSessions.find(s => s.id === id); if (!session) return;
+        conversationHistory = JSON.parse(JSON.stringify(session.messages)); currentChatId = session.id; if (session.mode) setMode(session.mode);
+        chatArea.innerHTML = ''; conversationHistory.forEach(msg => { if (msg.role === 'user') addUserMessage(msg.content); else addAIMessage(msg.content); });
+        scrollToBottomInstant(); checkScrollPosition(); renderHistoryList(); closeHistoryPanel();
       }
-
-      function deleteChatSession(id, ev) {
-        ev?.stopPropagation();
-        if (confirm('Hapus obrolan ini?')) {
-          chatSessions = chatSessions.filter(s => s.id !== id);
-          saveChatSessions();
-          if (currentChatId === id) startNewChat();
-          renderHistoryList();
-        }
-      }
-
-      function clearAllHistory() {
-        if (chatSessions.length === 0) return;
-        if (confirm('Hapus semua riwayat obrolan? Tindakan ini tidak dapat dibatalkan.')) {
-          chatSessions = [];
-          saveChatSessions();
-          startNewChat();
-          renderHistoryList();
-        }
-      }
-
-      function startNewChat() {
-        if (conversationHistory.length > 0) saveCurrentConversation();
-        conversationHistory = [];
-        currentChatId = null;
-        chatArea.innerHTML = '';
-        clearPendingFiles();
-        addAIMessage('<h3>Obrolan Baru</h3><p>GXR Prime P1.5 120B siap membantu Anda.</p>', true);
-        renderHistoryList();
-        scrollToBottomInstant();
-      }
+      function deleteChatSession(id, ev) { ev?.stopPropagation(); if (confirm('Hapus obrolan ini?')) { chatSessions = chatSessions.filter(s => s.id !== id); saveChatSessions(); if (currentChatId === id) startNewChat(); renderHistoryList(); } }
+      function clearAllHistory() { if (chatSessions.length === 0) return; if (confirm('Hapus semua riwayat?')) { chatSessions = []; saveChatSessions(); startNewChat(); renderHistoryList(); } }
+      function startNewChat() { if (conversationHistory.length > 0) saveCurrentConversation(); conversationHistory = []; currentChatId = null; chatArea.innerHTML = ''; clearPendingFiles(); addAIMessage('<h3>Obrolan Baru</h3><p>GXR Prime P1.5 120B siap membantu Anda.</p>', true); renderHistoryList(); scrollToBottomInstant(); }
 
       // ============ HISTORY RENDER ============
       function renderHistoryList() {
-        const list = $('historyList');
-        if (!list) return;
-        if (chatSessions.length === 0) {
-          list.innerHTML = '<div style="text-align:center;padding:32px;color:var(--text-tertiary);font-size:0.85rem;">Belum ada riwayat obrolan</div>';
-          return;
-        }
+        const list = $('historyList'); if (!list) return;
+        if (chatSessions.length === 0) { list.innerHTML = '<div style="text-align:center;padding:32px;color:var(--text-tertiary);font-size:0.85rem;">Belum ada riwayat</div>'; return; }
         list.innerHTML = chatSessions.map(s => {
-          const plainTitle = (s.title || '').replace(/<[^>]*>/g, '');
-          const plainPreview = (s.preview || '...').replace(/<[^>]*>/g, '');
-          return `<div class="history-item ${s.id === currentChatId ? 'active' : ''}" data-id="${s.id}">
-            <div class="history-item-title">${escapeHtml(plainTitle)}</div>
-            <div class="history-item-preview">${escapeHtml(plainPreview)}</div>
-            <div style="display:flex;justify-content:space-between;align-items:center;margin-top:8px;">
-              <span style="font-size:0.7rem;color:var(--accent);">${s.mode || 'flash'}</span>
-              <button class="delete-history-item" data-id="${s.id}">Hapus</button>
-            </div>
-          </div>`;
+          const plainTitle = (s.title || '').replace(/<[^>]*>/g, ''); const plainPreview = (s.preview || '...').replace(/<[^>]*>/g, '');
+          return `<div class="history-item ${s.id === currentChatId ? 'active' : ''}" data-id="${s.id}"><div class="history-item-title">${escapeHtml(plainTitle)}</div><div class="history-item-preview">${escapeHtml(plainPreview)}</div><div style="display:flex;justify-content:space-between;align-items:center;margin-top:8px;"><span style="font-size:0.7rem;color:var(--accent);">${s.mode || 'flash'}</span><button class="delete-history-item" data-id="${s.id}">Hapus</button></div></div>`;
         }).join('');
-        list.querySelectorAll('.history-item').forEach(item => {
-          item.addEventListener('click', (e) => {
-            if (!e.target.classList.contains('delete-history-item')) loadChatSession(item.dataset.id);
-          });
-        });
-        list.querySelectorAll('.delete-history-item').forEach(btn => {
-          btn.addEventListener('click', (e) => { e.stopPropagation(); deleteChatSession(btn.dataset.id, e); });
-        });
+        list.querySelectorAll('.history-item').forEach(item => item.addEventListener('click', (e) => { if (!e.target.classList.contains('delete-history-item')) loadChatSession(item.dataset.id); }));
+        list.querySelectorAll('.delete-history-item').forEach(btn => btn.addEventListener('click', (e) => { e.stopPropagation(); deleteChatSession(btn.dataset.id, e); }));
       }
-
       function renderHistoryLoginSection() {
         if (!historyLoginSection) return;
         if (currentUser && currentUser.email !== 'guest@tamu') {
-          historyLoginSection.innerHTML = `
-            <div class="history-user-info">
-              <div class="history-user-avatar">${getUserInitial(currentUser.email)}</div>
-              <div class="history-user-email">${escapeHtml(currentUser.email)}</div>
-              <button class="history-logout-btn" id="historyLogoutBtn">Keluar</button>
-            </div>
-          `;
-          $('historyLogoutBtn')?.addEventListener('click', () => {
-            logoutUser();
-            renderHistoryLoginSection();
-            addAIMessage('Anda telah keluar dari akun.', true);
-          });
+          historyLoginSection.innerHTML = `<div class="history-user-info"><div class="history-user-avatar">${getUserInitial(currentUser.email)}</div><div class="history-user-email">${escapeHtml(currentUser.email)}</div><button class="history-logout-btn" id="historyLogoutBtn">Keluar</button></div>`;
+          $('historyLogoutBtn')?.addEventListener('click', () => { logoutUser(); renderHistoryLoginSection(); addAIMessage('Anda telah keluar.', true); });
         } else {
-          historyLoginSection.innerHTML = `
-            <button class="history-login-btn" id="historyLoginBtn">
-              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M15 3h4a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2h-4"/><polyline points="10 17 15 12 10 7"/><line x1="15" y1="12" x2="3" y2="12"/></svg>
-              Masuk / Daftar
-            </button>
-          `;
-          $('historyLoginBtn')?.addEventListener('click', () => {
-            closeHistoryPanel();
-            showAuthModal('login');
-          });
+          historyLoginSection.innerHTML = `<button class="history-login-btn" id="historyLoginBtn"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M15 3h4a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2h-4"/><polyline points="10 17 15 12 10 7"/><line x1="15" y1="12" x2="3" y2="12"/></svg> Masuk / Daftar</button>`;
+          $('historyLoginBtn')?.addEventListener('click', () => { closeHistoryPanel(); showAuthModal('login'); });
         }
       }
 
       // ============ HISTORY PANEL ============
-      function openHistoryPanel() {
-        if (conversationHistory.length > 0) saveCurrentConversation();
-        historyPanel?.classList.add('open');
-        historyOverlay?.classList.add('visible');
-        renderHistoryLoginSection();
-        renderHistoryList();
-      }
+      function openHistoryPanel() { if (conversationHistory.length > 0) saveCurrentConversation(); historyPanel?.classList.add('open'); historyOverlay?.classList.add('visible'); renderHistoryLoginSection(); renderHistoryList(); }
+      function closeHistoryPanel() { historyPanel?.classList.remove('open'); historyOverlay?.classList.remove('visible'); }
 
-      function closeHistoryPanel() {
-        historyPanel?.classList.remove('open');
-        historyOverlay?.classList.remove('visible');
-      }
-
-      // ============ AUTH MODAL ============
+      // ============ AUTH ============
       function showAuthModal(mode = 'login') {
-        authMode = mode;
-        authTitle.innerText = mode === 'login' ? 'Masuk' : 'Daftar';
-        authSubtitle.innerText = mode === 'login' ? 'Masuk ke akun GXR Prime Anda' : 'Buat akun GXR Prime baru';
-        authSubmitBtn.innerText = mode === 'login' ? 'Masuk' : 'Daftar';
-        tabLogin.classList.toggle('active', mode === 'login');
-        tabRegister.classList.toggle('active', mode === 'register');
-        authConfirmPassword.style.display = mode === 'register' ? 'block' : 'none';
-        authPassword.placeholder = mode === 'register' ? 'Buat Password Baru (min. 6 karakter)' : 'Password';
-        authConfirmPassword.placeholder = 'Konfirmasi Password Baru';
-        authMessage.textContent = '';
-        authMessage.className = 'auth-message';
-        resetPasswordSection.classList.remove('visible');
-        forgotPasswordBtn.style.display = mode === 'login' ? 'inline-block' : 'none';
-        authModal.classList.add('visible');
-        setTimeout(() => authEmail.focus(), 300);
+        authMode = mode; authTitle.innerText = mode === 'login' ? 'Masuk' : 'Daftar'; authSubtitle.innerText = mode === 'login' ? 'Masuk ke akun GXR Prime' : 'Buat akun GXR Prime baru'; authSubmitBtn.innerText = mode === 'login' ? 'Masuk' : 'Daftar';
+        tabLogin.classList.toggle('active', mode === 'login'); tabRegister.classList.toggle('active', mode === 'register');
+        authConfirmPassword.style.display = mode === 'register' ? 'block' : 'none'; authPassword.placeholder = mode === 'register' ? 'Buat Password (min. 6 karakter)' : 'Password'; authConfirmPassword.placeholder = 'Konfirmasi Password';
+        authMessage.textContent = ''; authMessage.className = 'auth-message'; resetPasswordSection.classList.remove('visible'); forgotPasswordBtn.style.display = mode === 'login' ? 'inline-block' : 'none';
+        authModal.classList.add('visible'); setTimeout(() => authEmail.focus(), 300);
       }
-
-      function hideAuthModal() { 
-        authModal.classList.remove('visible'); 
-      }
-
+      function hideAuthModal() { authModal.classList.remove('visible'); }
       function handleAuthSubmit() {
-        const email = authEmail.value.trim();
-        const password = authPassword.value.trim();
-        const confirmPassword = authConfirmPassword.value.trim();
-        
-        if (!email || !password) {
-          authMessage.textContent = 'Mohon isi semua field.';
-          authMessage.className = 'auth-message error';
-          return;
-        }
-        
-        if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
-          authMessage.textContent = 'Format email tidak valid.';
-          authMessage.className = 'auth-message error';
-          return;
-        }
-        
-        if (password.length < 6) {
-          authMessage.textContent = 'Password minimal 6 karakter.';
-          authMessage.className = 'auth-message error';
-          return;
-        }
-        
-        if (authMode === 'register') {
-          if (password !== confirmPassword) {
-            authMessage.textContent = 'Konfirmasi password tidak cocok.';
-            authMessage.className = 'auth-message error';
-            return;
-          }
-        }
-        
+        const email = authEmail.value.trim(), password = authPassword.value.trim(), confirmPassword = authConfirmPassword.value.trim();
+        if (!email || !password) { authMessage.textContent = 'Mohon isi semua field.'; authMessage.className = 'auth-message error'; return; }
+        if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) { authMessage.textContent = 'Format email tidak valid.'; authMessage.className = 'auth-message error'; return; }
+        if (password.length < 6) { authMessage.textContent = 'Password minimal 6 karakter.'; authMessage.className = 'auth-message error'; return; }
+        if (authMode === 'register' && password !== confirmPassword) { authMessage.textContent = 'Konfirmasi password tidak cocok.'; authMessage.className = 'auth-message error'; return; }
         const users = JSON.parse(localStorage.getItem('gxr_users') || '[]');
-        
         if (authMode === 'register') {
-          if (users.find(u => u.email === email)) {
-            authMessage.textContent = 'Email sudah terdaftar.';
-            authMessage.className = 'auth-message error';
-            return;
-          }
-          users.push({ email, password });
-          localStorage.setItem('gxr_users', JSON.stringify(users));
-          authMessage.textContent = 'Berhasil daftar! Silakan masuk.';
-          authMessage.className = 'auth-message success';
-          setTimeout(() => showAuthModal('login'), 1200);
+          if (users.find(u => u.email === email)) { authMessage.textContent = 'Email sudah terdaftar.'; authMessage.className = 'auth-message error'; return; }
+          users.push({ email, password }); localStorage.setItem('gxr_users', JSON.stringify(users)); authMessage.textContent = 'Berhasil daftar! Silakan masuk.'; authMessage.className = 'auth-message success'; setTimeout(() => showAuthModal('login'), 1200);
         } else {
           const user = users.find(u => u.email === email && u.password === password);
-          if (user) {
-            saveUser({ email: user.email });
-            hideAuthModal();
-            welcomeOverlay.classList.add('hidden');
-            renderHistoryLoginSection();
-            setTimeout(() => {
-              welcomeOverlay.style.display = 'none';
-              addAIMessage(`<h3>Selamat Datang</h3><p>Login sebagai <b>${escapeHtml(user.email)}</b></p>`, true);
-            }, 300);
-          } else {
-            authMessage.textContent = 'Email atau password salah.';
-            authMessage.className = 'auth-message error';
-          }
+          if (user) { saveUser({ email: user.email }); hideAuthModal(); welcomeOverlay.classList.add('hidden'); renderHistoryLoginSection(); setTimeout(() => { welcomeOverlay.style.display = 'none'; addAIMessage(`<h3>Selamat Datang</h3><p>Login sebagai <b>${escapeHtml(user.email)}</b></p>`, true); }, 300); }
+          else { authMessage.textContent = 'Email atau password salah.'; authMessage.className = 'auth-message error'; }
         }
       }
-
       function handleResetPassword() {
         const email = resetEmail.value.trim();
-        
-        if (!email) {
-          authMessage.textContent = 'Mohon masukkan email.';
-          authMessage.className = 'auth-message error';
-          return;
-        }
-        
-        if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
-          authMessage.textContent = 'Format email tidak valid.';
-          authMessage.className = 'auth-message error';
-          return;
-        }
-        
-        const users = JSON.parse(localStorage.getItem('gxr_users') || '[]');
-        const userIndex = users.findIndex(u => u.email === email);
-        
-        if (userIndex === -1) {
-          authMessage.textContent = 'Email tidak terdaftar.';
-          authMessage.className = 'auth-message error';
-          return;
-        }
-        
-        const newPassword = 'GXR' + Math.random().toString(36).substring(2, 8) + '!';
-        users[userIndex].password = newPassword;
-        localStorage.setItem('gxr_users', JSON.stringify(users));
-        
-        authMessage.textContent = `Password baru: ${newPassword}`;
-        authMessage.className = 'auth-message success';
-        
-        authPassword.value = newPassword;
-        resetPasswordSection.classList.remove('visible');
+        if (!email) { authMessage.textContent = 'Masukkan email.'; authMessage.className = 'auth-message error'; return; }
+        if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) { authMessage.textContent = 'Format email tidak valid.'; authMessage.className = 'auth-message error'; return; }
+        const users = JSON.parse(localStorage.getItem('gxr_users') || '[]'); const idx = users.findIndex(u => u.email === email);
+        if (idx === -1) { authMessage.textContent = 'Email tidak terdaftar.'; authMessage.className = 'auth-message error'; return; }
+        const newPassword = 'GXR' + Math.random().toString(36).substring(2,8) + '!'; users[idx].password = newPassword; localStorage.setItem('gxr_users', JSON.stringify(users));
+        authMessage.textContent = `Password baru: ${newPassword}`; authMessage.className = 'auth-message success'; authPassword.value = newPassword; resetPasswordSection.classList.remove('visible');
       }
+      function startAsGuest() { saveUser({ email: 'guest@tamu', isGuest: true }); welcomeOverlay.classList.add('hidden'); renderHistoryLoginSection(); setTimeout(() => { welcomeOverlay.style.display = 'none'; addAIMessage('<h3>Selamat Datang</h3><p>Mode Tamu.</p>', true); }, 300); }
+      function autoResizeTextarea() { msgInput.style.height = 'auto'; msgInput.style.height = Math.min(msgInput.scrollHeight, 80) + 'px'; }
 
-      function startAsGuest() {
-        saveUser({ email: 'guest@tamu', isGuest: true });
-        welcomeOverlay.classList.add('hidden');
-        renderHistoryLoginSection();
-        setTimeout(() => {
-          welcomeOverlay.style.display = 'none';
-          addAIMessage('<h3>Selamat Datang</h3><p>Mode Tamu. Login untuk menyimpan riwayat obrolan.</p>', true);
-        }, 300);
-      }
-
-      function autoResizeTextarea() {
-        msgInput.style.height = 'auto';
-        msgInput.style.height = Math.min(msgInput.scrollHeight, 110) + 'px';
+      // ============ KEYBOARD HANDLING (MOBILE) ============
+      function handleKeyboardVisibility() {
+        const isMobile = window.innerWidth <= 768;
+        if (!isMobile) return;
+        const inputArea = $('inputAreaContainer');
+        if (document.activeElement === msgInput) {
+          // Keyboard is open
+          inputArea.style.paddingBottom = '8px';
+          inputArea.style.position = 'relative';
+          inputArea.style.zIndex = '1000';
+          // Ensure smooth scroll
+          setTimeout(() => { chatArea.scrollTop = chatArea.scrollHeight; }, 100);
+        } else {
+          inputArea.style.paddingBottom = 'calc(8px + env(safe-area-inset-bottom, 0px))';
+          inputArea.style.position = 'relative';
+          inputArea.style.zIndex = '40';
+        }
       }
 
       // ============ EVENT LISTENERS ============
       function setupEventListeners() {
         sendBtn.addEventListener('click', (e) => { e.preventDefault(); sendMessage(); });
-        msgInput.addEventListener('keypress', (e) => {
-          if (e.key === 'Enter' && !e.shiftKey) { e.preventDefault(); sendMessage(); }
-        });
+        msgInput.addEventListener('keypress', (e) => { if (e.key === 'Enter' && !e.shiftKey) { e.preventDefault(); sendMessage(); } });
         msgInput.addEventListener('input', autoResizeTextarea);
+        msgInput.addEventListener('focus', handleKeyboardVisibility);
+        msgInput.addEventListener('blur', handleKeyboardVisibility);
         fileUploadBtn.addEventListener('click', (e) => { e.preventDefault(); if(!isProcessing) fileUploadInput.click(); });
         imageUploadInput.addEventListener('change', async (e) => { if(e.target.files?.length) await handleImageUpload(e.target.files); });
         fileUploadInput.addEventListener('change', async (e) => { if(e.target.files?.length) await handleFileUpload(e.target.files); });
-        
         document.addEventListener('paste', async (e) => {
-          if (isProcessing) return;
-          const items = e.clipboardData?.items;
-          if (items) {
-            const imgs = [], docs = [];
-            for (const item of items) {
-              if (item.type.startsWith('image/')) { const f = item.getAsFile(); if(f) imgs.push(f); }
-              else if (item.kind === 'file') { const f = item.getAsFile(); if(f) docs.push(f); }
-            }
-            if (imgs.length) { e.preventDefault(); await handleImageUpload(imgs); }
-            if (docs.length) { e.preventDefault(); await handleFileUpload(docs); }
-          }
+          if (isProcessing) return; const items = e.clipboardData?.items; if (items) { const imgs = [], docs = [];
+            for (const item of items) { if (item.type.startsWith('image/')) { const f = item.getAsFile(); if(f) imgs.push(f); } else if (item.kind === 'file') { const f = item.getAsFile(); if(f) docs.push(f); } }
+            if (imgs.length) { e.preventDefault(); await handleImageUpload(imgs); } if (docs.length) { e.preventDefault(); await handleFileUpload(docs); } }
         });
-
         historyToggleBtn.addEventListener('click', openHistoryPanel);
         closeHistoryBtn?.addEventListener('click', closeHistoryPanel);
         historyOverlay?.addEventListener('click', closeHistoryPanel);
-        
-        modeChips.forEach(chip => {
-          chip.addEventListener('click', () => setMode(chip.getAttribute('data-mode')));
-        });
-
+        modeChips.forEach(chip => chip.addEventListener('click', () => setMode(chip.getAttribute('data-mode'))));
         aboutBtn.addEventListener('click', () => aboutOverlay.classList.add('visible'));
         closeAboutBtn.addEventListener('click', () => aboutOverlay.classList.remove('visible'));
         aboutOverlay.addEventListener('click', (e) => { if(e.target === aboutOverlay) aboutOverlay.classList.remove('visible'); });
-
         $('btnGuestMode')?.addEventListener('click', startAsGuest);
         $('btnLoginPrompt')?.addEventListener('click', () => showAuthModal('login'));
         tabLogin?.addEventListener('click', () => showAuthModal('login'));
@@ -1767,66 +1204,24 @@
         authPassword.addEventListener('keypress', (e) => { if(e.key === 'Enter') handleAuthSubmit(); });
         authConfirmPassword.addEventListener('keypress', (e) => { if(e.key === 'Enter') handleAuthSubmit(); });
         authModal.addEventListener('click', (e) => { if(e.target === authModal) hideAuthModal(); });
-        
-        forgotPasswordBtn.addEventListener('click', () => {
-          resetPasswordSection.classList.toggle('visible');
-          resetEmail.value = authEmail.value;
-        });
-        
+        forgotPasswordBtn.addEventListener('click', () => { resetPasswordSection.classList.toggle('visible'); resetEmail.value = authEmail.value; });
         resetPasswordBtn.addEventListener('click', handleResetPassword);
-        
         authCloseBtn?.addEventListener('click', hideAuthModal);
-        
-        document.addEventListener('keydown', (e) => {
-          if (e.key === 'Escape') {
-            if (authModal.classList.contains('visible')) hideAuthModal();
-            if (historyPanel.classList.contains('open')) closeHistoryPanel();
-          }
-        });
-
+        document.addEventListener('keydown', (e) => { if (e.key === 'Escape') { if (authModal.classList.contains('visible')) hideAuthModal(); if (historyPanel.classList.contains('open')) closeHistoryPanel(); } });
         clearAllHistoryBtn.addEventListener('click', clearAllHistory);
-        
         scrollDownBtn?.addEventListener('click', scrollToBottom);
-        
-        chatArea?.addEventListener('scroll', () => {
-          if (scrollTimeout) clearTimeout(scrollTimeout);
-          scrollTimeout = setTimeout(checkScrollPosition, 100);
-        });
-        
-        window.addEventListener('resize', () => {
-          checkScrollPosition();
-          autoResizeTextarea();
-        });
+        chatArea?.addEventListener('scroll', () => { if (scrollTimeout) clearTimeout(scrollTimeout); scrollTimeout = setTimeout(checkScrollPosition, 100); });
+        window.addEventListener('resize', () => { checkScrollPosition(); autoResizeTextarea(); handleKeyboardVisibility(); });
       }
 
       // ============ INITIALIZATION ============
       function initialize() {
-        loadChatSessions();
-        loadImageUsage();
-        setupEventListeners();
-        
-        if (loadUser() && currentUser?.email !== 'guest@tamu') {
-          welcomeOverlay.style.display = 'none';
-          welcomeOverlay.classList.add('hidden');
-          renderHistoryLoginSection();
-          setTimeout(() => {
-            addAIMessage(`<h3>Selamat Datang Kembali</h3><p>Login sebagai <b>${escapeHtml(currentUser.email)}</b></p>`, true);
-          }, 400);
-        } else {
-          welcomeOverlay.style.display = 'flex';
-          welcomeOverlay.classList.remove('hidden');
-          renderHistoryLoginSection();
-        }
-        
+        loadChatSessions(); loadImageUsage(); setupEventListeners();
+        if (loadUser() && currentUser?.email !== 'guest@tamu') { welcomeOverlay.style.display = 'none'; welcomeOverlay.classList.add('hidden'); renderHistoryLoginSection(); setTimeout(() => addAIMessage(`<h3>Selamat Datang Kembali</h3><p>Login sebagai <b>${escapeHtml(currentUser.email)}</b></p>`, true), 400); }
+        else { welcomeOverlay.style.display = 'flex'; welcomeOverlay.classList.remove('hidden'); renderHistoryLoginSection(); }
         setTimeout(() => msgInput?.focus(), 600);
-        
-        setTimeout(() => {
-          checkScrollPosition();
-          console.log('GXR Prime AI initialized');
-          console.log('Security report:', SecuritySystem.getSecurityReport());
-        }, 800);
+        setTimeout(() => { checkScrollPosition(); console.log('GXR Prime AI initialized'); }, 800);
       }
-
       initialize();
     })();
   </script>
