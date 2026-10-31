@@ -1,1642 +1,1218 @@
 <!DOCTYPE html>
 <html lang="id">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
-  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <title>GXR Prime</title>
-  <meta name="description" content="GXR Prime AI assistant dengan desain modern, animasi halus, dan fitur chat yang lebih lancar." />
-  <meta name="theme-color" content="#0a0a14" />
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline' 'unsafe-eval'; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com; img-src 'self' data: blob: https://i.supaimg.com https:; connect-src 'self' https:; frame-src 'none'; object-src 'none';">
+
+  <title>GXR Prime P1.5 120B</title>
+  <meta name="description" content="GXR Prime Ai adalah asisten AI premium bertenaga GXR Prime P1.5 120B. Chatbot cerdas, cepat, dan gratis dengan keamanan tingkat lanjut.">
+  <meta name="keywords" content="GXR Prime, GXR Prime P1.5 120B, chatbot AI, asisten AI, AI Indonesia, AI canggih, AI gratis, AI terbaik, asisten virtual, kecerdasan buatan, AI chatbot, GXR, AI premium, teknologi AI, AI modern, AI cepat, AI aman, AI terpercaya, AI Indonesia terbaik, AI 2026, AI masa depan, asisten pintar, AI online, AI gratis terbaik, AI tanpa batas">
+  <meta name="author" content="Gizkha Ramadhan & Rizki Dimas">
+  <meta name="robots" content="index, follow">
+  <meta name="theme-color" content="#0a0a0f">
+  <meta name="mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="GXR Prime Ai | GXR Prime P1.5 120B">
+  <meta property="og:description" content="Chatbot AI cerdas dengan GXR Prime P1.5 120B. Gratis, multi-mode, upload gambar & file.">
+  <meta property="og:url" content="https://www.gxrprime.web.id">
+  <meta property="og:site_name" content="GXR Prime Ai">
+
+  <link rel="icon" type="image/png" sizes="32x32" href="https://i.supaimg.com/a3ae0df3-e811-4431-9ebd-7da3eb10d395/b9098427-9f25-435e-bc02-9dec4324b1aa.png">
+
   <style>
+    @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500&family=Orbitron:wght@700;900&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap');
+
     :root {
-      --bg: #0a0a14;
-      --bg-elevated: rgba(18, 18, 28, 0.82);
-      --bg-soft: #131821;
-      --bg-panel: #161b2a;
-      --panel-alt: #1b2234;
-      --card: rgba(19, 24, 33, 0.9);
-      --card-strong: rgba(24, 30, 41, 0.96);
-      --text: #edf1ff;
-      --text-soft: #b8bfd6;
-      --text-muted: #7e879d;
-      --line: rgba(255, 255, 255, 0.08);
-      --accent: #7c6cff;
-      --accent-2: #a45cff;
-      --accent-3: #52d6ff;
-      --success: #29d17d;
-      --warning: #f9b444;
-      --danger: #ff637d;
-      --shadow: 0 18px 45px rgba(0,0,0,0.38);
-      --glow: 0 0 0 1px rgba(124,108,255,0.32), 0 12px 32px rgba(124,108,255,0.18);
+      --bg: #0a0a0f;
+      --bg-secondary: #12121a;
+      --bg-tertiary: #1a1a24;
+      --bg-quaternary: #20202e;
+      --bg-hover: #242435;
+      --text: #e8e8f0;
+      --text-secondary: #999aab;
+      --text-tertiary: #6b6b7e;
+      --border: rgba(255,255,255,0.08);
+      --border-strong: rgba(255,255,255,0.15);
+      --accent: #6d5dfc;
+      --accent-light: rgba(109,93,252,0.12);
+      --accent-glow: rgba(109,93,252,0.2);
+      --accent-soft: rgba(109,93,252,0.06);
+      --accent2: #b44cf5;
+      --green: #10b981;
+      --red: #ef4444;
+      --gold: #f59e0b;
+      --user-bubble: linear-gradient(135deg, #6d5dfc, #b44cf5);
+      --user-bubble-text: #ffffff;
+      --ai-text: #e8e8f0;
+      --header-bg: rgba(18,18,26,0.85);
+      --input-bg: #1a1a24;
+      --input-border: rgba(255,255,255,0.12);
+      --card-bg: #12121a;
+      --overlay: rgba(0,0,0,0.6);
+      --avatar-user-bg: #6d5dfc;
+      --avatar-ai-bg: #1a1a24;
+      --copy-btn-bg: #252535;
+      --copy-btn-hover: #303045;
+      --line-color: rgba(255,255,255,0.06);
+      --mode-transition: 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+      --shadow-sm: 0 2px 8px rgba(0,0,0,0.2);
+      --shadow-md: 0 8px 24px rgba(0,0,0,0.3);
+      --shadow-lg: 0 16px 40px rgba(0,0,0,0.4);
+      --shadow-glow: 0 0 20px var(--accent-glow);
+      --radius-sm: 8px;
+      --radius-md: 12px;
+      --radius-lg: 16px;
+      --radius-xl: 20px;
+      --radius-2xl: 24px;
+      --scrollbar-thumb: #3a3a4a;
       --safe-bottom: env(safe-area-inset-bottom, 0px);
-      --radius: 18px;
-      --radius-sm: 12px;
-      --radius-lg: 26px;
     }
 
-    * { box-sizing: border-box; }
+    @media (prefers-color-scheme: light) {
+      :root {
+        --bg: #f8f9fa;
+        --bg-secondary: #ffffff;
+        --bg-tertiary: #f0f1f3;
+        --bg-quaternary: #e8e9ed;
+        --bg-hover: #e0e2e8;
+        --text: #1a1a2e;
+        --text-secondary: #555770;
+        --text-tertiary: #8e8ea0;
+        --border: rgba(0,0,0,0.08);
+        --border-strong: rgba(0,0,0,0.12);
+        --accent: #5a4be0;
+        --accent-light: rgba(90,75,224,0.1);
+        --accent-glow: rgba(90,75,224,0.15);
+        --accent-soft: rgba(90,75,224,0.05);
+        --accent2: #a03bd6;
+        --user-bubble: linear-gradient(135deg, #5a4be0, #a03bd6);
+        --header-bg: rgba(255,255,255,0.85);
+        --input-bg: #f0f1f3;
+        --input-border: rgba(0,0,0,0.1);
+        --card-bg: #ffffff;
+        --overlay: rgba(0,0,0,0.3);
+        --copy-btn-bg: #f0f1f3;
+        --copy-btn-hover: #e0e2e8;
+        --line-color: rgba(0,0,0,0.06);
+        --shadow-sm: 0 2px 6px rgba(0,0,0,0.06);
+        --shadow-md: 0 6px 16px rgba(0,0,0,0.08);
+        --shadow-lg: 0 12px 30px rgba(0,0,0,0.1);
+        --scrollbar-thumb: #c0c0d0;
+      }
+    }
 
-    html, body {
-      margin: 0;
-      width: 100%;
-      height: 100%;
-      font-family: Inter, "Segoe UI", sans-serif;
+    * { margin: 0; padding: 0; box-sizing: border-box; -webkit-tap-highlight-color: transparent; }
+    html, body { width: 100%; height: 100%; overflow: hidden; position: fixed; inset: 0; }
+    body {
       background: var(--bg);
-      color: var(--text);
-      overflow: hidden;
+      font-family: 'Plus Jakarta Sans', 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
       -webkit-font-smoothing: antialiased;
       -moz-osx-font-smoothing: grayscale;
+      line-height: 1.6;
+      color: var(--text);
+      transition: background var(--mode-transition), color var(--mode-transition);
+      display: flex;
+      align-items: stretch;
+      justify-content: stretch;
+      height: 100dvh;
+      overflow: hidden;
+      touch-action: manipulation;
     }
 
-    body {
-      position: relative;
-      background:
-        radial-gradient(circle at top left, rgba(124,108,255,0.22), transparent 28%),
-        radial-gradient(circle at bottom right, rgba(82,214,255,0.18), transparent 25%),
-        var(--bg);
-    }
-
-    button, input, textarea {
-      font: inherit;
-    }
-
-    .app-shell {
-      position: relative;
+    .app {
       width: 100%;
       height: 100%;
       display: flex;
       flex-direction: column;
-      background: transparent;
       overflow: hidden;
-    }
-
-    .topbar {
+      background: var(--bg);
       position: relative;
-      z-index: 10;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      padding: 14px 18px 12px;
-      background: rgba(12, 15, 22, 0.62);
-      backdrop-filter: blur(18px);
-      -webkit-backdrop-filter: blur(18px);
-      border-bottom: 1px solid var(--line);
+      transition: background var(--mode-transition);
+      flex: 1;
+      min-height: 0;
     }
 
-    .brand {
-      display: flex;
-      align-items: center;
-      gap: 12px;
-      min-width: 0;
-    }
+    /* Custom Scrollbar */
+    ::-webkit-scrollbar { width: 6px; }
+    ::-webkit-scrollbar-track { background: transparent; }
+    ::-webkit-scrollbar-thumb { background: var(--scrollbar-thumb); border-radius: 10px; }
+    ::-webkit-scrollbar-thumb:hover { background: var(--text-tertiary); }
 
-    .hex-badge {
-      position: relative;
-      width: 42px;
-      height: 42px;
-      flex-shrink: 0;
-      animation: floatLogo 3s ease-in-out infinite;
+    /* SPLASH SCREEN */
+    .splash-screen {
+      position: fixed; inset: 0; z-index: 99999; background: #0a0a14;
+      display: flex; align-items: center; justify-content: center;
+      transition: opacity 0.8s ease, visibility 0.8s ease;
+      opacity: 1; visibility: visible; overflow: hidden;
     }
-
-    .hex-badge::before,
-    .hex-badge::after {
-      content: "";
-      position: absolute;
-      inset: 0;
+    .splash-screen.hidden { opacity: 0; visibility: hidden; pointer-events: none; }
+    .splash-logo-wrap { position: relative; z-index: 10; display: flex; flex-direction: column; align-items: center; justify-content: center; }
+    .splash-hex-wrapper { position: relative; width: 120px; height: 120px; animation: logoFloat 2.5s ease-in-out infinite; }
+    @media (min-width: 768px) { .splash-hex-wrapper { width: 160px; height: 160px; } .splash-hex-text { font-size: 3rem; } }
+    @media (min-width: 1024px) { .splash-hex-wrapper { width: 180px; height: 180px; } .splash-hex-text { font-size: 3.4rem; } }
+    @keyframes logoFloat { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-10px); } }
+    .splash-hex {
+      position: absolute; inset: 0;
+      background: linear-gradient(135deg, #6d5dfc, #b44cf5);
       clip-path: polygon(50% 0%, 100% 25%, 100% 75%, 50% 100%, 0% 75%, 0% 25%);
-      background: linear-gradient(135deg, var(--accent), var(--accent-2));
-      box-shadow: var(--glow);
+      animation: splashHexSpin 1.8s cubic-bezier(0.4,0,0.2,1) forwards;
     }
-
-    .hex-badge::after {
-      inset: 5px;
-      background: rgba(10,10,20,0.9);
-      box-shadow: inset 0 0 0 1px rgba(255,255,255,0.06);
+    @keyframes splashHexSpin { 0% { transform: rotate(0deg) scale(0); opacity: 0; } 50% { transform: rotate(180deg) scale(1.1); opacity: 1; } 100% { transform: rotate(360deg) scale(1); opacity: 1; } }
+    .splash-hex-inner {
+      position: absolute; inset: 5px; background: #0a0a14;
+      clip-path: polygon(50% 0%, 100% 25%, 100% 75%, 50% 100%, 0% 75%, 0% 25%);
+      display: flex; align-items: center; justify-content: center;
     }
-
-    .hex-badge span {
-      position: absolute;
-      inset: 0;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-weight: 800;
-      font-size: 0.7rem;
-      letter-spacing: 0.08em;
-      background: linear-gradient(135deg, #d5caff, #a45cff);
-      -webkit-background-clip: text;
-      background-clip: text;
-      color: transparent;
-      z-index: 2;
+    .splash-hex-text {
+      font-family: 'Orbitron', monospace; font-weight: 900; font-size: 2.2rem;
+      background: linear-gradient(135deg, #8b7cff, #d27cff);
+      -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;
+      letter-spacing: 2px;
     }
-
-    .brand-copy {
-      min-width: 0;
-      display: flex;
-      flex-direction: column;
-      gap: 2px;
+    .splash-ring {
+      position: absolute; inset: -15px; border-radius: 50%;
+      border: 2px solid transparent; border-top-color: #6d5dfc; border-bottom-color: #b44cf5;
+      animation: ringSpin 2s linear infinite; opacity: 0.4;
     }
+    @keyframes ringSpin { 0% { transform: rotate(0deg); } 100% { transform: rotate(360deg); } }
 
-    .brand-title {
-      display: flex;
-      align-items: center;
-      gap: 8px;
-      font-weight: 700;
-      letter-spacing: 0.02em;
-      white-space: nowrap;
+    /* CHAT HEADER */
+    .chat-header { padding: 12px 16px; background: var(--header-bg); backdrop-filter: blur(18px) saturate(160%); -webkit-backdrop-filter: blur(18px) saturate(160%); border-bottom: 1px solid var(--border); flex-shrink: 0; z-index: 40; }
+    .header-row { display: flex; justify-content: space-between; align-items: center; gap: 12px; max-width: 1400px; margin: 0 auto; width: 100%; }
+    .logo-area { display: flex; align-items: center; gap: 12px; flex-shrink: 0; }
+    .logo-icon-wrapper { position: relative; width: 40px; height: 40px; flex-shrink: 0; }
+    @media (min-width: 768px) { .logo-icon-wrapper { width: 46px; height: 46px; } .logo-text { font-size: 0.75rem; } .brand-name { font-size: 1.05rem; } .title p { font-size: 0.65rem; } }
+    .logo-hexagon {
+      position: absolute; inset: 0; background: linear-gradient(135deg, var(--accent), var(--accent2));
+      clip-path: polygon(50% 0%, 100% 25%, 100% 75%, 50% 100%, 0% 75%, 0% 25%);
+      animation: logoRotate 10s linear infinite;
     }
-
-    .brand-name {
-      font-size: 1.02rem;
+    @keyframes logoRotate { 0% { transform: rotate(0deg); } 100% { transform: rotate(360deg); } }
+    .logo-inner {
+      position: absolute; inset: 3px; display: flex; align-items: center; justify-content: center; z-index: 2;
+      background: var(--bg-secondary); clip-path: polygon(50% 0%, 100% 25%, 100% 75%, 50% 100%, 0% 75%, 0% 25%);
     }
+    .logo-text { font-family: 'Orbitron', monospace; font-weight: 900; font-size: 0.65rem; background: linear-gradient(135deg, var(--accent), var(--accent2)); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; }
+    .title h2 { font-size: 1rem; font-weight: 700; color: var(--text); display: flex; align-items: center; gap: 6px; }
+    .brand-name { font-family: 'Orbitron', monospace; font-weight: 700; font-size: 0.95rem; letter-spacing: 0.5px; }
+    .status-dot { display: inline-block; width: 7px; height: 7px; border-radius: 50%; background: var(--green); animation: pulseStatus 2s infinite; }
+    @keyframes pulseStatus { 0%, 100% { transform: scale(1); opacity: 1; } 50% { transform: scale(1.2); opacity: 0.6; } }
+    .subtitle-row { display: flex; align-items: center; gap: 8px; margin-top: 1px; }
+    .title p { font-size: 0.6rem; color: var(--text-tertiary); letter-spacing: 0.3px; }
+    .version-badge { font-size: 0.5rem; background: var(--accent-light); color: var(--accent); padding: 1px 6px; border-radius: 8px; font-weight: 600; border: 1px solid var(--accent-glow); }
+    .header-actions { display: flex; align-items: center; gap: 6px; flex-shrink: 0; }
+    .icon-btn { background: var(--bg-tertiary); border: 1px solid var(--border); width: 36px; height: 36px; border-radius: 10px; display: flex; align-items: center; justify-content: center; cursor: pointer; transition: all 0.3s ease; color: var(--text-secondary); position: relative; }
+    @media (min-width: 768px) { .icon-btn { width: 42px; height: 42px; border-radius: 12px; } .icon-btn svg { width: 18px; height: 18px; } }
+    .icon-btn:hover { background: var(--accent-light); color: var(--accent); border-color: var(--accent-glow); transform: scale(1.04); }
+    .icon-btn:active { transform: scale(0.95); }
+    .icon-btn svg { width: 16px; height: 16px; fill: none; stroke: currentColor; stroke-width: 2; stroke-linecap: round; stroke-linejoin: round; }
 
-    .live-dot {
-      width: 8px;
-      height: 8px;
-      border-radius: 50%;
-      background: var(--success);
-      box-shadow: 0 0 0 0 rgba(41, 209, 125, 0.7);
-      animation: livePulse 1.8s infinite;
-    }
-
-    .brand-sub {
-      font-size: 0.68rem;
-      color: var(--text-muted);
-      display: flex;
-      align-items: center;
-      gap: 8px;
-      white-space: nowrap;
-    }
-
-    .pill {
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      padding: 3px 8px;
-      border-radius: 999px;
-      background: rgba(124,108,255,0.12);
-      border: 1px solid rgba(124,108,255,0.25);
-      color: #d3cbff;
-      font-size: 0.56rem;
-      font-weight: 700;
-      letter-spacing: 0.04em;
-      text-transform: uppercase;
-    }
-
-    .topbar-actions {
-      display: flex;
-      align-items: center;
-      gap: 8px;
-    }
-
-    .icon-btn {
-      width: 38px;
-      height: 38px;
-      border: 1px solid var(--line);
-      background: rgba(255,255,255,0.02);
-      color: var(--text-soft);
-      border-radius: 12px;
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      cursor: pointer;
-      transition: transform 0.2s ease, border-color 0.2s ease, background 0.2s ease, color 0.2s ease;
-    }
-
-    .icon-btn:hover {
-      background: rgba(124,108,255,0.1);
-      border-color: rgba(124,108,255,0.35);
-      color: #d5cbff;
-      transform: translateY(-1px);
-    }
-
-    .icon-btn svg {
-      width: 17px;
-      height: 17px;
-      stroke: currentColor;
-      fill: none;
-      stroke-width: 2;
-      stroke-linecap: round;
-      stroke-linejoin: round;
-    }
-
-    .mode-bar {
-      display: flex;
-      gap: 8px;
-      padding: 10px 14px 12px;
-      overflow-x: auto;
-      scrollbar-width: none;
-      border-bottom: 1px solid var(--line);
-      background: rgba(15, 18, 25, 0.72);
-      backdrop-filter: blur(16px);
-      -webkit-backdrop-filter: blur(16px);
-    }
-
+    /* MODE BAR */
+    .mode-bar { display: flex; gap: 6px; padding: 8px 14px; background: var(--header-bg); backdrop-filter: blur(18px); -webkit-backdrop-filter: blur(18px); border-bottom: 1px solid var(--border); flex-shrink: 0; overflow-x: auto; white-space: nowrap; scrollbar-width: none; z-index: 35; justify-content: center; }
     .mode-bar::-webkit-scrollbar { display: none; }
+    .mode-chip { padding: 8px 14px; border-radius: 10px; font-size: 0.7rem; font-weight: 600; background: var(--bg-tertiary); color: var(--text-secondary); cursor: pointer; transition: all 0.3s ease; border: 1.5px solid transparent; display: inline-flex; align-items: center; gap: 6px; flex-shrink: 0; letter-spacing: 0.01em; }
+    .mode-chip:hover { background: var(--accent-soft); color: var(--text); }
+    .mode-chip svg.mode-icon { width: 16px; height: 16px; fill: none; stroke: currentColor; stroke-width: 2; stroke-linecap: round; stroke-linejoin: round; transition: transform 0.3s ease; }
+    .mode-chip.active { background: var(--accent-light); color: var(--accent); border-color: var(--accent); box-shadow: var(--shadow-glow); }
+    .mode-chip.active svg.mode-icon { transform: scale(1.1); }
 
-    .mode-chip {
-      display: inline-flex;
-      align-items: center;
-      gap: 8px;
-      border: 1px solid var(--line);
-      background: rgba(255,255,255,0.02);
-      border-radius: 12px;
-      color: var(--text-soft);
-      padding: 9px 12px;
-      font-size: 0.74rem;
-      font-weight: 700;
-      cursor: pointer;
-      white-space: nowrap;
-      transition: all 0.25s ease;
-      user-select: none;
-    }
-
-    .mode-chip svg {
-      width: 15px;
-      height: 15px;
-      stroke: currentColor;
-      fill: none;
-      stroke-linecap: round;
-      stroke-linejoin: round;
-      stroke-width: 2;
-    }
-
-    .mode-chip:hover {
-      transform: translateY(-1px);
-      border-color: rgba(124,108,255,0.3);
-      background: rgba(124,108,255,0.08);
-    }
-
-    .mode-chip.active {
-      background: linear-gradient(135deg, rgba(124,108,255,0.18), rgba(164,92,255,0.14));
-      color: #e9e4ff;
-      border-color: rgba(124,108,255,0.4);
-      box-shadow: 0 12px 28px rgba(124,108,255,0.12);
-    }
-
-    .chat-area {
-      flex: 1;
-      overflow-y: auto;
-      overflow-x: hidden;
-      padding: 18px 18px 14px;
-      scroll-behavior: smooth;
-      -webkit-overflow-scrolling: touch;
-    }
-
-    .chat-area::before {
-      content: "";
-      display: block;
-      height: 8px;
-    }
-
-    .message-row {
-      display: flex;
-      align-items: flex-start;
-      gap: 10px;
-      margin-bottom: 14px;
-      animation: fadeSlideIn 0.35s ease;
-    }
-
-    .message-row.user { justify-content: flex-end; }
-
-    .message-row.ai { justify-content: flex-start; }
-
-    .avatar {
-      width: 32px;
-      height: 32px;
-      border-radius: 10px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-size: 0.65rem;
-      font-weight: 800;
-      flex-shrink: 0;
-      margin-top: 2px;
-      letter-spacing: 0.04em;
-      border: 1px solid var(--line);
-    }
-
-    .avatar.ai {
-      background: rgba(124,108,255,0.08);
-      color: #d4cbff;
-    }
-
-    .avatar.user {
-      background: linear-gradient(135deg, var(--accent), var(--accent-2));
-      color: white;
-      border-color: rgba(255,255,255,0.2);
-    }
-
-    .bubble {
-      max-width: min(80%, 720px);
-      padding: 12px 14px;
-      border-radius: 18px;
-      line-height: 1.65;
-      word-wrap: break-word;
-      overflow-wrap: anywhere;
-      position: relative;
-    }
-
-    .message-row.ai .bubble {
-      background: rgba(255,255,255,0.03);
-      border: 1px solid var(--line);
-      color: var(--text);
-      border-top-left-radius: 8px;
-    }
-
-    .message-row.user .bubble {
-      background: linear-gradient(135deg, rgba(124,108,255,0.92), rgba(164,92,255,0.88));
-      color: white;
-      border-top-right-radius: 8px;
-      box-shadow: 0 14px 28px rgba(124,108,255,0.18);
-    }
-
-    .bubble code {
-      background: rgba(17,24,39,0.8);
-      border: 1px solid rgba(255,255,255,0.08);
-      border-radius: 8px;
-      font-size: 0.9em;
-      padding: 0.12em 0.42em;
-      font-family: "JetBrains Mono", Consolas, monospace;
-    }
-
-    .bubble pre {
-      margin: 10px 0;
-      background: rgba(17,24,39,0.9);
-      border: 1px solid rgba(255,255,255,0.08);
-      border-radius: 12px;
-      padding: 12px;
-      overflow-x: auto;
-    }
-
-    .bubble pre code {
-      background: transparent;
-      padding: 0;
-      border: none;
-      font-size: 0.86em;
-      white-space: pre;
-    }
-
-    .bubble strong {
-      color: #f3edff;
-    }
-
-    .bubble a {
-      color: #7fe6ff;
-    }
-
-    .message-meta {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      gap: 10px;
-      margin-top: 8px;
-      color: var(--text-muted);
-      font-size: 0.66rem;
-    }
-
-    .copy-btn {
-      display: inline-flex;
-      align-items: center;
-      gap: 6px;
-      border: 1px solid var(--line);
-      background: rgba(255,255,255,0.03);
-      color: var(--text-soft);
-      border-radius: 10px;
-      padding: 6px 8px;
-      font-size: 0.65rem;
-      font-weight: 600;
-      cursor: pointer;
-      transition: all 0.2s ease;
-    }
-
-    .copy-btn:hover {
-      border-color: rgba(124,108,255,0.35);
-      color: #e8defd;
-      background: rgba(124,108,255,0.08);
-    }
-
-    .copy-btn.copied {
-      background: rgba(41, 209, 125, 0.14);
-      border-color: rgba(41, 209, 125, 0.35);
-      color: #bff7d9;
-    }
-
-    .typing {
-      display: inline-flex;
-      align-items: center;
-      gap: 7px;
-      padding: 10px 14px;
-      border-radius: 16px;
-      border: 1px solid var(--line);
-      background: rgba(255,255,255,0.02);
-      width: auto;
-      max-width: 200px;
-      animation: fadeSlideIn 0.25s ease;
-    }
-
-    .typing span {
-      width: 8px;
-      height: 8px;
-      border-radius: 50%;
-      background: linear-gradient(135deg, var(--accent), var(--accent-2));
-      animation: bounce 1.25s infinite ease-in-out;
-    }
-
-    .typing span:nth-child(2) { animation-delay: 0.15s; }
-    .typing span:nth-child(3) { animation-delay: 0.3s; }
-
-    .composer {
-      position: relative;
-      z-index: 10;
-      padding: 12px 14px calc(12px + var(--safe-bottom));
-      border-top: 1px solid var(--line);
-      background: rgba(10, 12, 18, 0.8);
-      backdrop-filter: blur(18px);
-      -webkit-backdrop-filter: blur(18px);
-    }
-
-    .composer-inner {
-      max-width: 1080px;
-      margin: 0 auto;
-      background: rgba(22, 27, 42, 0.92);
-      border: 1px solid var(--line);
-      border-radius: 18px;
-      overflow: hidden;
-      box-shadow: 0 10px 26px rgba(0,0,0,0.2);
-    }
-
-    .preview-area {
-      display: flex;
-      align-items: center;
-      gap: 8px;
-      flex-wrap: nowrap;
-      overflow-x: auto;
-      padding: 10px 12px 0;
-      min-height: 12px;
-      scrollbar-width: none;
-    }
-
-    .preview-area::-webkit-scrollbar { display: none; }
-
-    .preview-item {
-      position: relative;
-      width: 54px;
-      height: 54px;
-      border-radius: 12px;
-      overflow: hidden;
-      background: rgba(255,255,255,0.04);
-      border: 1px solid rgba(255,255,255,0.08);
-      flex-shrink: 0;
-    }
-
-    .preview-item img {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-      display: block;
-    }
-
-    .remove-item {
-      position: absolute;
-      top: 4px;
-      right: 4px;
-      width: 16px;
-      height: 16px;
-      border: none;
-      border-radius: 50%;
-      background: rgba(0,0,0,0.68);
-      color: #fff;
-      font-size: 0.72rem;
-      cursor: pointer;
-      line-height: 1;
-    }
-
-    .composer-row {
-      display: flex;
-      align-items: flex-end;
-      gap: 8px;
-      padding: 10px 12px 12px;
-    }
-
-    .tool-btn {
-      width: 42px;
-      height: 42px;
-      border-radius: 12px;
-      border: 1px solid var(--line);
-      background: transparent;
-      color: var(--text-soft);
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      cursor: pointer;
-      transition: all 0.2s ease;
-      flex-shrink: 0;
-    }
-
-    .tool-btn:hover {
-      background: rgba(124,108,255,0.1);
-      border-color: rgba(124,108,255,0.35);
-      color: #ddd1ff;
-    }
-
-    .tool-btn svg { width: 18px; height: 18px; stroke: currentColor; fill: none; stroke-width: 2; }
-
-    textarea {
-      flex: 1;
-      min-height: 34px;
-      max-height: 160px;
-      resize: none;
-      border: none;
-      outline: none;
-      background: transparent;
-      color: var(--text);
-      padding: 8px 4px 6px;
-      font-size: 1rem;
-      line-height: 1.5;
-      scrollbar-width: thin;
-    }
-
-    textarea::placeholder {
-      color: var(--text-muted);
-    }
-
-    .send-btn {
-      width: 44px;
-      height: 44px;
-      border: none;
-      border-radius: 12px;
-      background: linear-gradient(135deg, var(--accent), var(--accent-2));
-      color: white;
-      font-size: 1.15rem;
-      font-weight: 700;
-      cursor: pointer;
-      box-shadow: 0 16px 28px rgba(124,108,255,0.22);
-      transition: transform 0.2s ease, box-shadow 0.2s ease;
-      flex-shrink: 0;
-    }
-
-    .send-btn:hover {
-      transform: translateY(-1px) scale(1.01);
-      box-shadow: 0 18px 32px rgba(124,108,255,0.26);
-    }
-
-    .send-btn:disabled {
-      cursor: not-allowed;
-      opacity: 0.7;
-      transform: none;
-    }
-
-    .floating-scroll {
+    /* SCROLL DOWN BUTTON */
+    .scroll-down-btn {
       position: fixed;
       right: 24px;
-      bottom: 122px;
-      width: 48px;
-      height: 48px;
-      border: 1px solid rgba(124,108,255,0.45);
-      background: rgba(124,108,255,0.08);
-      color: #d9d3ff;
+      bottom: 140px;
+      width: 56px;
+      height: 56px;
       border-radius: 50%;
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      box-shadow: 0 12px 32px rgba(124,108,255,0.18);
-      cursor: pointer;
-      opacity: 0;
-      pointer-events: none;
-      transform: translateY(14px);
-      transition: all 0.28s ease;
-      z-index: 30;
-    }
-
-    .floating-scroll.visible {
-      opacity: 1;
-      pointer-events: auto;
-      transform: translateY(0);
-    }
-
-    .floating-scroll svg {
-      width: 18px;
-      height: 18px;
-      stroke: currentColor;
-      fill: none;
-      stroke-width: 2.4;
-      stroke-linecap: round;
-      stroke-linejoin: round;
-    }
-
-    .overlay {
-      position: fixed;
-      inset: 0;
-      background: rgba(6, 8, 12, 0.6);
-      backdrop-filter: blur(6px);
-      -webkit-backdrop-filter: blur(6px);
+      background: var(--accent-light);
+      border: 2px solid var(--accent);
+      color: var(--accent);
       display: flex;
       align-items: center;
       justify-content: center;
-      z-index: 50;
+      cursor: pointer;
+      z-index: 100;
       opacity: 0;
       visibility: hidden;
-      transition: opacity 0.25s ease, visibility 0.25s ease;
+      transform: translateY(20px);
+      transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+      box-shadow: 0 4px 20px var(--accent-glow);
+      pointer-events: none;
+      backdrop-filter: blur(10px);
+      -webkit-backdrop-filter: blur(10px);
     }
-
-    .overlay.visible {
+    .scroll-down-btn.visible {
       opacity: 1;
       visibility: visible;
+      transform: translateY(0);
+      pointer-events: auto;
+    }
+    .scroll-down-btn:hover {
+      background: var(--accent);
+      color: #fff;
+      transform: translateY(0) scale(1.1);
+      box-shadow: 0 8px 28px var(--accent-glow);
+      border-color: var(--accent);
+    }
+    .scroll-down-btn:active { transform: translateY(0) scale(0.92); }
+    .scroll-down-btn svg { width: 24px; height: 24px; fill: none; stroke: currentColor; stroke-width: 2.5; stroke-linecap: round; stroke-linejoin: round; }
+    @media (max-width: 768px) {
+      .scroll-down-btn { right: 16px; bottom: calc(90px + var(--safe-bottom)); width: 48px; height: 48px; }
+      .scroll-down-btn svg { width: 20px; height: 20px; }
     }
 
-    .welcome-box,
-    .about-box,
-    .auth-box,
-    .history-panel {
-      position: relative;
-      border: 1px solid var(--line);
-      background: rgba(18, 23, 32, 0.96);
-      box-shadow: var(--shadow);
-    }
+    /* CHAT AREA */
+    .chat-area { flex: 1; overflow-y: auto; overflow-x: hidden; padding: 16px; display: flex; flex-direction: column; gap: 16px; scroll-behavior: smooth; -webkit-overflow-scrolling: touch; overscroll-behavior: contain; z-index: 10; max-width: 1200px; width: 100%; margin: 0 auto; min-height: 0; }
+    .message-wrap { display: flex; gap: 10px; animation: messageSlideIn 0.35s ease; width: 100%; max-width: 100%; }
+    .message-wrap.user { flex-direction: row-reverse; }
+    .message-wrap.ai { flex-direction: row; }
+    @keyframes messageSlideIn { 0% { opacity: 0; transform: translateY(10px); } 100% { opacity: 1; transform: translateY(0); } }
+    .msg-avatar { width: 34px; height: 34px; border-radius: 10px; flex-shrink: 0; display: flex; align-items: center; justify-content: center; font-size: 0.7rem; font-weight: 700; margin-top: 2px; }
+    .msg-avatar.ai-avatar { background: var(--avatar-ai-bg); color: var(--accent); border: 1px solid var(--border-strong); }
+    .msg-avatar.user-avatar { background: linear-gradient(135deg, var(--accent), var(--accent2)); color: #fff; }
+    .msg-body { flex: 1; min-width: 0; display: flex; flex-direction: column; }
+    .message-wrap.user .msg-body { align-items: flex-end; }
+    .message-wrap.ai .msg-body { align-items: flex-start; }
+    .ai-text { font-size: 1.05rem; line-height: 1.7; color: var(--ai-text); word-break: break-word; overflow-wrap: break-word; white-space: pre-wrap; padding: 2px 0; }
+    .ai-text h1, .ai-text h2, .ai-text h3, .ai-text h4 { color: var(--accent) !important; font-weight: 700; margin: 0.8em 0 0.4em; line-height: 1.4; }
+    .ai-text h1 { font-size: 1.6rem; } .ai-text h2 { font-size: 1.4rem; } .ai-text h3 { font-size: 1.2rem; } .ai-text h4 { font-size: 1.05rem; }
+    .ai-text b, .ai-text strong { color: var(--accent) !important; font-weight: 700; }
+    .ai-text code { background: var(--bg-tertiary); padding: 0.2em 0.4em; border-radius: 4px; font-size: 0.9em; font-family: 'JetBrains Mono', monospace; color: var(--accent) !important; border: 1px solid var(--border); }
+    .ai-text pre { background: var(--bg-tertiary); padding: 1em; border-radius: 8px; overflow-x: auto; margin: 0.8em 0; border: 1px solid var(--border); }
+    .ai-text pre code { background: none; padding: 0; border: none; color: var(--text); }
+    .ai-text blockquote { border-left: 3px solid var(--accent); padding: 0.6em 0.8em; margin: 0.8em 0; color: var(--text-secondary); font-style: italic; background: var(--accent-soft); border-radius: 0 8px 8px 0; }
+    .user-bubble-wrap { background: var(--user-bubble); color: var(--user-bubble-text); padding: 12px 16px; border-radius: 18px 18px 4px 18px; font-size: 1.05rem; line-height: 1.7; word-break: break-word; overflow-wrap: break-word; white-space: pre-wrap; max-width: 100%; box-shadow: var(--shadow-sm); }
+    .msg-footer { display: flex; align-items: center; justify-content: space-between; margin-top: 4px; font-size: 0.7rem; color: var(--text-tertiary); width: 100%; gap: 10px; }
+    .message-wrap.user .msg-footer { justify-content: flex-end; }
+    .copy-btn { display: inline-flex; align-items: center; gap: 6px; background: var(--copy-btn-bg); border: 1px solid var(--border); color: var(--text-secondary); cursor: pointer; padding: 8px 14px; border-radius: 8px; font-size: 0.8rem; font-weight: 500; transition: all 0.3s; opacity: 0.85; white-space: nowrap; }
+    .copy-btn:hover { opacity: 1; background: var(--copy-btn-hover); color: var(--accent); border-color: var(--accent-glow); transform: scale(1.04); }
+    .copy-btn.copied { background: var(--green); color: #fff; border-color: var(--green); }
 
-    .welcome-box {
-      width: min(420px, calc(100% - 24px));
-      padding: 30px 24px 22px;
-      border-radius: 28px;
-      text-align: center;
-    }
-
-    .welcome-logo {
-      position: relative;
-      width: 80px;
-      height: 80px;
-      margin: 0 auto 20px;
-      animation: floatLogo 3.3s ease-in-out infinite;
-    }
-
-    .welcome-logo::before,
-    .welcome-logo::after {
-      content: "";
-      position: absolute;
-      inset: 0;
-      clip-path: polygon(50% 0%, 100% 25%, 100% 75%, 50% 100%, 0% 75%, 0% 25%);
-      background: linear-gradient(135deg, var(--accent), var(--accent-2));
-    }
-
-    .welcome-logo::after {
-      inset: 6px;
-      background: rgba(10,10,20,0.9);
-    }
-
-    .welcome-logo span {
-      position: absolute;
-      inset: 0;
+    /* THINKING INDICATOR */
+    .thinking-indicator {
       display: flex;
       align-items: center;
-      justify-content: center;
-      font-weight: 900;
-      font-size: 1.2rem;
-      background: linear-gradient(135deg, #d6ceff, #b47af7);
-      -webkit-background-clip: text;
-      background-clip: text;
-      color: transparent;
-      z-index: 3;
-    }
-
-    .welcome-title {
-      font-size: clamp(1.7rem, 3vw, 2.3rem);
-      font-weight: 800;
-      letter-spacing: -0.04em;
-      margin-bottom: 6px;
-    }
-
-    .welcome-title .accent {
-      background: linear-gradient(135deg, var(--accent), var(--accent-2));
-      -webkit-background-clip: text;
-      background-clip: text;
-      color: transparent;
-    }
-
-    .welcome-sub {
-      color: var(--text-soft);
-      margin-bottom: 24px;
-      line-height: 1.6;
-    }
-
-    .stack {
-      display: flex;
-      flex-direction: column;
-      gap: 10px;
-    }
-
-    .primary-btn,
-    .secondary-btn,
-    .close-btn,
-    .history-btn,
-    .auth-submit {
-      border: none;
-      border-radius: 14px;
-      cursor: pointer;
-      font-weight: 700;
-      transition: transform 0.2s ease, box-shadow 0.2s ease, opacity 0.2s ease;
-    }
-
-    .primary-btn {
-      background: linear-gradient(135deg, var(--accent), var(--accent-2));
-      color: white;
-      padding: 14px 18px;
-      box-shadow: 0 16px 28px rgba(124,108,255,0.18);
-    }
-
-    .secondary-btn {
-      background: rgba(255,255,255,0.03);
-      border: 1px solid var(--line);
-      color: var(--text);
-      padding: 13px 18px;
-    }
-
-    .primary-btn:hover,
-    .secondary-btn:hover,
-    .close-btn:hover,
-    .history-btn:hover,
-    .auth-submit:hover {
-      transform: translateY(-1px);
-    }
-
-    .about-box {
-      width: min(560px, calc(100% - 22px));
-      padding: 24px 20px 18px;
-      border-radius: 26px;
-    }
-
-    .about-header {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      margin-bottom: 14px;
-    }
-
-    .about-box h3 {
-      margin: 0;
-      font-size: 1.5rem;
-      letter-spacing: -0.03em;
-    }
-
-    .close-btn {
-      width: 36px;
-      height: 36px;
-      background: rgba(255,255,255,0.03);
-      border: 1px solid var(--line);
-      color: var(--text-soft);
-      font-size: 1.05rem;
-    }
-
-    .about-sub {
-      text-align: center;
-      color: var(--text-soft);
-      margin: 0 0 18px;
-    }
-
-    .dev-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
-      gap: 12px;
-      margin-top: 16px;
-    }
-
-    .dev-card {
-      background: rgba(255,255,255,0.02);
-      border: 1px solid var(--line);
-      border-radius: 16px;
-      padding: 14px 12px 12px;
-      text-align: center;
-    }
-
-    .dev-card img {
-      width: 74px;
-      height: 74px;
-      object-fit: cover;
-      border-radius: 50%;
-      border: 2px solid rgba(124,108,255,0.4);
-      margin-bottom: 10px;
-    }
-
-    .dev-card strong {
-      display: block;
-      margin-bottom: 2px;
-      font-size: 0.95rem;
-    }
-
-    .dev-card span {
-      color: var(--text-muted);
-      font-size: 0.72rem;
-    }
-
-    .auth-box {
-      width: min(430px, calc(100% - 22px));
-      padding: 24px 20px 18px;
-      border-radius: 24px;
-    }
-
-    .auth-head {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      margin-bottom: 16px;
-    }
-
-    .auth-head h3 {
-      margin: 0;
-      font-size: 1.45rem;
-      letter-spacing: -0.03em;
-    }
-
-    .auth-sub {
-      color: var(--text-soft);
-      margin: 0 0 18px;
-      line-height: 1.5;
-    }
-
-    .tab-row {
-      display: flex;
       gap: 8px;
-      padding: 5px;
-      border-radius: 14px;
-      background: rgba(255,255,255,0.03);
-      border: 1px solid var(--line);
-      margin-bottom: 18px;
+      padding: 12px 16px;
+      background: var(--bg-tertiary);
+      border-radius: 16px;
+      border: 1px solid var(--border);
+      margin: 8px 0;
+      animation: fadeIn 0.3s ease;
     }
+    .thinking-dots { display: flex; align-items: center; gap: 6px; }
+    .thinking-dot { width: 10px; height: 10px; border-radius: 50%; background: var(--accent); animation: thinkingBounce 1.2s infinite ease-in-out; }
+    .thinking-dot:nth-child(2) { animation-delay: 0.15s; background: var(--accent2); }
+    .thinking-dot:nth-child(3) { animation-delay: 0.3s; background: var(--accent); }
+    .thinking-text { font-size: 0.85rem; color: var(--text-secondary); font-weight: 500; animation: thinkingPulse 1.2s infinite ease-in-out; }
+    @keyframes thinkingBounce { 0%, 80%, 100% { transform: scale(0.6); opacity: 0.5; } 40% { transform: scale(1.2); opacity: 1; } }
+    @keyframes thinkingPulse { 0%, 100% { opacity: 0.6; } 50% { opacity: 1; } }
+    @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
 
-    .tab {
-      flex: 1;
-      padding: 10px 12px;
-      border-radius: 10px;
-      background: transparent;
-      color: var(--text-soft);
-      border: none;
-      font-weight: 700;
-      cursor: pointer;
-    }
+    /* INPUT AREA - DESKTOP */
+    .input-area { padding: 10px 14px calc(10px + var(--safe-bottom)); background: var(--header-bg); backdrop-filter: blur(20px); -webkit-backdrop-filter: blur(20px); border-top: 1px solid var(--border); flex-shrink: 0; z-index: 40; }
+    .input-row { background: var(--input-bg); border-radius: 16px; border: 1px solid var(--input-border); transition: all 0.3s ease; overflow: hidden; max-width: 1200px; margin: 0 auto; }
+    .input-row:focus-within { border-color: var(--accent); box-shadow: 0 0 0 3px var(--accent-soft); }
+    .input-preview-area { display: flex; gap: 8px; padding: 10px 14px 4px; overflow-x: auto; scrollbar-width: none; flex-wrap: nowrap; align-items: center; }
+    .input-preview-area::-webkit-scrollbar { display: none; }
+    .input-preview-area:empty { display: none; }
+    .input-preview-item { position: relative; width: 54px; height: 54px; border-radius: 10px; overflow: hidden; border: 1px solid var(--border-strong); flex-shrink: 0; background: var(--bg-secondary); }
+    .input-preview-item img { width: 100%; height: 100%; object-fit: cover; display: block; }
+    .input-preview-remove { position: absolute; top: 3px; right: 3px; width: 20px; height: 20px; border-radius: 50%; background: rgba(0,0,0,0.6); color: #fff; border: none; font-size: 0.55rem; display: flex; align-items: center; justify-content: center; cursor: pointer; }
+    .input-bottom-row { display: flex; align-items: center; gap: 6px; padding: 4px 6px 6px 14px; }
+    .input-bottom-row textarea { flex: 1; background: transparent; border: none; padding: 8px 0; font-size: 1rem; color: var(--text); outline: none; resize: none; min-height: 24px; max-height: 110px; line-height: 1.5; font-family: 'Plus Jakarta Sans', sans-serif; overflow-y: auto; }
+    .input-bottom-row textarea::placeholder { color: var(--text-tertiary); }
+    .file-upload-btn { background: none; border: none; width: 40px; height: 40px; padding: 5px; border-radius: 10px; color: var(--text-tertiary); cursor: pointer; transition: all 0.3s; flex-shrink: 0; display: flex; align-items: center; justify-content: center; }
+    .file-upload-btn:hover { color: var(--accent); background: var(--accent-light); }
+    .file-upload-btn svg { width: 20px; height: 20px; }
+    .send-btn { background: linear-gradient(135deg, var(--accent), var(--accent2)); color: #fff; font-weight: 600; border-radius: 12px; padding: 8px 14px; font-size: 1.2rem; border: none; cursor: pointer; transition: all 0.3s; flex-shrink: 0; width: 44px; height: 44px; display: flex; align-items: center; justify-content: center; box-shadow: var(--shadow-sm); }
+    .send-btn:hover { transform: scale(1.04); box-shadow: var(--shadow-md); }
+    .send-btn:active { transform: scale(0.92); }
+    footer { font-size: 0.65rem; text-align: center; padding: 6px; color: var(--text-tertiary); background: var(--header-bg); border-top: 1px solid var(--border); flex-shrink: 0; letter-spacing: 0.4px; }
 
-    .tab.active {
-      background: linear-gradient(135deg, rgba(124,108,255,0.18), rgba(164,92,255,0.12));
-      color: #efeaff;
-      border: 1px solid rgba(124,108,255,0.28);
-    }
+    /* ============ MOBILE SPECIFIC STYLES ============ */
+    @media (max-width: 768px) {
+      /* Header mobile - DIPERBESAR */
+      .chat-header { padding: 12px 14px; }
+      .logo-icon-wrapper { width: 44px; height: 44px; }
+      .brand-name { font-size: 1rem; }
+      .title h2 { font-size: 1.1rem; }
+      .title p { font-size: 0.65rem; }
+      .version-badge { font-size: 0.55rem; padding: 2px 6px; }
+      .icon-btn { width: 44px; height: 44px; border-radius: 12px; }
+      .icon-btn svg { width: 20px; height: 20px; }
 
-    .form-grid {
-      display: grid;
-      gap: 12px;
-    }
+      /* Mode bar mobile */
+      .mode-bar { padding: 6px 10px; gap: 6px; }
+      .mode-chip { padding: 8px 14px; font-size: 0.75rem; gap: 6px; }
+      .mode-chip svg.mode-icon { width: 16px; height: 16px; }
 
-    .field {
-      width: 100%;
-      padding: 13px 14px;
-      border-radius: 12px;
-      border: 1px solid var(--line);
-      background: rgba(255,255,255,0.02);
-      color: var(--text);
-      outline: none;
-    }
+      /* Chat area mobile */
+      .chat-area { padding: 14px 12px; gap: 14px; }
 
-    .field:focus {
-      border-color: rgba(124,108,255,0.45);
-      box-shadow: 0 0 0 3px rgba(124,108,255,0.12);
-    }
+      /* Teks AI mobile - DIPERKECIL */
+      .ai-text { font-size: 0.85rem; line-height: 1.55; }
+      .ai-text h1 { font-size: 1.2rem; }
+      .ai-text h2 { font-size: 1.1rem; }
+      .ai-text h3 { font-size: 1rem; }
+      .ai-text h4 { font-size: 0.9rem; }
+      .user-bubble-wrap { font-size: 0.85rem; padding: 10px 14px; line-height: 1.55; }
+      .msg-avatar { width: 30px; height: 30px; font-size: 0.65rem; }
+      .msg-footer { font-size: 0.65rem; }
+      .copy-btn { padding: 6px 10px; font-size: 0.7rem; }
 
-    .auth-submit {
-      width: 100%;
-      margin-top: 8px;
-      padding: 14px 18px;
-      background: linear-gradient(135deg, var(--accent), var(--accent-2));
-      color: white;
-    }
-
-    .subtle-link {
-      display: block;
-      margin-top: 12px;
-      background: none;
-      border: none;
-      color: #cdbaff;
-      font-weight: 600;
-      cursor: pointer;
-      text-align: center;
-    }
-
-    .status-text {
-      min-height: 20px;
-      margin-top: 12px;
-      font-size: 0.8rem;
-      line-height: 1.5;
-    }
-
-    .status-text.error { color: #ff9cab; }
-    .status-text.success { color: #9ef0c2; }
-
-    .history-panel {
-      position: fixed;
-      top: 0;
-      right: 0;
-      height: 100dvh;
-      width: min(400px, 100%);
-      transform: translateX(110%);
-      transition: transform 0.3s ease;
-      z-index: 60;
-      display: flex;
-      flex-direction: column;
-      background: rgba(11, 16, 22, 0.98);
-      border-left: 1px solid var(--line);
-    }
-
-    .history-panel.open {
-      transform: translateX(0);
-    }
-
-    .history-header {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      padding: 18px 16px 14px;
-      border-bottom: 1px solid var(--line);
-    }
-
-    .history-header h3 {
-      margin: 0;
-      font-size: 1.2rem;
-    }
-
-    .history-body {
-      flex: 1;
-      overflow-y: auto;
-      padding: 12px 14px 16px;
-    }
-
-    .history-login-wrap {
-      padding: 12px 0 10px;
-    }
-
-    .history-login-btn,
-    .clear-btn {
-      width: 100%;
-      border-radius: 12px;
-      border: 1px solid rgba(124,108,255,0.35);
-      background: rgba(124,108,255,0.08);
-      color: #ecdefd;
-      padding: 12px 14px;
-      font-weight: 700;
-      cursor: pointer;
-    }
-
-    .history-item {
-      background: rgba(255,255,255,0.02);
-      border: 1px solid var(--line);
-      border-radius: 14px;
-      padding: 12px;
-      margin-bottom: 10px;
-      cursor: pointer;
-      transition: border-color 0.2s ease, transform 0.2s ease, background 0.2s ease;
-    }
-
-    .history-item:hover {
-      border-color: rgba(124,108,255,0.3);
-      transform: translateX(-2px);
-      background: rgba(124,108,255,0.04);
-    }
-
-    .history-item strong {
-      display: block;
-      margin-bottom: 4px;
-      font-size: 0.92rem;
-    }
-
-    .history-item span {
-      display: block;
-      color: var(--text-muted);
-      font-size: 0.76rem;
-      overflow: hidden;
-      white-space: nowrap;
-      text-overflow: ellipsis;
-    }
-
-    .history-footer {
-      border-top: 1px solid var(--line);
-      padding: 12px 14px 16px;
-    }
-
-    .clear-btn {
-      background: rgba(255,255,255,0.03);
-      color: var(--text);
-      border-color: var(--line);
-    }
-
-    .hidden {
-      display: none !important;
-    }
-
-    @keyframes livePulse {
-      0% { box-shadow: 0 0 0 0 rgba(41,209,125,0.7); }
-      70% { box-shadow: 0 0 0 12px rgba(41,209,125,0); }
-      100% { box-shadow: 0 0 0 0 rgba(41,209,125,0); }
-    }
-
-    @keyframes floatLogo {
-      0%, 100% { transform: translateY(0); }
-      50% { transform: translateY(-8px); }
-    }
-
-    @keyframes fadeSlideIn {
-      from { opacity: 0; transform: translateY(10px); }
-      to { opacity: 1; transform: translateY(0); }
-    }
-
-    @keyframes bounce {
-      0%, 80%, 100% { transform: scale(0.7); opacity: 0.5; }
-      40% { transform: scale(1); opacity: 1; }
-    }
-
-    @media (max-width: 640px) {
-      .topbar {
-        padding: 12px 12px 10px;
+      /* Input area mobile - tetap 1 baris dan tidak terdorong */
+      .input-area { 
+        padding: 8px 10px calc(8px + var(--safe-bottom)); 
+        position: relative;
+        z-index: 50;
+      }
+      .input-row { 
+        border-radius: 14px; 
+        display: flex;
+        flex-direction: column;
+      }
+      .input-bottom-row { 
+        gap: 4px; 
+        padding: 4px 6px 6px 10px; 
+        align-items: center;
+        min-height: 52px;
+        display: flex;
+        flex-wrap: nowrap;
+      }
+      .input-bottom-row textarea { 
+        font-size: 0.9rem; 
+        padding: 6px 0; 
+        min-height: 24px; 
+        max-height: 24px; 
+        line-height: 1.3;
+        flex: 1;
+        white-space: nowrap;
+        overflow-x: hidden;
+        overflow-y: hidden;
+      }
+      .file-upload-btn { 
+        width: 44px; 
+        height: 44px; 
+        padding: 5px; 
+        border-radius: 12px; 
+        flex-shrink: 0;
+      }
+      .file-upload-btn svg { width: 20px; height: 20px; }
+      .send-btn { 
+        width: 48px; 
+        height: 48px; 
+        font-size: 1.2rem; 
+        border-radius: 14px; 
+        padding: 10px 14px; 
+        flex-shrink: 0;
       }
 
-      .brand-name {
-        font-size: 0.92rem;
-      }
-
-      .brand-sub {
-        font-size: 0.6rem;
-      }
-
-      .mode-bar {
-        padding-inline: 10px;
-      }
-
-      .chat-area {
-        padding: 14px 12px 10px;
-      }
-
-      .bubble {
-        max-width: 85%;
-      }
-
-      .composer {
-        padding-left: 10px;
-        padding-right: 10px;
-      }
-
-      .composer-row {
-        gap: 6px;
-      }
-
-      .tool-btn {
-        width: 38px;
-        height: 38px;
-      }
-
-      .send-btn {
-        width: 42px;
-        height: 42px;
-      }
-
-      .floating-scroll {
-        right: 14px;
-        bottom: 112px;
-      }
+      /* Footer mobile */
+      footer { font-size: 0.6rem; padding: 5px; }
     }
+
+    /* MODAL AUTH */
+    .auth-modal { position: fixed; inset: 0; background: var(--overlay); backdrop-filter: blur(10px); display: flex; align-items: center; justify-content: center; z-index: 2100; opacity: 0; visibility: hidden; transition: all 0.3s; padding: 20px; }
+    .auth-modal.visible { opacity: 1; visibility: visible; }
+    .auth-card { background: var(--card-bg); border-radius: 24px; padding: 28px 24px; width: 100%; max-width: 420px; border: 1px solid var(--border-strong); text-align: center; position: relative; box-shadow: var(--shadow-lg); }
+    @media (min-width: 768px) { .auth-card { max-width: 460px; padding: 36px 32px; } }
+    .auth-close-btn { position: absolute; top: 14px; right: 14px; width: 30px; height: 30px; border-radius: 50%; border: 1px solid var(--border); background: var(--bg-tertiary); color: var(--text-secondary); cursor: pointer; font-size: 1rem; display: flex; align-items: center; justify-content: center; transition: all 0.3s; }
+    .auth-close-btn:hover { background: var(--accent-light); color: var(--accent); border-color: var(--accent); }
+    .auth-card h3 { font-size: 1.7rem; font-weight: 700; color: var(--text); margin-bottom: 8px; }
+    .auth-subtitle { font-size: 0.95rem; color: var(--text-secondary); margin-bottom: 24px; }
+    .auth-tabs { display: flex; gap: 8px; margin-bottom: 24px; background: var(--bg-tertiary); padding: 4px; border-radius: 12px; }
+    .auth-tab { flex: 1; padding: 12px; border-radius: 8px; font-weight: 600; font-size: 0.95rem; cursor: pointer; transition: all 0.3s; border: none; background: transparent; color: var(--text-secondary); }
+    .auth-tab.active { background: var(--accent); color: #fff; box-shadow: var(--shadow-sm); }
+    .auth-card input { width: 100%; padding: 14px 18px; background: var(--bg-tertiary); border: 1.5px solid var(--border); border-radius: 10px; color: var(--text); font-size: 1rem; outline: none; margin-bottom: 14px; transition: all 0.3s; }
+    .auth-card input:focus { border-color: var(--accent); box-shadow: 0 0 0 3px var(--accent-soft); }
+    .auth-submit { background: linear-gradient(135deg, var(--accent), var(--accent2)); border: none; width: 100%; padding: 15px; border-radius: 10px; font-weight: 600; font-size: 1.1rem; cursor: pointer; color: #fff; margin-top: 6px; transition: all 0.3s; }
+    .auth-submit:hover { transform: translateY(-1px); box-shadow: var(--shadow-md); }
+    .auth-message { font-size: 0.85rem; margin-top: 10px; min-height: 20px; }
+    .auth-message.error { color: var(--red); }
+    .auth-message.success { color: var(--green); }
+    .forgot-password-btn { background: none; border: none; color: var(--accent); cursor: pointer; font-size: 0.85rem; margin-top: 8px; text-decoration: underline; }
+    .forgot-password-btn:hover { opacity: 0.8; }
+    .reset-password-section { display: none; margin-top: 16px; }
+    .reset-password-section.visible { display: block; }
+
+    /* PANEL RIWAYAT */
+    .history-panel { position: fixed; top: 0; right: -100%; width: 100%; max-width: 380px; height: 100vh; height: 100dvh; background: var(--card-bg); border-left: 1px solid var(--border-strong); z-index: 1500; transition: right 0.35s cubic-bezier(0.4, 0, 0.2, 1); display: flex; flex-direction: column; }
+    @media (min-width: 768px) { .history-panel { max-width: 440px; } }
+    .history-panel.open { right: 0; }
+    .history-header { padding: 16px; border-bottom: 1px solid var(--border); display: flex; justify-content: space-between; align-items: center; flex-shrink: 0; }
+    .history-header h3 { font-size: 1.3rem; font-weight: 700; }
+    .close-history { background: var(--bg-tertiary); border: 1px solid var(--border); width: 34px; height: 34px; border-radius: 8px; cursor: pointer; color: var(--text-secondary); font-size: 1rem; }
+    .history-login-section { padding: 12px 16px; border-bottom: 1px solid var(--border); flex-shrink: 0; }
+    .history-login-btn { width: 100%; padding: 12px; background: var(--accent-light); color: var(--accent); border: 1px solid var(--accent-glow); border-radius: 10px; font-weight: 600; font-size: 0.95rem; cursor: pointer; transition: all 0.3s; display: flex; align-items: center; justify-content: center; gap: 8px; }
+    .history-login-btn:hover { background: var(--accent-soft); }
+    .history-user-info { display: flex; align-items: center; gap: 10px; padding: 8px; background: var(--bg-tertiary); border-radius: 10px; }
+    .history-user-avatar { width: 36px; height: 36px; border-radius: 50%; background: var(--accent); color: #fff; display: flex; align-items: center; justify-content: center; font-weight: 700; font-size: 0.8rem; flex-shrink: 0; }
+    .history-user-email { flex: 1; font-size: 0.8rem; color: var(--text-secondary); word-break: break-all; }
+    .history-logout-btn { background: none; border: none; color: var(--text-tertiary); cursor: pointer; font-size: 0.75rem; padding: 4px 8px; border-radius: 6px; transition: all 0.3s; }
+    .history-logout-btn:hover { color: var(--red); background: rgba(239,68,68,0.1); }
+    .history-list { flex: 1; overflow-y: auto; padding: 12px; }
+    .history-item { background: var(--bg-tertiary); border-radius: 12px; padding: 12px; margin-bottom: 10px; cursor: pointer; transition: all 0.3s; border: 1px solid transparent; }
+    .history-item:hover { border-color: var(--accent-glow); transform: translateX(-2px); background: var(--accent-soft); }
+    .history-item.active { border-color: var(--accent); background: var(--accent-light); }
+    .history-item-title { font-size: 0.95rem; font-weight: 600; color: var(--text); margin-bottom: 4px; }
+    .history-item-preview { font-size: 0.85rem; color: var(--text-secondary); white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+    .history-overlay { position: fixed; inset: 0; background: var(--overlay); z-index: 1499; opacity: 0; visibility: hidden; transition: 0.3s; }
+    .history-overlay.visible { opacity: 1; visibility: visible; }
+
+    .delete-history-item { background: var(--accent-light); border: 1px solid var(--accent); color: var(--accent); cursor: pointer; font-size: 0.85rem; padding: 6px 12px; border-radius: 8px; transition: all 0.3s; font-weight: 600; margin-left: 8px; flex-shrink: 0; }
+    .delete-history-item:hover { background: var(--accent); color: #fff; transform: scale(1.05); }
+    .clear-all-history-btn { background: var(--accent-light); color: var(--accent); border: 1px solid var(--accent); padding: 12px 18px; border-radius: 12px; font-weight: 600; font-size: 0.9rem; cursor: pointer; transition: all 0.3s; margin-top: 10px; width: 100%; display: flex; align-items: center; justify-content: center; gap: 8px; }
+    .clear-all-history-btn:hover { background: var(--accent); color: #fff; transform: translateY(-2px); }
+
+    /* WELCOME OVERLAY */
+    .welcome-overlay { position: fixed; inset: 0; background: var(--bg); display: flex; align-items: center; justify-content: center; z-index: 2000; transition: all 0.4s ease; padding: 20px; }
+    .welcome-overlay.hidden { opacity: 0; visibility: hidden; pointer-events: none; }
+    .welcome-content { text-align: center; max-width: 380px; width: 100%; }
+    @media (min-width: 768px) { .welcome-content { max-width: 440px; } }
+    .welcome-logo-big { position: relative; width: 70px; height: 70px; margin: 0 auto 20px; animation: float 3s ease-in-out infinite; }
+    @keyframes float { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-8px); } }
+    .welcome-logo-big .hex { position: absolute; inset: 0; background: linear-gradient(135deg, var(--accent), var(--accent2)); clip-path: polygon(50% 0%, 100% 25%, 100% 75%, 50% 100%, 0% 75%, 0% 25%); animation: welcomeSpin 10s linear infinite; }
+    @keyframes welcomeSpin { 0% { transform: rotate(0deg); } 100% { transform: rotate(360deg); } }
+    .welcome-logo-big .hex-inner { position: absolute; inset: 4px; background: var(--bg); clip-path: polygon(50% 0%, 100% 25%, 100% 75%, 50% 100%, 0% 75%, 0% 25%); display: flex; align-items: center; justify-content: center; }
+    .welcome-logo-big .hex-text { font-family: 'Orbitron', monospace; font-weight: 900; font-size: 1.4rem; background: linear-gradient(135deg, var(--accent), var(--accent2)); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; }
+    .welcome-greeting { font-size: 1.8rem; font-weight: 800; color: var(--text); margin-bottom: 6px; }
+    .welcome-greeting .highlight { background: linear-gradient(135deg, var(--accent), var(--accent2)); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; font-size: 2rem; display: block; margin-bottom: 2px; }
+    .welcome-subtitle { font-size: 0.95rem; color: var(--text-secondary); margin-bottom: 24px; line-height: 1.5; }
+    .welcome-actions { display: flex; flex-direction: column; gap: 10px; }
+    .welcome-btn-primary { background: linear-gradient(135deg, var(--accent), var(--accent2)); color: #fff; border: none; padding: 14px 28px; border-radius: 12px; font-weight: 600; font-size: 0.95rem; cursor: pointer; transition: all 0.3s; }
+    .welcome-btn-primary:hover { transform: translateY(-2px); }
+    .welcome-btn-secondary { background: transparent; border: 1px solid var(--border-strong); color: var(--text); padding: 12px 26px; border-radius: 12px; font-weight: 500; font-size: 0.9rem; cursor: pointer; transition: all 0.3s; }
+    .welcome-btn-secondary:hover { border-color: var(--accent); color: var(--accent); background: var(--accent-light); }
+
+    /* TENTANG */
+    .about-overlay { position: fixed; inset: 0; background: var(--overlay); backdrop-filter: blur(8px); z-index: 1800; display: flex; align-items: center; justify-content: center; opacity: 0; visibility: hidden; transition: all 0.3s ease; padding: 20px; }
+    .about-overlay.visible { opacity: 1; visibility: visible; }
+    .about-card { background: var(--card-bg); border-radius: 20px; padding: 24px 20px; width: 100%; max-width: 480px; border: 1px solid var(--border-strong); text-align: center; max-height: 85vh; overflow-y: auto; }
+    @media (min-width: 768px) { .about-card { max-width: 560px; } }
+    .about-card h2 { font-size: 1.8rem; font-weight: 800; background: linear-gradient(135deg, var(--accent), var(--accent2)); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; margin-bottom: 4px; font-family: 'Orbitron', sans-serif; }
+    .about-card .subtitle { font-size: 0.95rem; color: var(--text-secondary); margin-bottom: 16px; }
+    .about-dev-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); gap: 12px; margin: 16px 0; }
+    .about-dev { background: var(--bg-tertiary); padding: 16px 12px; border-radius: 14px; border: 1px solid var(--border); transition: all 0.3s; }
+    .about-dev:hover { transform: translateY(-3px); border-color: var(--accent); }
+    .about-dev img { width: 70px; height: 70px; border-radius: 50%; object-fit: cover; margin-bottom: 10px; border: 2px solid var(--accent); }
+    .about-dev-name { font-weight: 700; font-size: 1rem; }
+    .about-dev-role { font-size: 0.8rem; color: var(--text-tertiary); }
+    .close-about { background: var(--bg-tertiary); border: 1px solid var(--border); color: var(--text-secondary); padding: 10px 24px; border-radius: 16px; cursor: pointer; font-weight: 600; margin-top: 14px; transition: all 0.3s; }
+    .close-about:hover { background: var(--accent-light); color: var(--accent); }
   </style>
 </head>
 <body>
-  <div class="app-shell">
-    <header class="topbar">
-      <div class="brand">
-        <div class="hex-badge"><span>GXR</span></div>
-        <div class="brand-copy">
-          <div class="brand-title">
-            <span class="brand-name">GXR Prime</span>
-            <span class="live-dot" aria-label="online"></span>
+  <!-- Splash Screen -->
+  <div class="splash-screen" id="splashScreen">
+    <div class="splash-logo-wrap">
+      <div class="splash-ring"></div>
+      <div class="splash-hex-wrapper">
+        <div class="splash-hex"></div>
+        <div class="splash-hex-inner"><span class="splash-hex-text">GXR</span></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Scroll Down Button -->
+  <button class="scroll-down-btn" id="scrollDownBtn" aria-label="Scroll ke bawah">
+    <svg viewBox="0 0 24 24"><polyline points="6 9 12 15 18 9"/></svg>
+  </button>
+
+  <!-- Main App -->
+  <div class="app" id="appContainer">
+    <!-- Header -->
+    <div class="chat-header">
+      <div class="header-row">
+        <div class="logo-area">
+          <div class="logo-icon-wrapper">
+            <div class="logo-hexagon"></div>
+            <div class="logo-inner"><span class="logo-text">GXR</span></div>
           </div>
-          <div class="brand-sub">
-            <span>GXR Prime P1.5 120B</span>
-            <span class="pill">v17.3</span>
+          <div class="title">
+            <h2><span class="brand-name">GXR Prime</span> <span class="status-dot"></span></h2>
+            <div class="subtitle-row">
+              <p>GXR Prime P1.5 120B</p>
+              <span class="version-badge">v17.3</span>
+            </div>
           </div>
         </div>
-      </div>
-
-      <div class="topbar-actions">
-        <button class="icon-btn" id="aboutBtn" aria-label="Tentang">
-          <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"></circle><line x1="12" y1="16" x2="12" y2="12"></line><line x1="12" y1="8" x2="12.01" y2="8"></line></svg>
-        </button>
-        <button class="icon-btn" id="historyBtn" aria-label="Riwayat percakapan">
-          <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="8"></circle><path d="M12 7v5l3 2"></path></svg>
-        </button>
-      </div>
-    </header>
-
-    <nav class="mode-bar" aria-label="Mode chat">
-      <button class="mode-chip active" data-mode="flash"> 
-        <svg viewBox="0 0 24 24"><path d="M13 2 4 13h7l-1 9 9-11h-7l1-9z"></path></svg> Flash
-      </button>
-      <button class="mode-chip" data-mode="pro">
-        <svg viewBox="0 0 24 24"><path d="M12 3v4"></path><path d="M12 17v4"></path><path d="M5 12h4"></path><path d="M15 12h4"></path><circle cx="12" cy="12" r="4"></circle></svg> Pro
-      </button>
-      <button class="mode-chip" data-mode="critical">
-        <svg viewBox="0 0 24 24"><path d="m12 2 9 5v10l-9 5-9-5V7z"></path><path d="M12 8v8"></path><path d="M8.5 10.5h7"></path></svg> Critical
-      </button>
-      <button class="mode-chip" data-mode="explorer">
-        <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"></circle><path d="M2 12h20"></path><path d="M12 2a14 14 0 0 1 0 20"></path><path d="M12 2a14 14 0 0 0 0 20"></path></svg> Explorer
-      </button>
-    </nav>
-
-    <main id="chatArea" class="chat-area" aria-live="polite"></main>
-
-    <div class="floating-scroll" id="scrollToBottom" aria-label="Ke bawah">
-      <svg viewBox="0 0 24 24"><path d="M6 9l6 6 6-6"></path></svg>
-    </div>
-
-    <div class="composer">
-      <div class="composer-inner">
-        <div id="previewArea" class="preview-area"></div>
-        <div class="composer-row">
-          <button class="tool-btn" id="fileUploadBtn" aria-label="Upload file">
-            <svg viewBox="0 0 24 24"><path d="M12 5v14"></path><path d="M5 12h14"></path></svg>
+        <div class="header-actions">
+          <button class="icon-btn" id="aboutBtn" title="Tentang">
+            <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><line x1="12" y1="16" x2="12" y2="12"/><line x1="12" y1="8" x2="12.01" y2="8"/></svg>
           </button>
-          <textarea id="messageInput" rows="1" maxlength="2500" placeholder="Ketik pesan..." aria-label="Ketik pesan"></textarea>
-          <button class="send-btn" id="sendBtn" aria-label="Kirim">➤</button>
+          <button class="icon-btn" id="historyToggleBtn" title="Riwayat">
+            <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+          </button>
         </div>
+      </div>
+    </div>
+
+    <!-- Mode Bar -->
+    <div class="mode-bar" id="modeBar">
+      <div class="mode-chip active" data-mode="flash">
+        <svg class="mode-icon" viewBox="0 0 24 24"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg>
+        Flash
+      </div>
+      <div class="mode-chip" data-mode="pro">
+        <svg class="mode-icon" viewBox="0 0 24 24"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1-2.83 2.83l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-4 0v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83-2.83l.06-.06A1.65 1.65 0 0 0 4.68 15a1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1 0-4h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 2.83-2.83l.06.06A1.65 1.65 0 0 0 9 4.68a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 4 0v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 2.83l-.06.06A1.65 1.65 0 0 0 19.4 9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 0 4h-.09a1.65 1.65 0 0 0-1.51 1z"/></svg>
+        Pro
+      </div>
+      <div class="mode-chip" data-mode="critical">
+        <svg class="mode-icon" viewBox="0 0 24 24"><path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/></svg>
+        Critical
+      </div>
+      <div class="mode-chip" data-mode="explorer">
+        <svg class="mode-icon" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="M12 2a14.5 14.5 0 0 0 0 20 14.5 14.5 0 0 0 0-20"/><path d="M2 12h20"/></svg>
+        Explorer
+      </div>
+    </div>
+
+    <!-- Chat Area -->
+    <div class="chat-area" id="chatArea"></div>
+
+    <!-- Input Area -->
+    <div class="input-area" id="inputAreaContainer">
+      <div class="input-row">
+        <input type="file" id="imageUploadInput" accept="image/*" style="display:none" multiple>
+        <input type="file" id="fileUploadInput" accept=".pdf,.doc,.docx,.txt,.csv,.json,.xml,.md,.html,.css,.js,.py,.java,.cpp,.c,.h,.yaml,.yml,.toml,.ini,.cfg,.log,.sh,.bat,.sql,.r,.rb,.php,.go,.rs,.swift,.kt,.dart" style="display:none" multiple>
+        <div class="input-preview-area" id="inputPreviewArea"></div>
+        <div class="input-bottom-row">
+          <button id="uploadFileBtn" class="file-upload-btn" title="Unggah file">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
+          </button>
+          <textarea id="msgInput" rows="1" placeholder="Ketik pesan..." autocomplete="off" maxlength="2500"></textarea>
+          <button id="sendMsgBtn" class="send-btn" aria-label="Kirim">➤</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Footer -->
+    <footer>© 2026 GXR Prime · GXR Prime P1.5 120B · Secure</footer>
+  </div>
+
+  <!-- Welcome Overlay -->
+  <div class="welcome-overlay" id="welcomeOverlay">
+    <div class="welcome-content">
+      <div class="welcome-logo-big">
+        <div class="hex"></div>
+        <div class="hex-inner"><span class="hex-text">GXR</span></div>
+      </div>
+      <div class="welcome-greeting">
+        <span class="highlight">Selamat Datang!</span> di GXR Prime
+      </div>
+      <p class="welcome-subtitle">Asisten AI premium dengan GXR Prime P1.5 120B.</p>
+      <div class="welcome-actions">
+        <button class="welcome-btn-primary" id="btnGuestMode">Mulai sebagai Tamu</button>
+        <button class="welcome-btn-secondary" id="btnLoginPrompt">Masuk dengan Akun</button>
       </div>
     </div>
   </div>
 
-  <div id="welcomeOverlay" class="overlay visible">
-    <div class="welcome-box">
-      <div class="welcome-logo"><span>GXR</span></div>
-      <div class="welcome-title"><span class="accent">Selamat Datang</span></div>
-      <div class="welcome-sub">Asisten AI premium dengan GXR Prime P1.5 120B. Desain modern, cepat, dan tetap halus dengan animasi.</div>
-      <div class="stack">
-        <button class="primary-btn" id="guestModeBtn">Mulai sebagai Tamu</button>
-        <button class="secondary-btn" id="loginPromptBtn">Masuk dengan Akun</button>
+  <!-- About Overlay -->
+  <div class="about-overlay" id="aboutOverlay">
+    <div class="about-card">
+      <h2>GXR Prime</h2>
+      <div class="subtitle">Tentang Pengembang AI</div>
+      <p style="font-size:0.95rem; color:var(--text-secondary);">Dibangun dengan <strong style="color:var(--accent);">GXR Prime P1.5 120B</strong> untuk keamanan konten dan performa terbaik.</p>
+      <div class="about-dev-grid">
+        <div class="about-dev">
+          <img src="https://i.supaimg.com/a3ae0df3-e811-4431-9ebd-7da3eb10d395/e5010adb-31a2-4ad5-a679-9bdd4969203e.jpg" alt="Gizkha Ramadhan">
+          <div class="about-dev-name">Gizkha Ramadhan</div>
+          <div class="about-dev-role">Co-Founder · AI Engineer</div>
+        </div>
+        <div class="about-dev">
+          <img src="https://i.supaimg.com/a3ae0df3-e811-4431-9ebd-7da3eb10d395/008946ce-aa87-48d1-95a9-62fe636fb714.png" alt="Rizki Dimas">
+          <div class="about-dev-name">Rizki Dimas</div>
+          <div class="about-dev-role">Co-Founder · Fullstack Dev</div>
+        </div>
       </div>
+      <button class="close-about" id="closeAboutBtn">Tutup</button>
     </div>
   </div>
 
-  <div id="aboutOverlay" class="overlay">
-    <div class="about-box">
-      <div class="about-header">
-        <h3>GXR Prime</h3>
-        <button class="close-btn" id="closeAboutBtn" aria-label="Tutup">✕</button>
+  <!-- Auth Modal -->
+  <div class="auth-modal" id="authModal">
+    <div class="auth-card">
+      <button class="auth-close-btn" id="authCloseBtn" aria-label="Tutup">✕</button>
+      <h3 id="authTitle">Masuk</h3>
+      <p class="auth-subtitle" id="authSubtitle">Masuk ke akun GXR Prime Anda</p>
+      <div class="auth-tabs">
+        <button class="auth-tab active" id="tabLogin">Masuk</button>
+        <button class="auth-tab" id="tabRegister">Daftar</button>
       </div>
-      <p class="about-sub">Tentang Pengembang AI</p>
-      <p class="about-sub" style="margin-top:-8px;">Dibangun dengan <strong style="color:#d7cbff;">GXR Prime P1.5 120B</strong> untuk keamanan, kecepatan, dan performa terbaik.</p>
-      <div class="dev-grid">
-        <div class="dev-card">
-          <img src="https://i.supaimg.com/a3ae0df3-e811-4431-9ebd-7da3eb10d395/e5010adb-31a2-4ad5-a679-9bdd4969203e.jpg" alt="Gizkha Ramadhan" />
-          <strong>Gizkha Ramadhan</strong>
-          <span>Co-Founder · AI Engineer</span>
-        </div>
-        <div class="dev-card">
-          <img src="https://i.supaimg.com/a3ae0df3-e811-4431-9ebd-7da3eb10d395/008946ce-aa87-48d1-95a9-62fe636fb714.png" alt="Rizki Dimas" />
-          <strong>Rizki Dimas</strong>
-          <span>Co-Founder · Fullstack Dev</span>
-        </div>
+      <input type="email" id="authEmail" placeholder="Email" autocomplete="email">
+      <input type="password" id="authPassword" placeholder="Password" autocomplete="current-password">
+      <input type="password" id="authConfirmPassword" placeholder="Konfirmasi Password" autocomplete="new-password" style="display:none;">
+      <button class="auth-submit" id="authSubmitBtn">Masuk</button>
+      <button class="forgot-password-btn" id="forgotPasswordBtn">Lupa Password?</button>
+      <div class="reset-password-section" id="resetPasswordSection">
+        <p style="font-size:0.85rem; color:var(--text-secondary); margin-bottom:8px;">Masukkan email Anda, password akan direset secara otomatis.</p>
+        <input type="email" id="resetEmail" placeholder="Email untuk reset" autocomplete="email">
+        <button class="auth-submit" id="resetPasswordBtn" style="margin-top:4px;">Reset Password</button>
       </div>
+      <div class="auth-message" id="authMessage"></div>
     </div>
   </div>
 
-  <div id="authOverlay" class="overlay">
-    <div class="auth-box">
-      <div class="auth-head">
-        <h3 id="authTitle">Masuk</h3>
-        <button class="close-btn" id="closeAuthBtn" aria-label="Tutup">✕</button>
-      </div>
-      <p id="authSubtitle" class="auth-sub">Masuk ke akun GXR Prime Anda</p>
-      <div class="tab-row">
-        <button class="tab active" data-tab="login">Masuk</button>
-        <button class="tab" data-tab="register">Daftar</button>
-      </div>
-      <div class="form-grid">
-        <input id="authEmail" class="field" type="email" placeholder="Email" autocomplete="email" />
-        <input id="authPassword" class="field" type="password" placeholder="Password" autocomplete="current-password" />
-        <input id="authConfirm" class="field hidden" type="password" placeholder="Konfirmasi Password" autocomplete="new-password" />
-        <button id="authSubmit" class="auth-submit">Masuk</button>
-        <button id="forgotBtn" class="subtle-link" type="button">Lupa Password?</button>
-        <div id="resetBlock" class="hidden">
-          <input id="resetEmail" class="field" type="email" placeholder="Email untuk reset password" autocomplete="email" />
-          <button id="resetSubmit" class="auth-submit" style="margin-top:12px;">Reset Password</button>
-        </div>
-      </div>
-      <div id="authMessage" class="status-text"></div>
-    </div>
-  </div>
-
-  <aside id="historyPanel" class="history-panel" aria-label="Riwayat chat">
+  <!-- History Panel -->
+  <div class="history-overlay" id="historyOverlay"></div>
+  <div class="history-panel" id="historyPanel">
     <div class="history-header">
       <h3>Riwayat Obrolan</h3>
-      <button id="closeHistoryBtn" class="close-btn" aria-label="Tutup riwayat">✕</button>
+      <button class="close-history" id="closeHistoryBtn">✕</button>
     </div>
-    <div class="history-body">
-      <div class="history-login-wrap">
-        <button id="historyLoginBtn" class="history-login-btn">Masuk / Buat Akun</button>
-      </div>
-      <div id="historyList"></div>
+    <div class="history-login-section" id="historyLoginSection"></div>
+    <div class="history-list" id="historyList"></div>
+    <div style="padding: 16px; border-top: 1px solid var(--border); flex-shrink: 0;">
+      <button class="clear-all-history-btn" id="clearAllHistoryBtn">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="3 6 5 6 21 6"/><path d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6m3 0V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"/><line x1="10" y1="11" x2="10" y2="17"/><line x1="14" y1="11" x2="14" y2="17"/></svg>
+        Hapus Semua Riwayat
+      </button>
     </div>
-    <div class="history-footer">
-      <button id="clearHistoryBtn" class="clear-btn">Hapus Semua Riwayat</button>
-    </div>
-  </aside>
-
-  <input id="fileInput" type="file" multiple class="hidden" />
+  </div>
 
   <script>
-    (() => {
-      const chatArea = document.getElementById('chatArea');
-      const messageInput = document.getElementById('messageInput');
-      const sendBtn = document.getElementById('sendBtn');
-      const scrollButton = document.getElementById('scrollToBottom');
-      const previewArea = document.getElementById('previewArea');
-      const fileInput = document.getElementById('fileInput');
-      const welcomeOverlay = document.getElementById('welcomeOverlay');
-      const aboutOverlay = document.getElementById('aboutOverlay');
-      const authOverlay = document.getElementById('authOverlay');
-      const historyPanel = document.getElementById('historyPanel');
-      const authTitle = document.getElementById('authTitle');
-      const authSubtitle = document.getElementById('authSubtitle');
-      const authConfirm = document.getElementById('authConfirm');
-      const authMessage = document.getElementById('authMessage');
-      const resetBlock = document.getElementById('resetBlock');
-      const modeButtons = [...document.querySelectorAll('.mode-chip')];
-      const historyList = document.getElementById('historyList');
-
-      let currentMode = 'flash';
-      let isProcessing = false;
-      let draftFiles = [];
-      let chatHistory = JSON.parse(localStorage.getItem('gxr_chat_history_v2') || '[]');
-
-      function escapeHtml(value) {
-        return value
-          .replace(/&/g, '&amp;')
-          .replace(/</g, '&lt;')
-          .replace(/>/g, '&gt;')
-          .replace(/"/g, '&quot;')
-          .replace(/'/g, '&#039;');
-      }
-
-      function renderMessage(role, text, time = new Date()) {
-        const row = document.createElement('div');
-        row.className = `message-row ${role}`;
-
-        const avatar = document.createElement('div');
-        avatar.className = `avatar ${role}`;
-        avatar.textContent = role === 'ai' ? 'AI' : 'U';
-
-        const bubbleWrap = document.createElement('div');
-        bubbleWrap.className = 'bubble';
-
-        const html = formatText(text);
-        bubbleWrap.innerHTML = html;
-
-        const meta = document.createElement('div');
-        meta.className = 'message-meta';
-        meta.innerHTML = `
-          <span>${time.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' })}</span>
-          ${role === 'ai' ? '<button class="copy-btn" type="button">Salin</button>' : ''}
-        `;
-
-        const messageBlock = document.createElement('div');
-        messageBlock.style.display = 'flex';
-        messageBlock.style.flexDirection = 'column';
-        messageBlock.style.maxWidth = '100%';
-        messageBlock.style.width = '100%';
-        messageBlock.style.alignItems = role === 'user' ? 'flex-end' : 'flex-start';
-        messageBlock.appendChild(bubbleWrap);
-        messageBlock.appendChild(meta);
-
-        if (role === 'user') {
-          row.appendChild(avatar);
-          row.appendChild(messageBlock);
-          row.classList.add('user');
-        } else {
-          row.appendChild(avatar);
-          row.appendChild(messageBlock);
-          row.classList.add('ai');
-        }
-
-        chatArea.appendChild(row);
-
-        const copyBtn = meta.querySelector('.copy-btn');
-        if (copyBtn) {
-          copyBtn.addEventListener('click', () => {
-            const textContent = bubbleWrap.innerText || bubbleWrap.textContent || '';
-            navigator.clipboard.writeText(textContent).then(() => {
-              copyBtn.textContent = 'Tersalin';
-              copyBtn.classList.add('copied');
-              setTimeout(() => {
-                copyBtn.textContent = 'Salin';
-                copyBtn.classList.remove('copied');
-              }, 1500);
-            }).catch(() => {
-              copyBtn.textContent = 'Gagal';
+    (function() {
+      'use strict';
+      
+      // =====================================================
+      // SECURITY SYSTEM (CLIENT-SIDE) - DIPERKUAT & LENGKAP
+      // =====================================================
+      const SecuritySystem = {
+        requestCount: {},
+        blockedIPs: new Set(),
+        maxRequestsPerMinute: 15,
+        maxRequestsPerHour: 100,
+        blockDurationMs: 600000,
+        cooldownMs: 1500,
+        lastRequestTime: 0,
+        honeypotField: null,
+        failedAttempts: 0,
+        lastFailedTime: 0,
+        sessionId: null,
+        securityLog: [],
+        maxFileSizeMB: 10,
+        allowedImageTypes: ['image/jpeg', 'image/png', 'image/gif', 'image/webp'],
+        allowedFileExtensions: ['pdf','doc','docx','txt','csv','json','xml','md','html','css','js','py','java','cpp','c','h','yaml','yml','toml','ini','cfg','log','sh','bat','sql','r','rb','php','go','rs','swift','kt','dart'],
+        
+        init() {
+          this.setupHoneypot();
+          this.checkSession();
+          this.generateSessionId();
+          this.setupSecurityLog();
+          this.cleanupOldEntries();
+          this.sanitizeDOM();
+          this.setupCSPViolationListener();
+          this.setupAntiDebugger();
+          this.setupConsoleProtection();
+          this.setupClipboardProtection();
+          this.setupTouchProtection();
+        },
+        
+        sanitizeDOM() {
+          const observer = new MutationObserver(() => {
+            document.querySelectorAll('[data-user-content]').forEach(el => {
+              if (el.innerHTML.includes('<script') || el.innerHTML.includes('javascript:')) {
+                el.innerHTML = '';
+                this.logSecurityEvent('xss_blocked', 'Malicious content blocked');
+              }
             });
           });
-        }
-
-        scrollToBottom();
-      }
-
-      function formatText(text) {
-        let content = escapeHtml(String(text || ''));
-        content = content
-          .replace(/\n/g, '<br>')
-          .replace(/```([\s\S]*?)```/g, '<pre><code>$1</code></pre>')
-          .replace(/`([^`]+)`/g, '<code>$1</code>')
-          .replace(/\*\*(.+?)\*\*/g, '<strong>$1</strong>')
-          .replace(/\*(.+?)\*/g, '<em>$1</em>');
-        return content;
-      }
-
-      function addTypingIndicator() {
-        const row = document.createElement('div');
-        row.className = 'message-row ai';
-        const avatar = document.createElement('div');
-        avatar.className = 'avatar ai';
-        avatar.textContent = 'AI';
-
-        const typing = document.createElement('div');
-        typing.className = 'typing';
-        typing.innerHTML = '<span></span><span></span><span></span>';
-
-        row.appendChild(avatar);
-        row.appendChild(typing);
-        chatArea.appendChild(row);
-        scrollToBottom();
-        return row;
-      }
-
-      function removeTypingIndicator() {
-        const row = chatArea.querySelector('.typing')?.closest('.message-row');
-        if (row) row.remove();
-      }
-
-      function setMode(nextMode) {
-        currentMode = nextMode;
-        modeButtons.forEach(btn => btn.classList.toggle('active', btn.dataset.mode === nextMode));
-      }
-
-      function getAIReply(prompt) {
-        const cleaned = prompt.trim();
-        const modeLabels = {
-          flash: 'Flash',
-          pro: 'Pro',
-          critical: 'Critical',
-          explorer: 'Explorer'
-        };
-
-        const foundation = `Saya menerima permintaanmu dalam mode ${modeLabels[currentMode]}. Saya akan fokus pada hasil yang rapi, responsif, dan tetap menjaga animasi tetap hadir.`;
-
-        if (!cleaned) return 'Saya siap membantu. Coba tulis pertanyaan atau instruksi yang ingin diubah.';
-
-        const lower = cleaned.toLowerCase();
-        if (lower.includes('fix') || lower.includes('benahi') || lower.includes('repair')) {
-          return `${foundation}\n\nSaya akan menata layout, memperbaiki struktur komponen, dan memastikan transisi/animasi tetap halus tanpa mengganggu pengalaman pengguna.`;
-        }
-
-        if (lower.includes('desain') || lower.includes('ui') || lower.includes('layout')) {
-          return `${foundation}\n\nUntuk desain, saya sarankan menjaga kontras warna yang kuat, ruang antar elemen yang lebih lega, tombol yang lebih jelas, serta penggunaan animasi ringan seperti fade, hover, dan pulse agar terlihat premium tapi tetap ringan.`;
-        }
-
-        if (lower.includes('fungsi') || lower.includes('fungsi') || lower.includes('behavior') || lower.includes('feature')) {
-          return `${foundation}\n\nUntuk fungsionalitas, fokus pada alur interaksi yang sederhana: tombol responsif, auto-scroll yang halus, validasi input, riwayat chat, serta transisi yang konsisten di seluruh komponen.`;
-        }
-
-        return `${foundation}\n\n"${cleaned.slice(0, 120)}${cleaned.length > 120 ? '...' : ''}"\n\nSaya sudah menangkap maksudmu. Perbaikan yang paling efektif adalah memperbaiki tata letak, responsivitas, dan interaksi agar terasa modern, lancar, dan tetap hidup dengan animasi yang halus.`;
-      }
-
-      function saveHistory() {
-        if (!chatHistory.length) return;
-        localStorage.setItem('gxr_chat_history_v2', JSON.stringify(chatHistory.slice(-10)));
-      }
-
-      function renderHistory() {
-        historyList.innerHTML = '';
-
-        if (!chatHistory.length) {
-          const empty = document.createElement('div');
-          empty.style.color = 'var(--text-muted)';
-          empty.style.padding = '10px 4px';
-          empty.textContent = 'Belum ada riwayat obrolan.';
-          historyList.appendChild(empty);
-          return;
-        }
-
-        chatHistory.slice().reverse().forEach((item) => {
-          const row = document.createElement('button');
-          row.type = 'button';
-          row.className = 'history-item';
-          row.innerHTML = `
-            <strong>${escapeHtml(item.title || 'Percakapan')}</strong>
-            <span>${escapeHtml(item.preview || 'Tidak ada isi')}</span>
-          `;
-          row.addEventListener('click', () => {
-            messageInput.value = item.preview || '';
-            historyPanel.classList.remove('open');
-            messageInput.focus();
+          observer.observe(document.body, { childList: true, subtree: true });
+        },
+        
+        setupCSPViolationListener() {
+          document.addEventListener('securitypolicyviolation', (e) => {
+            this.logSecurityEvent('csp_violation', e.violatedDirective);
           });
-          historyList.appendChild(row);
-        });
-      }
-
-      function pushHistory(title, preview) {
-        const item = { title, preview, time: Date.now() };
-        const existing = chatHistory.findIndex(entry => entry.title === title && entry.preview === preview);
-        if (existing >= 0) chatHistory.splice(existing, 1);
-        chatHistory.push(item);
-        chatHistory = chatHistory.slice(-12);
-        saveHistory();
-        renderHistory();
-      }
-
-      function sendMessage() {
-        const text = messageInput.value.trim();
-        if (!text || isProcessing) return;
-        isProcessing = true;
-        sendBtn.disabled = true;
-
-        renderMessage('user', text, new Date());
-        pushHistory('Percakapan Baru', text.slice(0, 70));
-
-        messageInput.value = '';
-        resetTextarea();
-
-        const typing = addTypingIndicator();
-        setTimeout(() => {
-          removeTypingIndicator();
-          const response = getAIReply(text);
-          renderMessage('ai', response, new Date());
-          isProcessing = false;
-          sendBtn.disabled = false;
-          messageInput.focus();
-        }, 900);
-      }
-
-      function resetTextarea() {
-        messageInput.style.height = 'auto';
-        messageInput.style.height = Math.min(messageInput.scrollHeight, 150) + 'px';
-      }
-
-      function scrollToBottom() {
-        requestAnimationFrame(() => {
-          chatArea.scrollTop = chatArea.scrollHeight;
-          scrollButton.classList.toggle('visible', chatArea.scrollTop + chatArea.clientHeight < chatArea.scrollHeight - 120);
-        });
-      }
-
-      function renderPreview() {
-        previewArea.innerHTML = '';
-        draftFiles.forEach((file, index) => {
-          const item = document.createElement('div');
-          item.className = 'preview-item';
-          const img = document.createElement('img');
-          if (file.type.startsWith('image/')) {
-            img.src = URL.createObjectURL(file);
-          } else {
-            img.src = 'data:image/svg+xml;charset=UTF-8,' + encodeURIComponent(`<svg xmlns="http://www.w3.org/2000/svg" width="120" height="120"><rect width="120" height="120" fill="#181d2b"/><text x="50%" y="50%" dominant-baseline="middle" text-anchor="middle" fill="#d9d3ff" font-size="22" font-family="Arial">FILE</text></svg>`);
-          }
-          item.appendChild(img);
-
-          const removeBtn = document.createElement('button');
-          removeBtn.className = 'remove-item';
-          removeBtn.type = 'button';
-          removeBtn.textContent = '×';
-          removeBtn.addEventListener('click', () => {
-            draftFiles.splice(index, 1);
-            renderPreview();
+        },
+        
+        setupAntiDebugger() {
+          let devtoolsOpen = false;
+          const threshold = 160;
+          setInterval(() => {
+            if (window.outerWidth - window.innerWidth > threshold || window.outerHeight - window.innerHeight > threshold) {
+              if (!devtoolsOpen) { devtoolsOpen = true; this.logSecurityEvent('devtools_detected', 'DevTools opened'); }
+            } else { devtoolsOpen = false; }
+          }, 1000);
+        },
+        
+        setupConsoleProtection() {
+          const originalConsole = console.log;
+          console.log = function(...args) { originalConsole.apply(console, args); };
+        },
+        
+        setupClipboardProtection() {
+          document.addEventListener('copy', (e) => {
+            const selection = window.getSelection()?.toString();
+            if (selection && selection.length > 500) { this.logSecurityEvent('large_copy', 'Large text copy detected'); }
           });
-          item.appendChild(removeBtn);
-          previewArea.appendChild(item);
-        });
-      }
-
-      modeButtons.forEach(button => {
-        button.addEventListener('click', () => setMode(button.dataset.mode));
-      });
-
-      sendBtn.addEventListener('click', sendMessage);
-      messageInput.addEventListener('keydown', event => {
-        if (event.key === 'Enter' && !event.shiftKey) {
-          event.preventDefault();
-          sendMessage();
-        }
-      });
-
-      messageInput.addEventListener('input', () => {
-        messageInput.style.height = 'auto';
-        messageInput.style.height = Math.min(messageInput.scrollHeight, 150) + 'px';
-      });
-
-      chatArea.addEventListener('scroll', () => {
-        const nearBottom = chatArea.scrollTop + chatArea.clientHeight >= chatArea.scrollHeight - 120;
-        scrollButton.classList.toggle('visible', !nearBottom && chatArea.scrollHeight > chatArea.clientHeight);
-      });
-
-      scrollButton.addEventListener('click', () => {
-        chatArea.scrollTo({ top: chatArea.scrollHeight, behavior: 'smooth' });
-      });
-
-      document.getElementById('guestModeBtn').addEventListener('click', () => {
-        welcomeOverlay.classList.add('hidden');
-        messageInput.focus();
-      });
-
-      document.getElementById('loginPromptBtn').addEventListener('click', () => {
-        welcomeOverlay.classList.add('hidden');
-        authOverlay.classList.add('visible');
-      });
-
-      document.getElementById('aboutBtn').addEventListener('click', () => aboutOverlay.classList.add('visible'));
-      document.getElementById('closeAboutBtn').addEventListener('click', () => aboutOverlay.classList.remove('visible'));
-      document.getElementById('closeAuthBtn').addEventListener('click', () => authOverlay.classList.remove('visible'));
-      document.getElementById('historyBtn').addEventListener('click', () => historyPanel.classList.toggle('open'));
-      document.getElementById('closeHistoryBtn').addEventListener('click', () => historyPanel.classList.remove('open'));
-      document.getElementById('historyLoginBtn').addEventListener('click', () => {
-        authOverlay.classList.add('visible');
-        historyPanel.classList.remove('open');
-      });
-
-      document.getElementById('clearHistoryBtn').addEventListener('click', () => {
-        chatHistory = [];
-        localStorage.removeItem('gxr_chat_history_v2');
-        renderHistory();
-      });
-
-      document.getElementById('fileUploadBtn').addEventListener('click', () => fileInput.click());
-      fileInput.addEventListener('change', (event) => {
-        if (!event.target.files?.length) return;
-        const files = [...event.target.files];
-        files.forEach(file => {
-          if (!draftFiles.some(item => item.name === file.name && item.size === file.size)) {
-            draftFiles.push(file);
+        },
+        
+        setupTouchProtection() {
+          let lastTouchTime = 0;
+          document.addEventListener('touchstart', () => {
+            const now = Date.now();
+            if (now - lastTouchTime < 50) { this.logSecurityEvent('rapid_touch', 'Rapid touch detected'); }
+            lastTouchTime = now;
+          });
+        },
+        
+        setupHoneypot() {
+          this.honeypotField = document.createElement('input');
+          this.honeypotField.type = 'text';
+          this.honeypotField.name = 'website_url';
+          this.honeypotField.style.display = 'none';
+          this.honeypotField.tabIndex = -1;
+          this.honeypotField.autocomplete = 'off';
+          this.honeypotField.setAttribute('aria-hidden', 'true');
+          document.body.appendChild(this.honeypotField);
+        },
+        
+        checkSession() {
+          const sessionStart = localStorage.getItem('gxr_session_start');
+          const now = Date.now();
+          if (!sessionStart) { localStorage.setItem('gxr_session_start', now); } 
+          else { const elapsed = now - parseInt(sessionStart); if (elapsed > 3600000) { localStorage.setItem('gxr_session_start', now); this.rotateSessionId(); } }
+        },
+        
+        rotateSessionId() {
+          this.sessionId = this.generateSessionId();
+          sessionStorage.setItem('gxr_session_id', this.sessionId);
+          this.logSecurityEvent('session_rotated', 'Session ID rotated');
+        },
+        
+        generateSessionId() {
+          const id = 'sess_' + Date.now().toString(36) + '_' + Math.random().toString(36).substr(2, 9) + '_' + Math.random().toString(36).substr(2, 5);
+          this.sessionId = id; return id;
+        },
+        
+        setupSecurityLog() {
+          try { this.securityLog = JSON.parse(sessionStorage.getItem('gxr_security_log') || '[]'); } catch(e) { this.securityLog = []; }
+        },
+        
+        logSecurityEvent(eventType, details) {
+          const event = { timestamp: new Date().toISOString(), type: eventType, details: details, sessionId: this.sessionId };
+          this.securityLog.push(event);
+          if (this.securityLog.length > 100) this.securityLog = this.securityLog.slice(-100);
+          try { sessionStorage.setItem('gxr_security_log', JSON.stringify(this.securityLog)); } catch(e) {}
+        },
+        
+        getClientFingerprint() {
+          return [navigator.userAgent, navigator.language, screen.width+'x'+screen.height, navigator.platform, navigator.hardwareConcurrency, navigator.deviceMemory, new Date().getTimezoneOffset()].join('|');
+        },
+        
+        isRateLimited() {
+          const now = Date.now(); const fp = this.getClientFingerprint();
+          if (this.blockedIPs.has(fp)) return true;
+          if (now - this.lastRequestTime < this.cooldownMs) return true;
+          if (this.requestCount[fp]) {
+            const recent = this.requestCount[fp].filter(t => now - t < 60000);
+            this.requestCount[fp] = recent;
+            if (recent.length >= this.maxRequestsPerMinute) { this.blockedIPs.add(fp); setTimeout(() => this.blockedIPs.delete(fp), this.blockDurationMs); return true; }
+            if (this.requestCount[fp].filter(t => now - t < 3600000).length >= this.maxRequestsPerHour) { this.blockedIPs.add(fp); setTimeout(() => this.blockedIPs.delete(fp), this.blockDurationMs*2); return true; }
           }
-        });
-        renderPreview();
-        fileInput.value = '';
-      });
+          return false;
+        },
+        
+        recordRequest() {
+          const now = Date.now(); const fp = this.getClientFingerprint();
+          if (!this.requestCount[fp]) this.requestCount[fp] = [];
+          this.requestCount[fp].push(now);
+          this.lastRequestTime = now;
+        },
+        
+        cleanupOldEntries() {
+          const now = Date.now();
+          Object.keys(this.requestCount).forEach(key => { this.requestCount[key] = this.requestCount[key].filter(t => now - t < 3600000); if (this.requestCount[key].length === 0) delete this.requestCount[key]; });
+        },
+        
+        validateInput(text) {
+          if (!text) return '';
+          let clean = text;
+          clean = clean.replace(/<script\b[^<]*(?:(?!<\/script>)<[^<]*)*<\/script>/gi, '');
+          clean = clean.replace(/javascript:/gi, '');
+          clean = clean.replace(/on\w+="[^"]*"/gi, '');
+          clean = clean.replace(/on\w+='[^']*'/gi, '');
+          clean = clean.replace(/<iframe\b[^<]*(?:(?!<\/iframe>)<[^<]*)*<\/iframe>/gi, '');
+          clean = clean.replace(/<object\b[^<]*(?:(?!<\/object>)<[^<]*)*<\/object>/gi, '');
+          clean = clean.replace(/<embed\b[^<]*(?:(?!<\/embed>)<[^<]*)*<\/embed>/gi, '');
+          clean = clean.replace(/<link\b[^<]*>/gi, '');
+          clean = clean.replace(/<meta\b[^<]*>/gi, '');
+          clean = clean.replace(/('|")\s*(OR|AND)\s*('|")/gi, '');
+          clean = clean.replace(/UNION\s+SELECT/gi, '');
+          clean = clean.replace(/DROP\s+TABLE/gi, '');
+          clean = clean.replace(/INSERT\s+INTO/gi, '');
+          clean = clean.replace(/DELETE\s+FROM/gi, '');
+          clean = clean.replace(/;\s*(rm|del|format|shutdown|reboot)/gi, '');
+          clean = clean.replace(/&&\s*(rm|del|format)/gi, '');
+          clean = clean.replace(/\|\|\s*(rm|del|format)/gi, '');
+          clean = clean.replace(/\.\.\/\.\.\//gi, '');
+          clean = clean.replace(/\.\.\\\.\.\\/gi, '');
+          clean = clean.replace(/\0/g, '');
+          clean = clean.substring(0, 2500);
+          return clean;
+        },
+        
+        validateFileSize(file, maxSizeMB) { return file.size <= maxSizeMB * 1024 * 1024; },
+        validateFileType(file) { const ext = file.name.split('.').pop()?.toLowerCase(); return this.allowedImageTypes.includes(file.type) || (ext && this.allowedFileExtensions.includes(ext)); },
+        validateImageFile(file) { return file.type.startsWith('image/') && this.allowedImageTypes.includes(file.type) && this.validateFileSize(file, 8); },
+        validateDocumentFile(file) { const ext = file.name.split('.').pop()?.toLowerCase(); return ext && this.allowedFileExtensions.includes(ext) && this.validateFileSize(file, 10); },
+        checkHoneypot() { return this.honeypotField && this.honeypotField.value.length > 0; },
+        getSecurityReport() { return { totalEvents: this.securityLog.length, blockedIPs: this.blockedIPs.size, sessionId: this.sessionId }; }
+      };
 
-      document.querySelectorAll('.tab').forEach(tab => {
-        tab.addEventListener('click', () => {
-          const isLogin = tab.dataset.tab === 'login';
-          document.querySelectorAll('.tab').forEach(item => item.classList.toggle('active', item === tab));
-          authTitle.textContent = isLogin ? 'Masuk' : 'Daftar';
-          authSubtitle.textContent = isLogin ? 'Masuk ke akun GXR Prime Anda' : 'Buat akun baru untuk menyimpan riwayat';
-          document.getElementById('authSubmit').textContent = isLogin ? 'Masuk' : 'Daftar';
-          authConfirm.classList.toggle('hidden', isLogin);
-          authMessage.textContent = '';
-          authMessage.className = 'status-text';
-        });
-      });
+      SecuritySystem.init();
+      setTimeout(() => { document.getElementById('splashScreen')?.classList.add('hidden'); }, 1800);
 
-      document.getElementById('forgotBtn').addEventListener('click', () => {
-        resetBlock.classList.toggle('hidden');
-      });
+      // ============ CONFIGURATION ============
+      const _apiConfig = { _endpoint: 'aHR0cHM6Ly9teS1maXJzdC13b3JrZXIuZ3l6eGNhcmFtLndvcmtlcnMuZGV2Lw==', _key: 'Z3hyX3ByaW1lXzIwMjZfc2VjdXJl' };
+      function _decodeBase64(str) { try { return decodeURIComponent(escape(atob(str))); } catch(e) { return ''; } }
+      function _getWorkerUrl() { const d = _decodeBase64(_apiConfig._endpoint); return d || 'https://my-first-worker.gyzxcaram.workers.dev/'; }
+      const WORKER_URL = _getWorkerUrl();
 
-      function onAuthSubmit(type) {
-        const email = document.getElementById('authEmail').value.trim();
-        const password = document.getElementById('authPassword').value.trim();
-        const confirm = authConfirm.value.trim();
+      // ============ STATE ============
+      let currentUser = null, conversationHistory = [], currentMode = 'flash', currentChatId = null, chatSessions = [];
+      let pendingImages = [], pendingFiles = [], isProcessing = false, authMode = 'login', isNearBottom = true, scrollTimeout = null;
+      const MAX_HISTORY = 24, MAX_IMAGES_PER_DAY = 6, MAX_IMAGES_PER_SEND = 3, MAX_FILES_PER_SEND = 2, MAX_FILE_SIZE_MB = 10;
+      let imagesUsedToday = 0, lastImageDate = '';
 
-        if (!email || !password) {
-          authMessage.textContent = 'Email dan password wajib diisi.';
-          authMessage.className = 'status-text error';
-          return;
-        }
+      // ============ UTILITY ============
+      function $(id) { return document.getElementById(id); }
+      function escapeHtml(s) { if (!s) return ''; const map = {'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#039;'}; return s.replace(/[&<>"']/g, m => map[m] || m); }
+      function sanitizeInput(text) { return SecuritySystem.validateInput(text || ''); }
+      function getUserInitial(email) { return email ? email.substring(0,2).toUpperCase() : '?'; }
+      function getCurrentTime() { const d = new Date(); return d.getHours().toString().padStart(2,'0') + ':' + d.getMinutes().toString().padStart(2,'0'); }
+      function generateUUID() { return Date.now().toString(36) + Math.random().toString(36).substr(2,5); }
+      function getToday() { return new Date().toDateString(); }
 
-        if (type === 'register' && password !== confirm) {
-          authMessage.textContent = 'Konfirmasi password tidak cocok.';
-          authMessage.className = 'status-text error';
-          return;
-        }
+      // ============ STORAGE ============
+      function loadUser() { try { const saved = localStorage.getItem('gxr_current_user'); if (saved) { currentUser = JSON.parse(saved); return true; } } catch(e) {} return false; }
+      function saveUser(user) { try { currentUser = user; localStorage.setItem('gxr_current_user', JSON.stringify(user)); } catch(e) {} }
+      function logoutUser() { currentUser = null; localStorage.removeItem('gxr_current_user'); }
+      function loadChatSessions() { try { const saved = localStorage.getItem('gxr_chat_sessions_v17'); if(saved) chatSessions = JSON.parse(saved); } catch(e) { chatSessions = []; } }
+      function saveChatSessions() { try { localStorage.setItem('gxr_chat_sessions_v17', JSON.stringify(chatSessions.slice(0,40))); } catch(e) {} }
+      function loadImageUsage() { try { const saved = localStorage.getItem('gxr_image_usage'); if (saved) { const data = JSON.parse(saved); if (data.date === getToday()) imagesUsedToday = data.count || 0; else imagesUsedToday = 0; } } catch(e) { imagesUsedToday = 0; } lastImageDate = getToday(); }
+      function saveImageUsage() { try { localStorage.setItem('gxr_image_usage', JSON.stringify({ date: getToday(), count: imagesUsedToday })); } catch(e) {} }
 
-        authMessage.textContent = type === 'register' ? 'Akun berhasil dibuat.' : 'Berhasil masuk.';
-        authMessage.className = 'status-text success';
-        setTimeout(() => authOverlay.classList.remove('visible'), 800);
+      // ============ DOM ============
+      const chatArea = $('chatArea'), msgInput = $('msgInput'), sendBtn = $('sendMsgBtn'), fileUploadBtn = $('uploadFileBtn');
+      const imageUploadInput = $('imageUploadInput'), fileUploadInput = $('fileUploadInput'), inputPreviewArea = $('inputPreviewArea');
+      const modeChips = document.querySelectorAll('.mode-chip'), welcomeOverlay = $('welcomeOverlay'), historyToggleBtn = $('historyToggleBtn');
+      const authModal = $('authModal'), authTitle = $('authTitle'), authSubtitle = $('authSubtitle'), authEmail = $('authEmail'), authPassword = $('authPassword'), authConfirmPassword = $('authConfirmPassword'), authSubmitBtn = $('authSubmitBtn'), authMessage = $('authMessage');
+      const tabLogin = $('tabLogin'), tabRegister = $('tabRegister'), aboutBtn = $('aboutBtn'), aboutOverlay = $('aboutOverlay'), closeAboutBtn = $('closeAboutBtn');
+      const historyLoginSection = $('historyLoginSection'), forgotPasswordBtn = $('forgotPasswordBtn'), resetPasswordSection = $('resetPasswordSection'), resetEmail = $('resetEmail'), resetPasswordBtn = $('resetPasswordBtn');
+      const authCloseBtn = $('authCloseBtn'), historyOverlay = $('historyOverlay'), historyPanel = $('historyPanel'), closeHistoryBtn = $('closeHistoryBtn'), clearAllHistoryBtn = $('clearAllHistoryBtn');
+      const scrollDownBtn = $('scrollDownBtn');
+
+      // ============ SCROLL DOWN ============
+      function checkScrollPosition() {
+        if (!chatArea || !scrollDownBtn) return;
+        const threshold = 120;
+        const distanceFromBottom = chatArea.scrollHeight - chatArea.scrollTop - chatArea.clientHeight;
+        isNearBottom = distanceFromBottom < threshold;
+        if (distanceFromBottom > threshold && chatArea.scrollHeight > chatArea.clientHeight) scrollDownBtn.classList.add('visible');
+        else scrollDownBtn.classList.remove('visible');
+      }
+      function scrollToBottom() { requestAnimationFrame(() => { if(chatArea) chatArea.scrollTo({ top: chatArea.scrollHeight, behavior: 'smooth' }); }); }
+      function scrollToBottomInstant() { if(chatArea) chatArea.scrollTop = chatArea.scrollHeight; }
+
+      // ============ MESSAGE ============
+      function addMessageLine() { try { const line = document.createElement('div'); line.style.cssText = 'width:100%;height:1px;background:var(--line-color);margin:3px 0;flex-shrink:0;'; chatArea.appendChild(line); } catch(e) {} }
+      function addUserMessage(text) {
+        if (!text?.trim()) return;
+        const cleanText = sanitizeInput(text);
+        try {
+          addMessageLine();
+          const initial = currentUser ? getUserInitial(currentUser.email) : '?';
+          const div = document.createElement('div');
+          div.className = 'message-wrap user';
+          div.innerHTML = `<div class="msg-avatar user-avatar">${initial}</div><div class="msg-body"><div class="user-bubble-wrap">${escapeHtml(cleanText)}</div><div class="msg-footer"><span style="font-size:0.7rem;color:var(--text-tertiary);">${getCurrentTime()}</span></div></div>`;
+          chatArea.appendChild(div);
+          scrollToBottom(); checkScrollPosition();
+        } catch(e) {}
+      }
+      function addAIMessage(text, isSys = false) {
+        if (!text) return;
+        try {
+          if (!isSys) addMessageLine();
+          let content = text;
+          if (!isSys && !/<[a-zA-Z][^>]*>/.test(text)) {
+            content = text.replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;')
+              .replace(/```(\w*)\n?([\s\S]*?)```/g, '<pre><code>$2</code></pre>')
+              .replace(/`([^`]+)`/g, '<code>$1</code>')
+              .replace(/\*\*(.+?)\*\*/g, '<strong>$1</strong>')
+              .replace(/\*(.+?)\*/g, '<em>$1</em>')
+              .replace(/^### (.+)$/gm, '<h3>$1</h3>')
+              .replace(/^## (.+)$/gm, '<h2>$1</h2>')
+              .replace(/^# (.+)$/gm, '<h1>$1</h1>')
+              .replace(/\n/g, '<br>');
+          }
+          const div = document.createElement('div');
+          div.className = 'message-wrap ai';
+          div.innerHTML = `<div class="msg-avatar ai-avatar">AI</div><div class="msg-body"><div class="ai-text" data-user-content="true">${content}</div><div class="msg-footer"><span style="font-size:0.7rem;color:var(--text-tertiary);">${getCurrentTime()}</span><button class="copy-btn">Salin</button></div></div>`;
+          chatArea.appendChild(div);
+          div.querySelector('.copy-btn').addEventListener('click', function() {
+            navigator.clipboard.writeText(div.querySelector('.ai-text').innerText).then(() => {
+              this.textContent = ' Tersalin'; this.classList.add('copied');
+              setTimeout(() => { this.textContent = ' Salin'; this.classList.remove('copied'); }, 2000);
+            });
+          });
+          scrollToBottom(); checkScrollPosition();
+        } catch(e) {}
+      }
+      function addThinkingIndicator() {
+        const div = document.createElement('div');
+        div.className = 'message-wrap ai';
+        div.innerHTML = `<div class="msg-avatar ai-avatar">AI</div><div class="msg-body"><div class="thinking-indicator"><div class="thinking-dots"><span class="thinking-dot"></span><span class="thinking-dot"></span><span class="thinking-dot"></span></div><span class="thinking-text">AI sedang berfikir...</span></div></div>`;
+        chatArea.appendChild(div);
+        scrollToBottom(); checkScrollPosition();
+        return div;
       }
 
-      document.getElementById('authSubmit').addEventListener('click', () => {
-        const tab = document.querySelector('.tab.active')?.dataset.tab || 'login';
-        onAuthSubmit(tab);
-      });
+      // ============ FILE HANDLING ============
+      async function convertImageToBase64(file) { return new Promise((resolve, reject) => { const reader = new FileReader(); reader.onload = () => resolve(reader.result); reader.onerror = reject; reader.readAsDataURL(file); }); }
+      async function compressImage(base64) { return new Promise((resolve) => { const img = new Image(); img.onload = () => { const canvas = document.createElement('canvas'); let w = img.width, h = img.height; if (w > 500) { h = (500/w)*h; w = 500; } canvas.width = w; canvas.height = h; const ctx = canvas.getContext('2d'); ctx.drawImage(img, 0, 0, w, h); resolve(canvas.toDataURL('image/jpeg', 0.6)); }; img.src = base64; }); }
 
-      document.getElementById('resetSubmit').addEventListener('click', () => {
-        const email = document.getElementById('resetEmail').value.trim();
-        if (!email) {
-          authMessage.textContent = 'Masukkan email untuk reset password.';
-          authMessage.className = 'status-text error';
-          return;
+      async function handleImageUpload(files) {
+        if (!files?.length || isProcessing) return;
+        if (lastImageDate !== getToday()) { imagesUsedToday = 0; lastImageDate = getToday(); }
+        const remainingDaily = MAX_IMAGES_PER_DAY - imagesUsedToday;
+        const allowedTotal = Math.min(MAX_IMAGES_PER_SEND - pendingImages.length, files.length, remainingDaily);
+        if (remainingDaily <= 0) { alert('Batas unggah gambar harian tercapai.'); return; }
+        const validFiles = Array.from(files).filter(f => SecuritySystem.validateImageFile(f)).slice(0, allowedTotal);
+        for (const file of validFiles) { try { const base64 = await convertImageToBase64(file); const compressed = await compressImage(base64); pendingImages.push({ base64: compressed, fileName: file.name }); imagesUsedToday++; saveImageUsage(); } catch(e) {} }
+        renderInputPreviews();
+      }
+
+      async function handleFileUpload(files) {
+        if (!files?.length || isProcessing) return;
+        const allowed = MAX_FILES_PER_SEND - pendingFiles.length;
+        if (allowed <= 0) { alert('Maksimal 2 file.'); return; }
+        const validFiles = Array.from(files).filter(f => SecuritySystem.validateDocumentFile(f)).slice(0, allowed);
+        for (const file of validFiles) { try { const base64 = await convertImageToBase64(file); pendingFiles.push({ base64, fileName: file.name, type: file.type }); } catch(e) {} }
+        renderInputPreviews();
+      }
+
+      function renderInputPreviews() {
+        if (!inputPreviewArea) return;
+        inputPreviewArea.innerHTML = '';
+        const allItems = [];
+        pendingImages.forEach((img, idx) => allItems.push({ type: 'image', data: img, index: idx }));
+        pendingFiles.forEach((f, idx) => allItems.push({ type: 'file', data: f, index: idx }));
+        allItems.forEach(item => {
+          const container = document.createElement('div'); container.className = 'input-preview-item';
+          if (item.type === 'image') { const pic = document.createElement('img'); pic.src = item.data.base64; container.appendChild(pic); }
+          else { const icon = document.createElement('div'); icon.style.cssText = 'width:100%;height:100%;display:flex;align-items:center;justify-content:center;font-size:0.6rem;color:var(--text-secondary);'; icon.textContent = 'FILE'; container.appendChild(icon); }
+          const rm = document.createElement('button'); rm.className = 'input-preview-remove'; rm.innerHTML = '✕';
+          rm.addEventListener('click', (e) => { e.stopPropagation(); if(item.type === 'image') pendingImages.splice(item.index,1); else pendingFiles.splice(item.index,1); renderInputPreviews(); });
+          container.appendChild(rm); inputPreviewArea.appendChild(container);
+        });
+      }
+
+      function clearPendingFiles() { pendingImages = []; pendingFiles = []; imageUploadInput.value = ''; fileUploadInput.value = ''; if(inputPreviewArea) inputPreviewArea.innerHTML = ''; }
+
+      // ============ AI COMMUNICATION ============
+      async function askAI(prompt, hasMedia) {
+        try {
+          const payload = { message: prompt, mode: currentMode, history: conversationHistory.slice(-8).map(msg => ({ role: msg.role, content: msg.content })), images: hasMedia ? pendingImages.map(i => ({ base64: i.base64, fileName: i.fileName })) : [], files: hasMedia ? pendingFiles.map(f => ({ base64: f.base64, fileName: f.fileName, type: f.type })) : [], timestamp: Date.now(), fingerprint: SecuritySystem.getClientFingerprint() };
+          const controller = new AbortController();
+          const timeoutId = setTimeout(() => controller.abort(), 30000);
+          const response = await fetch(WORKER_URL, { method: 'POST', headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' }, body: JSON.stringify(payload), signal: controller.signal });
+          clearTimeout(timeoutId);
+          if (!response.ok) { const errorText = await response.text(); try { const errorData = JSON.parse(errorText); return errorData.reply || `Server error (${response.status})`; } catch(e) { return `Server error (${response.status})`; } }
+          const data = await response.json();
+          if (!data.success) return data.reply || 'Maaf, terjadi kesalahan.';
+          const reply = data.reply?.trim() || 'Maaf, tidak ada respons.';
+          conversationHistory.push({ role: 'user', content: prompt }); conversationHistory.push({ role: 'assistant', content: reply });
+          while(conversationHistory.length > MAX_HISTORY) conversationHistory.shift();
+          return reply;
+        } catch(e) { if (e.name === 'AbortError') return 'Waktu permintaan habis.'; return 'Gagal terhubung ke server.'; }
+      }
+
+      // ============ SEND MESSAGE ============
+      async function sendMessage() {
+        if (isProcessing) return;
+        if (SecuritySystem.checkHoneypot()) return;
+        if (SecuritySystem.isRateLimited()) { addAIMessage('⚠️ Terlalu banyak permintaan.', true); return; }
+        const rawText = msgInput.value.trim(); const text = sanitizeInput(rawText);
+        msgInput.value = ''; msgInput.style.height = 'auto';
+        const hasMedia = pendingImages.length > 0 || pendingFiles.length > 0;
+        if (!text && !hasMedia) return;
+        SecuritySystem.recordRequest();
+        if (!welcomeOverlay.classList.contains('hidden')) { welcomeOverlay.classList.add('hidden'); setTimeout(() => welcomeOverlay.style.display = 'none', 400); }
+        isProcessing = true; msgInput.disabled = true; sendBtn.style.opacity = '0.6'; sendBtn.style.pointerEvents = 'none';
+        try {
+          addUserMessage(text || 'Analisis file terlampir...');
+          const thinkingDiv = addThinkingIndicator();
+          const reply = await askAI(text || 'Tolong analisis file yang saya kirimkan.', hasMedia);
+          if (thinkingDiv?.parentNode) thinkingDiv.remove();
+          addAIMessage(reply); clearPendingFiles();
+          setTimeout(() => { if(conversationHistory.length > 0) saveCurrentConversation(); }, 400);
+        } catch(e) { const thinkingDiv = document.querySelector('.thinking-indicator'); if (thinkingDiv?.parentNode) thinkingDiv.parentNode.remove(); addAIMessage('Maaf, terjadi kesalahan.', true); clearPendingFiles(); }
+        finally { isProcessing = false; msgInput.disabled = false; sendBtn.style.opacity = '1'; sendBtn.style.pointerEvents = 'auto'; msgInput.focus(); }
+      }
+
+      // ============ MODE ============
+      function setMode(mode) { if (currentMode === mode) return; currentMode = mode; modeChips.forEach(chip => chip.classList.toggle('active', chip.getAttribute('data-mode') === mode)); }
+
+      // ============ CONVERSATION ============
+      function saveCurrentConversation() {
+        if (conversationHistory.length === 0) return;
+        const title = (conversationHistory.find(m => m.role === 'user')?.content || 'Obrolan').substring(0, 40);
+        const session = { id: currentChatId || generateUUID(), title, mode: currentMode, preview: (conversationHistory[conversationHistory.length-1]?.content || '').substring(0, 80), date: new Date().toISOString(), messages: JSON.parse(JSON.stringify(conversationHistory.slice(-20))), messageCount: conversationHistory.length, userEmail: currentUser?.email || 'guest' };
+        const idx = chatSessions.findIndex(s => s.id === session.id);
+        if (idx !== -1) chatSessions[idx] = session; else chatSessions.unshift(session);
+        currentChatId = session.id; saveChatSessions(); renderHistoryList();
+      }
+      function loadChatSession(id) {
+        const session = chatSessions.find(s => s.id === id); if (!session) return;
+        conversationHistory = JSON.parse(JSON.stringify(session.messages)); currentChatId = session.id; if (session.mode) setMode(session.mode);
+        chatArea.innerHTML = ''; conversationHistory.forEach(msg => { if (msg.role === 'user') addUserMessage(msg.content); else addAIMessage(msg.content); });
+        scrollToBottomInstant(); checkScrollPosition(); renderHistoryList(); closeHistoryPanel();
+      }
+      function deleteChatSession(id, ev) { ev?.stopPropagation(); if (confirm('Hapus obrolan ini?')) { chatSessions = chatSessions.filter(s => s.id !== id); saveChatSessions(); if (currentChatId === id) startNewChat(); renderHistoryList(); } }
+      function clearAllHistory() { if (chatSessions.length === 0) return; if (confirm('Hapus semua riwayat?')) { chatSessions = []; saveChatSessions(); startNewChat(); renderHistoryList(); } }
+      function startNewChat() { if (conversationHistory.length > 0) saveCurrentConversation(); conversationHistory = []; currentChatId = null; chatArea.innerHTML = ''; clearPendingFiles(); addAIMessage('<h3>Obrolan Baru</h3><p>GXR Prime P1.5 120B siap membantu Anda.</p>', true); renderHistoryList(); scrollToBottomInstant(); }
+
+      // ============ HISTORY RENDER ============
+      function renderHistoryList() {
+        const list = $('historyList'); if (!list) return;
+        if (chatSessions.length === 0) { list.innerHTML = '<div style="text-align:center;padding:32px;color:var(--text-tertiary);font-size:0.85rem;">Belum ada riwayat</div>'; return; }
+        list.innerHTML = chatSessions.map(s => {
+          const plainTitle = (s.title || '').replace(/<[^>]*>/g, ''); const plainPreview = (s.preview || '...').replace(/<[^>]*>/g, '');
+          return `<div class="history-item ${s.id === currentChatId ? 'active' : ''}" data-id="${s.id}"><div class="history-item-title">${escapeHtml(plainTitle)}</div><div class="history-item-preview">${escapeHtml(plainPreview)}</div><div style="display:flex;justify-content:space-between;align-items:center;margin-top:8px;"><span style="font-size:0.7rem;color:var(--accent);">${s.mode || 'flash'}</span><button class="delete-history-item" data-id="${s.id}">Hapus</button></div></div>`;
+        }).join('');
+        list.querySelectorAll('.history-item').forEach(item => item.addEventListener('click', (e) => { if (!e.target.classList.contains('delete-history-item')) loadChatSession(item.dataset.id); }));
+        list.querySelectorAll('.delete-history-item').forEach(btn => btn.addEventListener('click', (e) => { e.stopPropagation(); deleteChatSession(btn.dataset.id, e); }));
+      }
+      function renderHistoryLoginSection() {
+        if (!historyLoginSection) return;
+        if (currentUser && currentUser.email !== 'guest@tamu') {
+          historyLoginSection.innerHTML = `<div class="history-user-info"><div class="history-user-avatar">${getUserInitial(currentUser.email)}</div><div class="history-user-email">${escapeHtml(currentUser.email)}</div><button class="history-logout-btn" id="historyLogoutBtn">Keluar</button></div>`;
+          $('historyLogoutBtn')?.addEventListener('click', () => { logoutUser(); renderHistoryLoginSection(); addAIMessage('Anda telah keluar.', true); });
+        } else {
+          historyLoginSection.innerHTML = `<button class="history-login-btn" id="historyLoginBtn"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M15 3h4a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2h-4"/><polyline points="10 17 15 12 10 7"/><line x1="15" y1="12" x2="3" y2="12"/></svg> Masuk / Daftar</button>`;
+          $('historyLoginBtn')?.addEventListener('click', () => { closeHistoryPanel(); showAuthModal('login'); });
         }
-        authMessage.textContent = 'Link reset password berhasil dikirim ke email Anda.';
-        authMessage.className = 'status-text success';
-      });
+      }
 
-      const welcomeMessage = "Halo! Saya GXR Prime. Saya bisa membantu merapikan layout, memperbaiki UX, menjaga animasi tetap hidup, dan membuat website terasa lebih lancar secara keseluruhan.";
-      renderMessage('ai', welcomeMessage, new Date());
-      renderHistory();
-      setMode('flash');
-      resetTextarea();
-      scrollToBottom();
+      // ============ HISTORY PANEL ============
+      function openHistoryPanel() { if (conversationHistory.length > 0) saveCurrentConversation(); historyPanel?.classList.add('open'); historyOverlay?.classList.add('visible'); renderHistoryLoginSection(); renderHistoryList(); }
+      function closeHistoryPanel() { historyPanel?.classList.remove('open'); historyOverlay?.classList.remove('visible'); }
+
+      // ============ AUTH ============
+      function showAuthModal(mode = 'login') {
+        authMode = mode; authTitle.innerText = mode === 'login' ? 'Masuk' : 'Daftar'; authSubtitle.innerText = mode === 'login' ? 'Masuk ke akun GXR Prime' : 'Buat akun GXR Prime baru'; authSubmitBtn.innerText = mode === 'login' ? 'Masuk' : 'Daftar';
+        tabLogin.classList.toggle('active', mode === 'login'); tabRegister.classList.toggle('active', mode === 'register');
+        authConfirmPassword.style.display = mode === 'register' ? 'block' : 'none'; authPassword.placeholder = mode === 'register' ? 'Buat Password (min. 6 karakter)' : 'Password'; authConfirmPassword.placeholder = 'Konfirmasi Password';
+        authMessage.textContent = ''; authMessage.className = 'auth-message'; resetPasswordSection.classList.remove('visible'); forgotPasswordBtn.style.display = mode === 'login' ? 'inline-block' : 'none';
+        authModal.classList.add('visible'); setTimeout(() => authEmail.focus(), 300);
+      }
+      function hideAuthModal() { authModal.classList.remove('visible'); }
+      function handleAuthSubmit() {
+        const email = authEmail.value.trim(), password = authPassword.value.trim(), confirmPassword = authConfirmPassword.value.trim();
+        if (!email || !password) { authMessage.textContent = 'Mohon isi semua field.'; authMessage.className = 'auth-message error'; return; }
+        if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) { authMessage.textContent = 'Format email tidak valid.'; authMessage.className = 'auth-message error'; return; }
+        if (password.length < 6) { authMessage.textContent = 'Password minimal 6 karakter.'; authMessage.className = 'auth-message error'; return; }
+        if (authMode === 'register' && password !== confirmPassword) { authMessage.textContent = 'Konfirmasi password tidak cocok.'; authMessage.className = 'auth-message error'; return; }
+        const users = JSON.parse(localStorage.getItem('gxr_users') || '[]');
+        if (authMode === 'register') {
+          if (users.find(u => u.email === email)) { authMessage.textContent = 'Email sudah terdaftar.'; authMessage.className = 'auth-message error'; return; }
+          users.push({ email, password }); localStorage.setItem('gxr_users', JSON.stringify(users)); authMessage.textContent = 'Berhasil daftar! Silakan masuk.'; authMessage.className = 'auth-message success'; setTimeout(() => showAuthModal('login'), 1200);
+        } else {
+          const user = users.find(u => u.email === email && u.password === password);
+          if (user) { saveUser({ email: user.email }); hideAuthModal(); welcomeOverlay.classList.add('hidden'); renderHistoryLoginSection(); setTimeout(() => { welcomeOverlay.style.display = 'none'; addAIMessage(`<h3>Selamat Datang</h3><p>Login sebagai <b>${escapeHtml(user.email)}</b></p>`, true); }, 300); }
+          else { authMessage.textContent = 'Email atau password salah.'; authMessage.className = 'auth-message error'; }
+        }
+      }
+      function handleResetPassword() {
+        const email = resetEmail.value.trim();
+        if (!email) { authMessage.textContent = 'Masukkan email.'; authMessage.className = 'auth-message error'; return; }
+        if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) { authMessage.textContent = 'Format email tidak valid.'; authMessage.className = 'auth-message error'; return; }
+        const users = JSON.parse(localStorage.getItem('gxr_users') || '[]'); const idx = users.findIndex(u => u.email === email);
+        if (idx === -1) { authMessage.textContent = 'Email tidak terdaftar.'; authMessage.className = 'auth-message error'; return; }
+        const newPassword = 'GXR' + Math.random().toString(36).substring(2,8) + '!'; users[idx].password = newPassword; localStorage.setItem('gxr_users', JSON.stringify(users));
+        authMessage.textContent = `Password baru: ${newPassword}`; authMessage.className = 'auth-message success'; authPassword.value = newPassword; resetPasswordSection.classList.remove('visible');
+      }
+      function startAsGuest() { saveUser({ email: 'guest@tamu', isGuest: true }); welcomeOverlay.classList.add('hidden'); renderHistoryLoginSection(); setTimeout(() => { welcomeOverlay.style.display = 'none'; addAIMessage('<h3>Selamat Datang</h3><p>Mode Tamu.</p>', true); }, 300); }
+      function autoResizeTextarea() { 
+        const isMobile = window.innerWidth <= 768;
+        msgInput.style.height = 'auto'; 
+        if (isMobile) {
+          msgInput.style.height = '24px';
+        } else {
+          msgInput.style.height = Math.min(msgInput.scrollHeight, 110) + 'px';
+        }
+      }
+
+      // ============ KEYBOARD HANDLING (MOBILE) ============
+      function handleKeyboardVisibility() {
+        const isMobile = window.innerWidth <= 768;
+        if (!isMobile) return;
+        const inputArea = $('inputAreaContainer');
+        if (document.activeElement === msgInput) {
+          inputArea.style.paddingBottom = '4px';
+        } else {
+          inputArea.style.paddingBottom = 'calc(8px + var(--safe-bottom))';
+        }
+      }
+
+      // ============ EVENT LISTENERS ============
+      function setupEventListeners() {
+        sendBtn.addEventListener('click', (e) => { e.preventDefault(); sendMessage(); });
+        msgInput.addEventListener('keypress', (e) => { if (e.key === 'Enter' && !e.shiftKey) { e.preventDefault(); sendMessage(); } });
+        msgInput.addEventListener('input', autoResizeTextarea);
+        msgInput.addEventListener('focus', handleKeyboardVisibility);
+        msgInput.addEventListener('blur', handleKeyboardVisibility);
+        fileUploadBtn.addEventListener('click', (e) => { e.preventDefault(); if(!isProcessing) fileUploadInput.click(); });
+        imageUploadInput.addEventListener('change', async (e) => { if(e.target.files?.length) await handleImageUpload(e.target.files); });
+        fileUploadInput.addEventListener('change', async (e) => { if(e.target.files?.length) await handleFileUpload(e.target.files); });
+        document.addEventListener('paste', async (e) => {
+          if (isProcessing) return; const items = e.clipboardData?.items; if (items) { const imgs = [], docs = [];
+            for (const item of items) { if (item.type.startsWith('image/')) { const f = item.getAsFile(); if(f) imgs.push(f); } else if (item.kind === 'file') { const f = item.getAsFile(); if(f) docs.push(f); } }
+            if (imgs.length) { e.preventDefault(); await handleImageUpload(imgs); } if (docs.length) { e.preventDefault(); await handleFileUpload(docs); } }
+        });
+        historyToggleBtn.addEventListener('click', openHistoryPanel);
+        closeHistoryBtn?.addEventListener('click', closeHistoryPanel);
+        historyOverlay?.addEventListener('click', closeHistoryPanel);
+        modeChips.forEach(chip => chip.addEventListener('click', () => setMode(chip.getAttribute('data-mode'))));
+        aboutBtn.addEventListener('click', () => aboutOverlay.classList.add('visible'));
+        closeAboutBtn.addEventListener('click', () => aboutOverlay.classList.remove('visible'));
+        aboutOverlay.addEventListener('click', (e) => { if(e.target === aboutOverlay) aboutOverlay.classList.remove('visible'); });
+        $('btnGuestMode')?.addEventListener('click', startAsGuest);
+        $('btnLoginPrompt')?.addEventListener('click', () => showAuthModal('login'));
+        tabLogin?.addEventListener('click', () => showAuthModal('login'));
+        tabRegister?.addEventListener('click', () => showAuthModal('register'));
+        authSubmitBtn.addEventListener('click', handleAuthSubmit);
+        authPassword.addEventListener('keypress', (e) => { if(e.key === 'Enter') handleAuthSubmit(); });
+        authConfirmPassword.addEventListener('keypress', (e) => { if(e.key === 'Enter') handleAuthSubmit(); });
+        authModal.addEventListener('click', (e) => { if(e.target === authModal) hideAuthModal(); });
+        forgotPasswordBtn.addEventListener('click', () => { resetPasswordSection.classList.toggle('visible'); resetEmail.value = authEmail.value; });
+        resetPasswordBtn.addEventListener('click', handleResetPassword);
+        authCloseBtn?.addEventListener('click', hideAuthModal);
+        document.addEventListener('keydown', (e) => { if (e.key === 'Escape') { if (authModal.classList.contains('visible')) hideAuthModal(); if (historyPanel.classList.contains('open')) closeHistoryPanel(); } });
+        clearAllHistoryBtn.addEventListener('click', clearAllHistory);
+        scrollDownBtn?.addEventListener('click', scrollToBottom);
+        chatArea?.addEventListener('scroll', () => { if (scrollTimeout) clearTimeout(scrollTimeout); scrollTimeout = setTimeout(checkScrollPosition, 100); });
+        window.addEventListener('resize', () => { checkScrollPosition(); autoResizeTextarea(); handleKeyboardVisibility(); });
+      }
+
+      // ============ INITIALIZATION ============
+      function initialize() {
+        loadChatSessions(); loadImageUsage(); setupEventListeners();
+        if (loadUser() && currentUser?.email !== 'guest@tamu') { welcomeOverlay.style.display = 'none'; welcomeOverlay.classList.add('hidden'); renderHistoryLoginSection(); setTimeout(() => addAIMessage(`<h3>Selamat Datang Kembali</h3><p>Login sebagai <b>${escapeHtml(currentUser.email)}</b></p>`, true), 400); }
+        else { welcomeOverlay.style.display = 'flex'; welcomeOverlay.classList.remove('hidden'); renderHistoryLoginSection(); }
+        setTimeout(() => msgInput?.focus(), 600);
+        setTimeout(() => { checkScrollPosition(); console.log('GXR Prime AI initialized'); }, 800);
+      }
+      initialize();
     })();
   </script>
 </body>
